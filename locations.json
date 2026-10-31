@@ -1,0 +1,2442 @@
+[
+  {
+    "location": "1st Colony, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "1st Colony"
+  },
+  {
+    "location": "2nd Colony, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "2nd Colony"
+  },
+  {
+    "location": "3rd Colony, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "3rd Colony"
+  },
+  {
+    "location": "Aainusbag, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Aainusbag"
+  },
+  {
+    "location": "Abdul Aziz Lane, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Abdul Aziz Lane"
+  },
+  {
+    "location": "Abur Tek Road, Khilkhet, Dhaka",
+    "region": "Khilkhet",
+    "sub_region": "Abur Tek Road"
+  },
+  {
+    "location": "Adarsha Nagar, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Adarsha Nagar"
+  },
+  {
+    "location": "Advanced Police Town, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Advanced Police Town"
+  },
+  {
+    "location": "Aga Sadek Road, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Aga Sadek Road"
+  },
+  {
+    "location": "Agamasi Lane, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Agamasi Lane"
+  },
+  {
+    "location": "Agargaon, Dhaka",
+    "region": "Agargaon",
+    "sub_region": "Unknown"
+  },
+  {
+    "location": "Ahmed Nagar, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Ahmed Nagar"
+  },
+  {
+    "location": "Allabdirtec Road 1, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Allabdirtec Road 1"
+  },
+  {
+    "location": "Alu Bazar, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Alu Bazar"
+  },
+  {
+    "location": "Amligola, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Amligola"
+  },
+  {
+    "location": "Amtola Masjid Goli Road, North Shahjahanpur, Dhaka",
+    "region": "NorthShahjahanpur",
+    "sub_region": "Amtola Masjid Goli Road"
+  },
+  {
+    "location": "Arambagh, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Arambagh"
+  },
+  {
+    "location": "Asad Avenue, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Asad Avenue"
+  },
+  {
+    "location": "Ashi Dag Road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "Ashi Dag Road"
+  },
+  {
+    "location": "Ashkona, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Ashkona"
+  },
+  {
+    "location": "Ashulia, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Ashulia"
+  },
+  {
+    "location": "Ati Bazar, Keraniganj, Dhaka",
+    "region": "Keraniganj",
+    "sub_region": "Ati Bazar"
+  },
+  {
+    "location": "Atosh Khana Lane, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Atosh Khana Lane"
+  },
+  {
+    "location": "Aurangzeb Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Aurangzeb Road"
+  },
+  {
+    "location": "Azam Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Azam Road"
+  },
+  {
+    "location": "Azimpur Road, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Azimpur Road"
+  },
+  {
+    "location": "Azimpur, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Azimpur"
+  },
+  {
+    "location": "Babar Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Babar Road"
+  },
+  {
+    "location": "Bagan Bari Road, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Bagan Bari Road"
+  },
+  {
+    "location": "Bagicha Mashjid Road, North Shahjahanpur, Dhaka",
+    "region": "NorthShahjahanpur",
+    "sub_region": "Bagicha Mashjid Road"
+  },
+  {
+    "location": "Baitul Aman Housing Society, Adabor, Dhaka",
+    "region": "Adabor",
+    "sub_region": "Baitul Aman Housing Society"
+  },
+  {
+    "location": "Bakshi Bazar, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Bakshi Bazar"
+  },
+  {
+    "location": "Banasree Main Road, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Banasree Main Road"
+  },
+  {
+    "location": "Bangshal Road, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Bangshal Road"
+  },
+  {
+    "location": "Bank Colony, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Bank Colony"
+  },
+  {
+    "location": "Bank Town, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Bank Town"
+  },
+  {
+    "location": "Bash Bari Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Bash Bari Road"
+  },
+  {
+    "location": "Bashabo Madartek Road, Bashabo, Dhaka",
+    "region": "Bashabo",
+    "sub_region": "Bashabo Madartek Road"
+  },
+  {
+    "location": "Bashir Uddin Road, Kalabagan, Dhaka",
+    "region": "Kalabagan",
+    "sub_region": "Bashir Uddin Road"
+  },
+  {
+    "location": "Bashundhara Road, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Bashundhara Road"
+  },
+  {
+    "location": "Bata Goli, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Bata Goli"
+  },
+  {
+    "location": "Bawnia, Turag, Dhaka",
+    "region": "Turag",
+    "sub_region": "Bawnia"
+  },
+  {
+    "location": "Becharam Dewri, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Becharam Dewri"
+  },
+  {
+    "location": "Bepari Goli, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Bepari Goli"
+  },
+  {
+    "location": "Bhagalpur, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Bhagalpur"
+  },
+  {
+    "location": "Bhatuliya, Turag, Dhaka",
+    "region": "Turag",
+    "sub_region": "Bhatuliya"
+  },
+  {
+    "location": "Bibir Bagicha, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Bibir Bagicha"
+  },
+  {
+    "location": "Block A, Aftab Nagar, Dhaka",
+    "region": "AftabNagar",
+    "sub_region": "Block A"
+  },
+  {
+    "location": "Block A, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block A"
+  },
+  {
+    "location": "Block A, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block A"
+  },
+  {
+    "location": "Block A, Lalmatia, Dhaka",
+    "region": "Lalmatia",
+    "sub_region": "Block A"
+  },
+  {
+    "location": "Block A, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Block A"
+  },
+  {
+    "location": "Block B, Aftab Nagar, Dhaka",
+    "region": "AftabNagar",
+    "sub_region": "Block B"
+  },
+  {
+    "location": "Block B, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block B"
+  },
+  {
+    "location": "Block B, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block B"
+  },
+  {
+    "location": "Block B, Lalmatia, Dhaka",
+    "region": "Lalmatia",
+    "sub_region": "Block B"
+  },
+  {
+    "location": "Block B, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Block B"
+  },
+  {
+    "location": "Block C Extension, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block C Extension"
+  },
+  {
+    "location": "Block C, Aftab Nagar, Dhaka",
+    "region": "AftabNagar",
+    "sub_region": "Block C"
+  },
+  {
+    "location": "Block C, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block C"
+  },
+  {
+    "location": "Block C, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block C"
+  },
+  {
+    "location": "Block C, Khilgaon, Dhaka",
+    "region": "Khilgaon",
+    "sub_region": "Block C"
+  },
+  {
+    "location": "Block C, Lalmatia, Dhaka",
+    "region": "Lalmatia",
+    "sub_region": "Block C"
+  },
+  {
+    "location": "Block C, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Block C"
+  },
+  {
+    "location": "Block D, Aftab Nagar, Dhaka",
+    "region": "AftabNagar",
+    "sub_region": "Block D"
+  },
+  {
+    "location": "Block D, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block D"
+  },
+  {
+    "location": "Block D, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block D"
+  },
+  {
+    "location": "Block D, Lalmatia, Dhaka",
+    "region": "Lalmatia",
+    "sub_region": "Block D"
+  },
+  {
+    "location": "Block D, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Block D"
+  },
+  {
+    "location": "Block E, Aftab Nagar, Dhaka",
+    "region": "AftabNagar",
+    "sub_region": "Block E"
+  },
+  {
+    "location": "Block E, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block E"
+  },
+  {
+    "location": "Block E, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block E"
+  },
+  {
+    "location": "Block E, Lalmatia, Dhaka",
+    "region": "Lalmatia",
+    "sub_region": "Block E"
+  },
+  {
+    "location": "Block E, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Block E"
+  },
+  {
+    "location": "Block F, Aftab Nagar, Dhaka",
+    "region": "AftabNagar",
+    "sub_region": "Block F"
+  },
+  {
+    "location": "Block F, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block F"
+  },
+  {
+    "location": "Block F, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block F"
+  },
+  {
+    "location": "Block F, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Block F"
+  },
+  {
+    "location": "Block G, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block G"
+  },
+  {
+    "location": "Block G, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block G"
+  },
+  {
+    "location": "Block H, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block H"
+  },
+  {
+    "location": "Block H, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block H"
+  },
+  {
+    "location": "Block I, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block I"
+  },
+  {
+    "location": "Block J, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "Block J"
+  },
+  {
+    "location": "Block J, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Block J"
+  },
+  {
+    "location": "Block J, Bashundhara R-A, Dhaka",
+    "region": "BashundharaR-A",
+    "sub_region": "Block J"
+  },
+  {
+    "location": "Block K, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Block K"
+  },
+  {
+    "location": "Bochila, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Bochila"
+  },
+  {
+    "location": "Boro Maghbazar, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Boro Maghbazar"
+  },
+  {
+    "location": "Bosila, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Bosila"
+  },
+  {
+    "location": "Bot Tola, Khilkhet, Dhaka",
+    "region": "Khilkhet",
+    "sub_region": "Bot Tola"
+  },
+  {
+    "location": "Central Road, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Central Road"
+  },
+  {
+    "location": "Chad Uddan Housing, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Chad Uddan Housing"
+  },
+  {
+    "location": "Chamilibag, Shantinagar, Dhaka",
+    "region": "Shantinagar",
+    "sub_region": "Chamilibag"
+  },
+  {
+    "location": "Chandrima Model Town, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Chandrima Model Town"
+  },
+  {
+    "location": "Chawk Bazar, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Chawk Bazar"
+  },
+  {
+    "location": "Chowdhuripara, Khilgaon, Dhaka",
+    "region": "Khilgaon",
+    "sub_region": "Chowdhuripara"
+  },
+  {
+    "location": "Circular Road, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Circular Road"
+  },
+  {
+    "location": "Comfort Housing, Adabor, Dhaka",
+    "region": "Adabor",
+    "sub_region": "Comfort Housing"
+  },
+  {
+    "location": "Comilla Para, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Comilla Para"
+  },
+  {
+    "location": "Crescent Road, Kathalbagan, Dhaka",
+    "region": "Kathalbagan",
+    "sub_region": "Crescent Road"
+  },
+  {
+    "location": "DIT Road, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "DIT Road"
+  },
+  {
+    "location": "Dagormora, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Dagormora"
+  },
+  {
+    "location": "Dakhshin Para, Mohakhali, Dhaka",
+    "region": "Mohakhali",
+    "sub_region": "Dakhshin Para"
+  },
+  {
+    "location": "Dakkhin Paikpara, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Dakkhin Paikpara"
+  },
+  {
+    "location": "Darussalam, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Darussalam"
+  },
+  {
+    "location": "Dhaka Housing Main Road, Shyamoli, Dhaka",
+    "region": "Shyamoli",
+    "sub_region": "Dhaka Housing Main Road"
+  },
+  {
+    "location": "Dhaka Uddan, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Dhaka Uddan"
+  },
+  {
+    "location": "Dhalpur, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Dhalpur"
+  },
+  {
+    "location": "Dholpur New Road, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Dholpur New Road"
+  },
+  {
+    "location": "Dhour Mouza, Turag, Dhaka",
+    "region": "Turag",
+    "sub_region": "Dhour Mouza"
+  },
+  {
+    "location": "Dilkhushabag, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Dilkhushabag"
+  },
+  {
+    "location": "Doctor Goli, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Doctor Goli"
+  },
+  {
+    "location": "Dolphin Goli Road, Kalabagan, Dhaka",
+    "region": "Kalabagan",
+    "sub_region": "Dolphin Goli Road"
+  },
+  {
+    "location": "Donia, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Donia"
+  },
+  {
+    "location": "Doniya, Shyampur, Dhaka",
+    "region": "Shyampur",
+    "sub_region": "Doniya"
+  },
+  {
+    "location": "Dutabash Road, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Dutabash Road"
+  },
+  {
+    "location": "East Azampur, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "East Azampur"
+  },
+  {
+    "location": "East Bashabo, Bashabo, Dhaka",
+    "region": "Bashabo",
+    "sub_region": "East Bashabo"
+  },
+  {
+    "location": "East Kazipara, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "East Kazipara"
+  },
+  {
+    "location": "East Maniknagar, Maniknagar, Dhaka",
+    "region": "Maniknagar",
+    "sub_region": "East Maniknagar"
+  },
+  {
+    "location": "East Monipur, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "East Monipur"
+  },
+  {
+    "location": "East Nakhalpara, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "East Nakhalpara"
+  },
+  {
+    "location": "East Rampura Road, Rampura, Dhaka",
+    "region": "Rampura",
+    "sub_region": "East Rampura Road"
+  },
+  {
+    "location": "East Rampura, Rampura, Dhaka",
+    "region": "Rampura",
+    "sub_region": "East Rampura"
+  },
+  {
+    "location": "East Shewrapara, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "East Shewrapara"
+  },
+  {
+    "location": "Elephant Road, New Market, Dhaka",
+    "region": "NewMarket",
+    "sub_region": "Elephant Road"
+  },
+  {
+    "location": "Enayet Ganj, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Enayet Ganj"
+  },
+  {
+    "location": "Fakirapool, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Fakirapool"
+  },
+  {
+    "location": "Farmgate, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "Farmgate"
+  },
+  {
+    "location": "Faydabad, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Faydabad"
+  },
+  {
+    "location": "Free School Street, Kathalbagan, Dhaka",
+    "region": "Kathalbagan",
+    "sub_region": "Free School Street"
+  },
+  {
+    "location": "Gajanabi Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Gajanabi Road"
+  },
+  {
+    "location": "Ganaktuli Road, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Ganaktuli Road"
+  },
+  {
+    "location": "Gandaria, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Gandaria"
+  },
+  {
+    "location": "Gawair, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Gawair"
+  },
+  {
+    "location": "Girls School Road, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Girls School Road"
+  },
+  {
+    "location": "Goaltek, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Goaltek"
+  },
+  {
+    "location": "Gobindapur, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Gobindapur"
+  },
+  {
+    "location": "Golapbag, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Golapbag"
+  },
+  {
+    "location": "Golden Street, Shyamoli, Dhaka",
+    "region": "Shyamoli",
+    "sub_region": "Golden Street"
+  },
+  {
+    "location": "Gopibag, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Gopibag"
+  },
+  {
+    "location": "Goran, Khilgaon, Dhaka",
+    "region": "Khilgaon",
+    "sub_region": "Goran"
+  },
+  {
+    "location": "Green City Housing, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Green City Housing"
+  },
+  {
+    "location": "Green Road, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Green Road"
+  },
+  {
+    "location": "Green Road, Kalabagan, Dhaka",
+    "region": "Kalabagan",
+    "sub_region": "Green Road"
+  },
+  {
+    "location": "Green Road, Kathalbagan, Dhaka",
+    "region": "Kathalbagan",
+    "sub_region": "Green Road"
+  },
+  {
+    "location": "Greenway Road, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Greenway Road"
+  },
+  {
+    "location": "Gulbag, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "Gulbag"
+  },
+  {
+    "location": "Gulshan 1, Gulshan, Dhaka",
+    "region": "Gulshan",
+    "sub_region": "Gulshan 1"
+  },
+  {
+    "location": "Gulshan 2, Gulshan, Dhaka",
+    "region": "Gulshan",
+    "sub_region": "Gulshan 2"
+  },
+  {
+    "location": "Haji Abdullah Sarkar Lane, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Haji Abdullah Sarkar Lane"
+  },
+  {
+    "location": "Haji Goli, Agargaon, Dhaka",
+    "region": "Agargaon",
+    "sub_region": "Haji Goli"
+  },
+  {
+    "location": "Haji Rahim Box Lane, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Haji Rahim Box Lane"
+  },
+  {
+    "location": "Hazi Abdur Rashid Lane, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Hazi Abdur Rashid Lane"
+  },
+  {
+    "location": "Hossain Saheb Goli, Zafrabad, Dhaka",
+    "region": "Zafrabad",
+    "sub_region": "Hossain Saheb Goli"
+  },
+  {
+    "location": "Humayun Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Humayun Road"
+  },
+  {
+    "location": "Ibrahimpur Bazar Road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "Ibrahimpur Bazar Road"
+  },
+  {
+    "location": "Idgaha road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "Idgaha road"
+  },
+  {
+    "location": "Imandipur, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Imandipur"
+  },
+  {
+    "location": "Indira Road, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "Indira Road"
+  },
+  {
+    "location": "Ismail Lane, Eskaton, Dhaka",
+    "region": "Eskaton",
+    "sub_region": "Ismail Lane"
+  },
+  {
+    "location": "Jagannathpur, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Jagannathpur"
+  },
+  {
+    "location": "Jamoj Road, Joar Sahara, Dhaka",
+    "region": "JoarSahara",
+    "sub_region": "Jamoj Road"
+  },
+  {
+    "location": "Janata Housing Society, Adabor, Dhaka",
+    "region": "Adabor",
+    "sub_region": "Janata Housing Society"
+  },
+  {
+    "location": "Japan Garden City, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Japan Garden City"
+  },
+  {
+    "location": "Jhigatola Road, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Jhigatola Road"
+  },
+  {
+    "location": "Jigatola, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Jigatola"
+  },
+  {
+    "location": "Julon Bari, Kotwali, Dhaka",
+    "region": "Kotwali",
+    "sub_region": "Julon Bari"
+  },
+  {
+    "location": "Kachukhet, Dhaka",
+    "region": "Kachukhet",
+    "sub_region": "Unknown"
+  },
+  {
+    "location": "Kadamtala, Bashabo, Dhaka",
+    "region": "Bashabo",
+    "sub_region": "Kadamtala"
+  },
+  {
+    "location": "Kadamtali, Shyampur, Dhaka",
+    "region": "Shyampur",
+    "sub_region": "Kadamtali"
+  },
+  {
+    "location": "Kahektuli, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Kahektuli"
+  },
+  {
+    "location": "Kalabagan 1st Lane, Kalabagan, Dhaka",
+    "region": "Kalabagan",
+    "sub_region": "Kalabagan 1st Lane"
+  },
+  {
+    "location": "Kalabagan 2nd Lane, Kalabagan, Dhaka",
+    "region": "Kalabagan",
+    "sub_region": "Kalabagan 2nd Lane"
+  },
+  {
+    "location": "Kalachandpur Main Road, Kalachandpur, Dhaka",
+    "region": "Kalachandpur",
+    "sub_region": "Kalachandpur Main Road"
+  },
+  {
+    "location": "Kalachandpur School Road, Kalachandpur, Dhaka",
+    "region": "Kalachandpur",
+    "sub_region": "Kalachandpur School Road"
+  },
+  {
+    "location": "Kallyanpur, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Kallyanpur"
+  },
+  {
+    "location": "Kamal Khan Road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "Kamal Khan Road"
+  },
+  {
+    "location": "Kamal Soroni Road, Agargaon, Dhaka",
+    "region": "Agargaon",
+    "sub_region": "Kamal Soroni Road"
+  },
+  {
+    "location": "Kamarpara, Turag, Dhaka",
+    "region": "Turag",
+    "sub_region": "Kamarpara"
+  },
+  {
+    "location": "Kamlapur, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Kamlapur"
+  },
+  {
+    "location": "Karatitola, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Karatitola"
+  },
+  {
+    "location": "Karwan Bazar, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "Karwan Bazar"
+  },
+  {
+    "location": "Katashur, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Katashur"
+  },
+  {
+    "location": "Katherpul, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Katherpul"
+  },
+  {
+    "location": "Kazi Motahar Hossain Road, Shegunbagicha, Dhaka",
+    "region": "Shegunbagicha",
+    "sub_region": "Kazi Motahar Hossain Road"
+  },
+  {
+    "location": "Kazi Riaz Uddin Road, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Kazi Riaz Uddin Road"
+  },
+  {
+    "location": "Khaje Dewan, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Khaje Dewan"
+  },
+  {
+    "location": "Khajedal Sing Lane, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Khajedal Sing Lane"
+  },
+  {
+    "location": "Khan Bari Road, Kalachandpur, Dhaka",
+    "region": "Kalachandpur",
+    "sub_region": "Khan Bari Road"
+  },
+  {
+    "location": "Khanka E Razviya Road/Zia Soroni, Shyampur, Dhaka",
+    "region": "Shyampur",
+    "sub_region": "Khanka E Razviya Road/Zia Soroni"
+  },
+  {
+    "location": "Khilbari Tek, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Khilbari Tek"
+  },
+  {
+    "location": "Khilji Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Khilji Road"
+  },
+  {
+    "location": "Khondokar Goli Road, Shiddheswari, Dhaka",
+    "region": "Shiddheswari",
+    "sub_region": "Khondokar Goli Road"
+  },
+  {
+    "location": "Kolta Bazar, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Kolta Bazar"
+  },
+  {
+    "location": "Konapara, Demra, Dhaka",
+    "region": "Demra",
+    "sub_region": "Konapara"
+  },
+  {
+    "location": "Konapara, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Konapara"
+  },
+  {
+    "location": "Kosai Bari, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Kosai Bari"
+  },
+  {
+    "location": "Kotwali, Dhaka",
+    "region": "Kotwali",
+    "sub_region": "Unknown"
+  },
+  {
+    "location": "Krishi Bank Road, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Krishi Bank Road"
+  },
+  {
+    "location": "Kutubkhali, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Kutubkhali"
+  },
+  {
+    "location": "Kutum Goli, Agargaon, Dhaka",
+    "region": "Agargaon",
+    "sub_region": "Kutum Goli"
+  },
+  {
+    "location": "Lake Circus Road, Kalabagan, Dhaka",
+    "region": "Kalabagan",
+    "sub_region": "Lake Circus Road"
+  },
+  {
+    "location": "Lake City Concord, Khilkhet, Dhaka",
+    "region": "Khilkhet",
+    "sub_region": "Lake City Concord"
+  },
+  {
+    "location": "Lalbagh Road, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Lalbagh Road"
+  },
+  {
+    "location": "Lane No 5, Mohakhali DOHS, Dhaka",
+    "region": "MohakhaliDOHS",
+    "sub_region": "Lane No 5"
+  },
+  {
+    "location": "Lichu Bagan Road, Joar Sahara, Dhaka",
+    "region": "JoarSahara",
+    "sub_region": "Lichu Bagan Road"
+  },
+  {
+    "location": "Luxmibazar, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Luxmibazar"
+  },
+  {
+    "location": "Madarbari, Uttar Khan, Dhaka",
+    "region": "UttarKhan",
+    "sub_region": "Madarbari"
+  },
+  {
+    "location": "Madartek, Bashabo, Dhaka",
+    "region": "Bashabo",
+    "sub_region": "Madartek"
+  },
+  {
+    "location": "Madhya Ajampur, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Madhya Ajampur"
+  },
+  {
+    "location": "Mahuthtuli, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Mahuthtuli"
+  },
+  {
+    "location": "Majed Sardar Road, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Majed Sardar Road"
+  },
+  {
+    "location": "Majidpur, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Majidpur"
+  },
+  {
+    "location": "Malibag Bazar Rd, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "Malibag Bazar Rd"
+  },
+  {
+    "location": "Malibag College Road, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "Malibag College Road"
+  },
+  {
+    "location": "Malibagh Chowdhury Para, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "Malibagh Chowdhury Para"
+  },
+  {
+    "location": "Malibagh First Lane, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "Malibagh First Lane"
+  },
+  {
+    "location": "Manda Road, Mugdapara, Dhaka",
+    "region": "Mugdapara",
+    "sub_region": "Manda Road"
+  },
+  {
+    "location": "Manda, Mugdapara, Dhaka",
+    "region": "Mugdapara",
+    "sub_region": "Manda"
+  },
+  {
+    "location": "Manikdi Road, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Manikdi Road"
+  },
+  {
+    "location": "Manikdi, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Manikdi"
+  },
+  {
+    "location": "Mansurabad Housing Society, Adabor, Dhaka",
+    "region": "Adabor",
+    "sub_region": "Mansurabad Housing Society"
+  },
+  {
+    "location": "Mastertek, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Mastertek"
+  },
+  {
+    "location": "Matikata Road, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Matikata Road"
+  },
+  {
+    "location": "Matikata, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Matikata"
+  },
+  {
+    "location": "Matuail, Demra, Dhaka",
+    "region": "Demra",
+    "sub_region": "Matuail"
+  },
+  {
+    "location": "Meradia, Khilgaon, Dhaka",
+    "region": "Khilgaon",
+    "sub_region": "Meradia"
+  },
+  {
+    "location": "Merul Badda, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Merul Badda"
+  },
+  {
+    "location": "Mia Para, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Mia Para"
+  },
+  {
+    "location": "Middle Badda, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Middle Badda"
+  },
+  {
+    "location": "Middle Bashabo, Bashabo, Dhaka",
+    "region": "Bashabo",
+    "sub_region": "Middle Bashabo"
+  },
+  {
+    "location": "Middle Monipur, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Middle Monipur"
+  },
+  {
+    "location": "Middle Paikpara, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Middle Paikpara"
+  },
+  {
+    "location": "Mirbag Notun Rasta, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Mirbag Notun Rasta"
+  },
+  {
+    "location": "Mirpur DOHS, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Mirpur DOHS"
+  },
+  {
+    "location": "Mirpur Road, Shyamoli, Dhaka",
+    "region": "Shyamoli",
+    "sub_region": "Mirpur Road"
+  },
+  {
+    "location": "Mitford Road, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Mitford Road"
+  },
+  {
+    "location": "Moghbazar Kazi Office Lane, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Moghbazar Kazi Office Lane"
+  },
+  {
+    "location": "Mohammadi Homes R/A, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Mohammadi Homes R/A"
+  },
+  {
+    "location": "Mohammadi Housing LTD., Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Mohammadi Housing LTD."
+  },
+  {
+    "location": "Mohammadia Housing Society, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Mohammadia Housing Society"
+  },
+  {
+    "location": "Mohonpur Road, Shyamoli, Dhaka",
+    "region": "Shyamoli",
+    "sub_region": "Mohonpur Road"
+  },
+  {
+    "location": "Momin Road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "Momin Road"
+  },
+  {
+    "location": "Moneshwar, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Moneshwar"
+  },
+  {
+    "location": "Monipur, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Monipur"
+  },
+  {
+    "location": "Monipuri School Road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "Monipuri School Road"
+  },
+  {
+    "location": "Monipuripara, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "Monipuripara"
+  },
+  {
+    "location": "Motijheel Extension, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Motijheel Extension"
+  },
+  {
+    "location": "Moushair, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Moushair"
+  },
+  {
+    "location": "Mridha Bari, Kuril, Dhaka",
+    "region": "Kuril",
+    "sub_region": "Mridha Bari"
+  },
+  {
+    "location": "Muktijoddha Road, Kachukhet, Dhaka",
+    "region": "Kachukhet",
+    "sub_region": "Muktijoddha Road"
+  },
+  {
+    "location": "Muslim Modern College Road, Kachukhet, Dhaka",
+    "region": "Kachukhet",
+    "sub_region": "Muslim Modern College Road"
+  },
+  {
+    "location": "Mymensingh Road, Shahbagh, Dhaka",
+    "region": "Shahbagh",
+    "sub_region": "Mymensingh Road"
+  },
+  {
+    "location": "Nadda, Dhaka",
+    "region": "Nadda",
+    "sub_region": "Unknown"
+  },
+  {
+    "location": "Namapara, Khilkhet, Dhaka",
+    "region": "Khilkhet",
+    "sub_region": "Namapara"
+  },
+  {
+    "location": "Narinda, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Narinda"
+  },
+  {
+    "location": "Nawabgonj, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Nawabgonj"
+  },
+  {
+    "location": "Nawabpur Road, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Nawabpur Road"
+  },
+  {
+    "location": "Naya Bazar, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Naya Bazar"
+  },
+  {
+    "location": "Naya Paltan, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Naya Paltan"
+  },
+  {
+    "location": "Nayatola, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Nayatola"
+  },
+  {
+    "location": "New Airport Road, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "New Airport Road"
+  },
+  {
+    "location": "New Baily Road, Shiddheswari, Dhaka",
+    "region": "Shiddheswari",
+    "sub_region": "New Baily Road"
+  },
+  {
+    "location": "New Elephant Road, Hatirpool, Dhaka",
+    "region": "Hatirpool",
+    "sub_region": "New Elephant Road"
+  },
+  {
+    "location": "New Eskaton Road, Eskaton, Dhaka",
+    "region": "Eskaton",
+    "sub_region": "New Eskaton Road"
+  },
+  {
+    "location": "New Eskaton, Eskaton, Dhaka",
+    "region": "Eskaton",
+    "sub_region": "New Eskaton"
+  },
+  {
+    "location": "New Market, Dhaka",
+    "region": "NewMarket",
+    "sub_region": "Unknown"
+  },
+  {
+    "location": "Niketan, Road No 14/3, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": " Road No 14/3"
+  },
+  {
+    "location": "Nikunja 2, Nikunja, Dhaka",
+    "region": "Nikunja",
+    "sub_region": "Nikunja 2"
+  },
+  {
+    "location": "Noa Nagar, Turag, Dhaka",
+    "region": "Turag",
+    "sub_region": "Noa Nagar"
+  },
+  {
+    "location": "Nobodoy Housing Society, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Nobodoy Housing Society"
+  },
+  {
+    "location": "North Adabor, Adabor, Dhaka",
+    "region": "Adabor",
+    "sub_region": "North Adabor"
+  },
+  {
+    "location": "North Azampur, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "North Azampur"
+  },
+  {
+    "location": "North Bashabo, Bashabo, Dhaka",
+    "region": "Bashabo",
+    "sub_region": "North Bashabo"
+  },
+  {
+    "location": "North Dhanmondi Road, Kalabagan, Dhaka",
+    "region": "Kalabagan",
+    "sub_region": "North Dhanmondi Road"
+  },
+  {
+    "location": "North Goran, Khilgaon, Dhaka",
+    "region": "Khilgaon",
+    "sub_region": "North Goran"
+  },
+  {
+    "location": "North Ibrahimpur, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "North Ibrahimpur"
+  },
+  {
+    "location": "North Jatra Bari, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "North Jatra Bari"
+  },
+  {
+    "location": "North Kafrul Road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "North Kafrul Road"
+  },
+  {
+    "location": "North Maniknagar, Maniknagar, Dhaka",
+    "region": "Maniknagar",
+    "sub_region": "North Maniknagar"
+  },
+  {
+    "location": "North Mugdapara, Mugdapara, Dhaka",
+    "region": "Mugdapara",
+    "sub_region": "North Mugdapara"
+  },
+  {
+    "location": "North Road, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "North Road"
+  },
+  {
+    "location": "North Shahjahanpur, Shahjahanpur, Dhaka",
+    "region": "Shahjahanpur",
+    "sub_region": "North Shahjahanpur"
+  },
+  {
+    "location": "Nurer Chala, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Nurer Chala"
+  },
+  {
+    "location": "Nurjahan Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Nurjahan Road"
+  },
+  {
+    "location": "Old Eskaton, Eskaton, Dhaka",
+    "region": "Eskaton",
+    "sub_region": "Old Eskaton"
+  },
+  {
+    "location": "Outer Circular Road, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Outer Circular Road"
+  },
+  {
+    "location": "Outer Circular Road, Shiddheswari, Dhaka",
+    "region": "Shiddheswari",
+    "sub_region": "Outer Circular Road"
+  },
+  {
+    "location": "PC Culture Housing, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "PC Culture Housing"
+  },
+  {
+    "location": "Paikpara, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Paikpara"
+  },
+  {
+    "location": "Pallabi, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Pallabi"
+  },
+  {
+    "location": "Panthapath, Kathalbagan, Dhaka",
+    "region": "Kathalbagan",
+    "sub_region": "Panthapath"
+  },
+  {
+    "location": "Park Road, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Park Road"
+  },
+  {
+    "location": "Pearabagh Road, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Pearabagh Road"
+  },
+  {
+    "location": "Pearl Street, Shyamoli, Dhaka",
+    "region": "Shyamoli",
+    "sub_region": "Pearl Street"
+  },
+  {
+    "location": "Peer Saheber Goli, Shantinagar, Dhaka",
+    "region": "Shantinagar",
+    "sub_region": "Peer Saheber Goli"
+  },
+  {
+    "location": "Pirerbag, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Pirerbag"
+  },
+  {
+    "location": "Police Fari road, Khilgaon, Dhaka",
+    "region": "Khilgaon",
+    "sub_region": "Police Fari road"
+  },
+  {
+    "location": "Poribagh Road Number 2, Paribagh, Dhaka",
+    "region": "Paribagh",
+    "sub_region": "Poribagh Road Number 2"
+  },
+  {
+    "location": "Primary school Road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "Primary school Road"
+  },
+  {
+    "location": "Purana Paltan, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Purana Paltan"
+  },
+  {
+    "location": "Rajabazar, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "Rajabazar"
+  },
+  {
+    "location": "Rajarbag, Bashabo, Dhaka",
+    "region": "Bashabo",
+    "sub_region": "Rajarbag"
+  },
+  {
+    "location": "Rajarbagh, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Rajarbagh"
+  },
+  {
+    "location": "Rajia Sultana Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Rajia Sultana Road"
+  },
+  {
+    "location": "Ranavola Road, Turag, Dhaka",
+    "region": "Turag",
+    "sub_region": "Ranavola Road"
+  },
+  {
+    "location": "Rayer Bazaar, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Rayer Bazaar"
+  },
+  {
+    "location": "Road No 1, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 1"
+  },
+  {
+    "location": "Road No 1, Baridhara DOHS, Dhaka",
+    "region": "BaridharaDOHS",
+    "sub_region": "Road No 1"
+  },
+  {
+    "location": "Road No 1, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Road No 1"
+  },
+  {
+    "location": "Road No 1, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 1"
+  },
+  {
+    "location": "Road No 1, Shyamoli, Dhaka",
+    "region": "Shyamoli",
+    "sub_region": "Road No 1"
+  },
+  {
+    "location": "Road No 10, Baridhara DOHS, Dhaka",
+    "region": "BaridharaDOHS",
+    "sub_region": "Road No 10"
+  },
+  {
+    "location": "Road No 10, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 10"
+  },
+  {
+    "location": "Road No 10A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 10A"
+  },
+  {
+    "location": "Road No 10B, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 10B"
+  },
+  {
+    "location": "Road No 11, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Road No 11"
+  },
+  {
+    "location": "Road No 11A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 11A"
+  },
+  {
+    "location": "Road No 12, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Road No 12"
+  },
+  {
+    "location": "Road No 12, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 12"
+  },
+  {
+    "location": "Road No 12A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 12A"
+  },
+  {
+    "location": "Road No 13, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 13"
+  },
+  {
+    "location": "Road No 13, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Road No 13"
+  },
+  {
+    "location": "Road No 14, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 14"
+  },
+  {
+    "location": "Road No 14A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 14A"
+  },
+  {
+    "location": "Road No 15, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 15"
+  },
+  {
+    "location": "Road No 16, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 16"
+  },
+  {
+    "location": "Road No 16, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 16"
+  },
+  {
+    "location": "Road No 18, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 18"
+  },
+  {
+    "location": "Road No 19, Mohakhali DOHS, Dhaka",
+    "region": "MohakhaliDOHS",
+    "sub_region": "Road No 19"
+  },
+  {
+    "location": "Road No 2, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 2"
+  },
+  {
+    "location": "Road No 2, Baridhara DOHS, Dhaka",
+    "region": "BaridharaDOHS",
+    "sub_region": "Road No 2"
+  },
+  {
+    "location": "Road No 2, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 2"
+  },
+  {
+    "location": "Road No 2, Shyamoli, Dhaka",
+    "region": "Shyamoli",
+    "sub_region": "Road No 2"
+  },
+  {
+    "location": "Road No 21, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 21"
+  },
+  {
+    "location": "Road No 23, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 23"
+  },
+  {
+    "location": "Road No 23, Mohakhali DOHS, Dhaka",
+    "region": "MohakhaliDOHS",
+    "sub_region": "Road No 23"
+  },
+  {
+    "location": "Road No 28, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 28"
+  },
+  {
+    "location": "Road No 2A, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Road No 2A"
+  },
+  {
+    "location": "Road No 2A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 2A"
+  },
+  {
+    "location": "Road No 3, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 3"
+  },
+  {
+    "location": "Road No 3, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Road No 3"
+  },
+  {
+    "location": "Road No 3, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 3"
+  },
+  {
+    "location": "Road No 3, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Road No 3"
+  },
+  {
+    "location": "Road No 3A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 3A"
+  },
+  {
+    "location": "Road No 4, Banani DOHS, Dhaka",
+    "region": "BananiDOHS",
+    "sub_region": "Road No 4"
+  },
+  {
+    "location": "Road No 4, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 4"
+  },
+  {
+    "location": "Road No 4, Baridhara DOHS, Dhaka",
+    "region": "BaridharaDOHS",
+    "sub_region": "Road No 4"
+  },
+  {
+    "location": "Road No 4, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 4"
+  },
+  {
+    "location": "Road No 4, Shyamoli, Dhaka",
+    "region": "Shyamoli",
+    "sub_region": "Road No 4"
+  },
+  {
+    "location": "Road No 4A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 4A"
+  },
+  {
+    "location": "Road No 5, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 5"
+  },
+  {
+    "location": "Road No 5, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Road No 5"
+  },
+  {
+    "location": "Road No 5, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 5"
+  },
+  {
+    "location": "Road No 6, Banani DOHS, Dhaka",
+    "region": "BananiDOHS",
+    "sub_region": "Road No 6"
+  },
+  {
+    "location": "Road No 6, Baridhara DOHS, Dhaka",
+    "region": "BaridharaDOHS",
+    "sub_region": "Road No 6"
+  },
+  {
+    "location": "Road No 6, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Road No 6"
+  },
+  {
+    "location": "Road No 6, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Road No 6"
+  },
+  {
+    "location": "Road No 6A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 6A"
+  },
+  {
+    "location": "Road No 7, Banani, Dhaka",
+    "region": "Banani",
+    "sub_region": "Road No 7"
+  },
+  {
+    "location": "Road No 7, Baridhara DOHS, Dhaka",
+    "region": "BaridharaDOHS",
+    "sub_region": "Road No 7"
+  },
+  {
+    "location": "Road No 7, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 7"
+  },
+  {
+    "location": "Road No 7A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 7A"
+  },
+  {
+    "location": "Road No 8, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 8"
+  },
+  {
+    "location": "Road No 8A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 8A"
+  },
+  {
+    "location": "Road No 9, Adabor, Dhaka",
+    "region": "Adabor",
+    "sub_region": "Road No 9"
+  },
+  {
+    "location": "Road No 9, Baridhara DOHS, Dhaka",
+    "region": "BaridharaDOHS",
+    "sub_region": "Road No 9"
+  },
+  {
+    "location": "Road No 9, Niketan, Dhaka",
+    "region": "Niketan",
+    "sub_region": "Road No 9"
+  },
+  {
+    "location": "Road No 9A, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Road No 9A"
+  },
+  {
+    "location": "Rupnagar R/A, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Rupnagar R/A"
+  },
+  {
+    "location": "Saat Rawza, Bangshal, Dhaka",
+    "region": "Bangshal",
+    "sub_region": "Saat Rawza"
+  },
+  {
+    "location": "Sadek Khan Road, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Sadek Khan Road"
+  },
+  {
+    "location": "Salimuddin Market Road, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Salimuddin Market Road"
+  },
+  {
+    "location": "Salimullah Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Salimullah Road"
+  },
+  {
+    "location": "Sarulia, Demra, Dhaka",
+    "region": "Demra",
+    "sub_region": "Sarulia"
+  },
+  {
+    "location": "Sat Masjid Housing, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Sat Masjid Housing"
+  },
+  {
+    "location": "School Road, Mohakhali, Dhaka",
+    "region": "Mohakhali",
+    "sub_region": "School Road"
+  },
+  {
+    "location": "Science Museum To Water Tank Road, Agargaon, Dhaka",
+    "region": "Agargaon",
+    "sub_region": "Science Museum To Water Tank Road"
+  },
+  {
+    "location": "Section 1, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 1"
+  },
+  {
+    "location": "Section 10, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 10"
+  },
+  {
+    "location": "Section 11, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 11"
+  },
+  {
+    "location": "Section 12, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 12"
+  },
+  {
+    "location": "Section 13, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 13"
+  },
+  {
+    "location": "Section 15, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 15"
+  },
+  {
+    "location": "Section 2, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 2"
+  },
+  {
+    "location": "Section 6, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 6"
+  },
+  {
+    "location": "Section 7, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "Section 7"
+  },
+  {
+    "location": "Sector 1, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 1"
+  },
+  {
+    "location": "Sector 10, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 10"
+  },
+  {
+    "location": "Sector 11, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 11"
+  },
+  {
+    "location": "Sector 12, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 12"
+  },
+  {
+    "location": "Sector 13, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 13"
+  },
+  {
+    "location": "Sector 14, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 14"
+  },
+  {
+    "location": "Sector 15, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 15"
+  },
+  {
+    "location": "Sector 17, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 17"
+  },
+  {
+    "location": "Sector 18, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 18"
+  },
+  {
+    "location": "Sector 3, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 3"
+  },
+  {
+    "location": "Sector 4, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 4"
+  },
+  {
+    "location": "Sector 5, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 5"
+  },
+  {
+    "location": "Sector 6, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 6"
+  },
+  {
+    "location": "Sector 7, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 7"
+  },
+  {
+    "location": "Sector 9, Uttara, Dhaka",
+    "region": "Uttara",
+    "sub_region": "Sector 9"
+  },
+  {
+    "location": "Shah Kabir Mazar Road, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Shah Kabir Mazar Road"
+  },
+  {
+    "location": "Shahbagh Road, Paribagh, Dhaka",
+    "region": "Paribagh",
+    "sub_region": "Shahbagh Road"
+  },
+  {
+    "location": "Shaheed Tajuddin Ahmed Ave, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Shaheed Tajuddin Ahmed Ave"
+  },
+  {
+    "location": "Shahid Latif Road, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Shahid Latif Road"
+  },
+  {
+    "location": "Shahid Nagar, Lalbagh, Dhaka",
+    "region": "Lalbagh",
+    "sub_region": "Shahid Nagar"
+  },
+  {
+    "location": "Shahid Syed Nazrul Islam Sharani, Motijheel, Dhaka",
+    "region": "Motijheel",
+    "sub_region": "Shahid Syed Nazrul Islam Sharani"
+  },
+  {
+    "location": "Shahjadpur, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Shahjadpur"
+  },
+  {
+    "location": "Shahjahan Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Shahjahan Road"
+  },
+  {
+    "location": "Shamibag, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Shamibag"
+  },
+  {
+    "location": "Shantibag - Shahidbag Road, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "Shantibag - Shahidbag Road"
+  },
+  {
+    "location": "Shantibag, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "Shantibag"
+  },
+  {
+    "location": "Shantinagar Bazar Rd, Shantinagar, Dhaka",
+    "region": "Shantinagar",
+    "sub_region": "Shantinagar Bazar Rd"
+  },
+  {
+    "location": "Shantinagar Road, Shantinagar, Dhaka",
+    "region": "Shantinagar",
+    "sub_region": "Shantinagar Road"
+  },
+  {
+    "location": "Shegunbagicha Road, Shegunbagicha, Dhaka",
+    "region": "Shegunbagicha",
+    "sub_region": "Shegunbagicha Road"
+  },
+  {
+    "location": "Sheikhdi, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "Sheikhdi"
+  },
+  {
+    "location": "Shekhertek, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Shekhertek"
+  },
+  {
+    "location": "Sher Shah Suri Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Sher Shah Suri Road"
+  },
+  {
+    "location": "Sher-E-Bangla Road, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Sher-E-Bangla Road"
+  },
+  {
+    "location": "Sher-E-Bangla Road, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Sher-E-Bangla Road"
+  },
+  {
+    "location": "Sher-E-Bangla Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Sher-E-Bangla Road"
+  },
+  {
+    "location": "Shiddeswari Road, Shiddheswari, Dhaka",
+    "region": "Shiddheswari",
+    "sub_region": "Shiddeswari Road"
+  },
+  {
+    "location": "Shiddheswari Lane, Shiddheswari, Dhaka",
+    "region": "Shiddheswari",
+    "sub_region": "Shiddheswari Lane"
+  },
+  {
+    "location": "Shonir Akhra, Shyampur, Dhaka",
+    "region": "Shyampur",
+    "sub_region": "Shonir Akhra"
+  },
+  {
+    "location": "Shukrabad, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "Shukrabad"
+  },
+  {
+    "location": "Shyamoli Housing (2nd Project), Adabor, Dhaka",
+    "region": "Adabor",
+    "sub_region": "Shyamoli Housing (2nd Project)"
+  },
+  {
+    "location": "Sir Sayed Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Sir Sayed Road"
+  },
+  {
+    "location": "Sobhanbag, Savar, Dhaka",
+    "region": "Savar",
+    "sub_region": "Sobhanbag"
+  },
+  {
+    "location": "Sohrawardy Avenue, Baridhara, Dhaka",
+    "region": "Baridhara",
+    "sub_region": "Sohrawardy Avenue"
+  },
+  {
+    "location": "Sonatongor Masjid Road, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Sonatongor Masjid Road"
+  },
+  {
+    "location": "South Azampur, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "South Azampur"
+  },
+  {
+    "location": "South Badda, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "South Badda"
+  },
+  {
+    "location": "South Banasree Project, Banasree, Dhaka",
+    "region": "Banasree",
+    "sub_region": "South Banasree Project"
+  },
+  {
+    "location": "South Baridhara Residential Area,D.I.T. Project, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "D.I.T. Project"
+  },
+  {
+    "location": "South Bashabo, Bashabo, Dhaka",
+    "region": "Bashabo",
+    "sub_region": "South Bashabo"
+  },
+  {
+    "location": "South Chalabon, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "South Chalabon"
+  },
+  {
+    "location": "South Jatra Bari, Jatra Bari, Dhaka",
+    "region": "JatraBari",
+    "sub_region": "South Jatra Bari"
+  },
+  {
+    "location": "South Kafrul Road, Kafrul, Dhaka",
+    "region": "Kafrul",
+    "sub_region": "South Kafrul Road"
+  },
+  {
+    "location": "South Keraniganj, Keraniganj, Dhaka",
+    "region": "Keraniganj",
+    "sub_region": "South Keraniganj"
+  },
+  {
+    "location": "South Mollartek, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "South Mollartek"
+  },
+  {
+    "location": "South Monipur, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "South Monipur"
+  },
+  {
+    "location": "South Mugdapara, Mugdapara, Dhaka",
+    "region": "Mugdapara",
+    "sub_region": "South Mugdapara"
+  },
+  {
+    "location": "Srjani road, Ibrahimpur, Dhaka",
+    "region": "Ibrahimpur",
+    "sub_region": "Srjani road"
+  },
+  {
+    "location": "Sultangong Road, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Sultangong Road"
+  },
+  {
+    "location": "Tajmahal Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Tajmahal Road"
+  },
+  {
+    "location": "Tali office Road, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Tali office Road"
+  },
+  {
+    "location": "Tallabag, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Tallabag"
+  },
+  {
+    "location": "Taltola goli, Maghbazar, Dhaka",
+    "region": "Maghbazar",
+    "sub_region": "Taltola goli"
+  },
+  {
+    "location": "Taltola, Agargaon, Dhaka",
+    "region": "Agargaon",
+    "sub_region": "Taltola"
+  },
+  {
+    "location": "Taltola, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "Taltola"
+  },
+  {
+    "location": "Taltola, Khilgaon, Dhaka",
+    "region": "Khilgaon",
+    "sub_region": "Taltola"
+  },
+  {
+    "location": "Tejgaon Industrial Area, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "Tejgaon Industrial Area"
+  },
+  {
+    "location": "Tejkunipara, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "Tejkunipara"
+  },
+  {
+    "location": "Tikatuli, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Tikatuli"
+  },
+  {
+    "location": "Tikka Para Road, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "Tikka Para Road"
+  },
+  {
+    "location": "Tilpapara, Khilgaon, Dhaka",
+    "region": "Khilgaon",
+    "sub_region": "Tilpapara"
+  },
+  {
+    "location": "Titas Gas Road, Rampura, Dhaka",
+    "region": "Rampura",
+    "sub_region": "Titas Gas Road"
+  },
+  {
+    "location": "Titas Gas Road, Shyampur, Dhaka",
+    "region": "Shyampur",
+    "sub_region": "Titas Gas Road"
+  },
+  {
+    "location": "Topkhana Road, Shegunbagicha, Dhaka",
+    "region": "Shegunbagicha",
+    "sub_region": "Topkhana Road"
+  },
+  {
+    "location": "Turag, Dhaka",
+    "region": "Turag",
+    "sub_region": "Unknown"
+  },
+  {
+    "location": "Ullan, Rampura, Dhaka",
+    "region": "Rampura",
+    "sub_region": "Ullan"
+  },
+  {
+    "location": "Uttar Badda, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Uttar Badda"
+  },
+  {
+    "location": "Uttar Khan, Dhaka",
+    "region": "UttarKhan",
+    "sub_region": "Unknown"
+  },
+  {
+    "location": "Vashantek, Cantonment, Dhaka",
+    "region": "Cantonment",
+    "sub_region": "Vashantek"
+  },
+  {
+    "location": "Vatara, Badda, Dhaka",
+    "region": "Badda",
+    "sub_region": "Vatara"
+  },
+  {
+    "location": "Ward 98, Rampura, Dhaka",
+    "region": "Rampura",
+    "sub_region": "Ward 98"
+  },
+  {
+    "location": "Wari, Sutrapur, Dhaka",
+    "region": "Sutrapur",
+    "sub_region": "Wari"
+  },
+  {
+    "location": "Wasa Road, Mugdapara, Dhaka",
+    "region": "Mugdapara",
+    "sub_region": "Wasa Road"
+  },
+  {
+    "location": "West Agargaon, Agargaon, Dhaka",
+    "region": "Agargaon",
+    "sub_region": "West Agargaon"
+  },
+  {
+    "location": "West Dhanmondi and Shangkar, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "West Dhanmondi and Shangkar"
+  },
+  {
+    "location": "West Dhanmondi, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "West Dhanmondi"
+  },
+  {
+    "location": "West Dolairpar, Shyampur, Dhaka",
+    "region": "Shyampur",
+    "sub_region": "West Dolairpar"
+  },
+  {
+    "location": "West End Street, Hatirpool, Dhaka",
+    "region": "Hatirpool",
+    "sub_region": "West End Street"
+  },
+  {
+    "location": "West Kafrul, Taltola, Dhaka",
+    "region": "Taltola",
+    "sub_region": "West Kafrul"
+  },
+  {
+    "location": "West Kazipara, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "West Kazipara"
+  },
+  {
+    "location": "West Malibag, Malibagh, Dhaka",
+    "region": "Malibagh",
+    "sub_region": "West Malibag"
+  },
+  {
+    "location": "West Mollartek, Dakshin Khan, Dhaka",
+    "region": "DakshinKhan",
+    "sub_region": "West Mollartek"
+  },
+  {
+    "location": "West Monipur, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "West Monipur"
+  },
+  {
+    "location": "West Nakhalpara, Tejgaon, Dhaka",
+    "region": "Tejgaon",
+    "sub_region": "West Nakhalpara"
+  },
+  {
+    "location": "West Rampura, Rampura, Dhaka",
+    "region": "Rampura",
+    "sub_region": "West Rampura"
+  },
+  {
+    "location": "West Shewrapara, Mirpur, Dhaka",
+    "region": "Mirpur",
+    "sub_region": "West Shewrapara"
+  },
+  {
+    "location": "Zafrabad, Hazaribag, Dhaka",
+    "region": "Hazaribag",
+    "sub_region": "Zafrabad"
+  },
+  {
+    "location": "Zindabahar 2nd Lane, Kotwali, Dhaka",
+    "region": "Kotwali",
+    "sub_region": "Zindabahar 2nd Lane"
+  },
+  {
+    "location": "aziz Moholla, Mohammadpur, Dhaka",
+    "region": "Mohammadpur",
+    "sub_region": "aziz Moholla"
+  },
+  {
+    "location": "rayer bazar-sanker road, Dhanmondi, Dhaka",
+    "region": "Dhanmondi",
+    "sub_region": "rayer bazar-sanker road"
+  }
+]

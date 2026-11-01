@@ -1,1508 +1,179 @@
-from pathlib import Path
-import json
-import difflib
-import re
+from __future__ import annotations
 
+import json
+import os
+from pathlib import Path
+from typing import Optional
+
+import numpy as np
 import pandas as pd
 from catboost import CatBoostRegressor
-from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse
-from pydantic import BaseModel, Field
+from fastapi import FastAPI, Form
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "dhaka_apartment_price_model.cbm"
-LOCATIONS_PATH = BASE_DIR / "locations.json"
+MODEL_PATH = BASE_DIR / "property_price_model.cbm"
+METADATA_PATH = BASE_DIR / "model_metadata.json"
 
-if not MODEL_PATH.exists():
-    raise FileNotFoundError("Model file missing: dhaka_apartment_price_model.cbm")
-if not LOCATIONS_PATH.exists():
-    raise FileNotFoundError("locations.json missing")
-
+app = FastAPI(title="Property Price Predictor", version="2.0")
 model = CatBoostRegressor()
-model.load_model(str(MODEL_PATH))
+metadata = {}
+model_ready = False
 
-LOCATIONS = json.loads(
-    LOCATIONS_PATH.read_text(encoding="utf-8")
-)
+if MODEL_PATH.exists() and METADATA_PATH.exists():
+    model.load_model(str(MODEL_PATH))
+    metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
+    model_ready = True
 
-LOCATION_MAP = {
-    item["location"]: item for item in LOCATIONS
-}
+FEATURES = [
+    "Type", "Location", "No. Beds", "No. Baths", "Area",
+    "Latitude", "Longitude", "Region", "Sub-region",
+]
 
-app = FastAPI(
-    title="BDProperties Price Predictor",
-    version="2.0.0"
-)
+def money_bdt(value: float) -> str:
+    return "৳" + f"{round(value):,}"
 
-MEDIAN_LATITUDE = 23.76629
-MEDIAN_LONGITUDE = 90.39280
-MEDIAN_BEDS = 3.0
-MEDIAN_BATHS = 3.0
+def location_options(selected: str = "") -> str:
+    rows = metadata.get("locations", [])
+    out = []
+    for row in rows:
+        name = str(row.get("Location") or "")
+        safe_name = (name.replace("&", "&amp;").replace('"', "&quot;")
+                     .replace("<", "&lt;").replace(">", "&gt;"))
+        sel = " selected" if name == selected else ""
+        out.append(f'<option value="{safe_name}"{sel}>{safe_name}</option>')
+    return "\n".join(out)
 
+def type_options(selected: str = "") -> str:
+    values = metadata.get("types", ["Apartment"])
+    out = []
+    for value in values:
+        safe = str(value).replace("&", "&amp;").replace('"', "&quot;")
+        sel = " selected" if value == selected else ""
+        out.append(f'<option value="{safe}"{sel}>{safe}</option>')
+    return "\n".join(out)
 
-class PredictionRequest(BaseModel):
-    location: str = Field(min_length=2, max_length=200)
-    region: str = Field(min_length=1, max_length=100)
-    sub_region: str = Field(min_length=1, max_length=100)
-    area_sqft: float = Field(gt=0, le=100000)
-    bedrooms: int = Field(ge=0, le=30)
-    bathrooms: int = Field(ge=0, le=30)
-
-
-class PredictionResponse(BaseModel):
-    estimated_price_bdt: float
-    estimated_price_lakh_bdt: float
-    currency: str = "BDT"
-    property_type: str = "Apartment"
-    disclaimer: str
-
-
-@app.get("/health")
-def health():
-    return {
-        "status": "ok",
-        "model_loaded": True,
-        "known_locations": len(LOCATIONS)
-    }
-
-
-@app.get("/locations.json")
-def locations():
-    return LOCATIONS
-
-
-def normalize_location(value: str) -> str:
-    return re.sub(
-        r"[^a-z0-9]+",
-        " ",
-        value.casefold()
-    ).strip()
-
-
-def find_location_matches(query: str, limit: int = 6):
-    """
-    Find closest available location names.
-    This is text similarity, not geographic distance.
-    """
-
-    query_norm = normalize_location(query)
-
-    if not query_norm:
-        return []
-
-    substring = [
-        item for item in LOCATIONS
-        if query_norm in normalize_location(item["location"])
-        or normalize_location(item["location"]) in query_norm
-    ]
-
-    scored = []
-
-    q_tokens = set(query_norm.split())
-
-    for item in LOCATIONS:
-        name_norm = normalize_location(item["location"])
-
-        score = difflib.SequenceMatcher(
-            None,
-            query_norm,
-            name_norm
-        ).ratio()
-
-        n_tokens = set(name_norm.split())
-
-        if q_tokens and n_tokens:
-            score = max(
-                score,
-                len(q_tokens & n_tokens) /
-                len(q_tokens | n_tokens)
-            )
-
-        scored.append((score, item))
-
-    scored.sort(key=lambda x: x[0], reverse=True)
-
-    results = []
-    seen = set()
-
-    for item in substring:
-        if item["location"] not in seen:
-            results.append(item)
-            seen.add(item["location"])
-
-        if len(results) >= limit:
-            return results
-
-    for score, item in scored:
-        if score < 0.22:
-            continue
-
-        if item["location"] not in seen:
-            results.append(item)
-            seen.add(item["location"])
-
-        if len(results) >= limit:
-            break
-
-    return results
-
-
-@app.get("/locations/search")
-def search_locations(
-    q: str = Query(default="", max_length=200)
-):
-    query = q.strip()
-
-    exact = LOCATION_MAP.get(query) if query else None
-
-    return {
-        "exact": exact,
-        "matches": find_location_matches(query),
-        "match_type": (
-            "exact" if exact
-            else "closest_name_matches"
-        ),
-        "note": (
-            "Suggestions are based on name similarity, "
-            "not geographic distance."
-        )
-    }
-
+def page(error: str = "", result: Optional[float] = None,
+         form: Optional[dict] = None) -> str:
+    form = form or {}
+    if not model_ready:
+        error = "Model files missing. Run train_model.py first and deploy the generated model files."
+    error_html = f'<div class="alert error">{error}</div>' if error else ""
+    result_html = ""
+    if result is not None:
+        result_html = f"""
+        <section class="result" aria-live="polite">
+          <div class="result-label">Estimated listing price</div>
+          <div class="price">{money_bdt(result)}</div>
+          <div class="subprice">Approximately ৳{result/100000:.2f} lakh</div>
+          <p>This is a model estimate, not a confirmed market or transaction price.</p>
+        </section>"""
+    location = str(form.get("location", ""))
+    prop_type = str(form.get("property_type", "Apartment"))
+    beds = form.get("bedrooms", "3")
+    baths = form.get("bathrooms", "2")
+    area = form.get("area_sqft", "1200")
+    disabled = "" if model_ready else " disabled"
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Property Price Predictor | Bangladesh</title>
+<style>
+:root{{--ink:#14213d;--muted:#667085;--line:#e5eaf2;--blue:#2357d9;--pale:#f4f7ff;}}
+*{{box-sizing:border-box}} body{{margin:0;background:linear-gradient(135deg,#f3f6ff,#f8fbff 55%,#edf8f5);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);min-height:100vh}}
+header{{padding:24px 6%;display:flex;justify-content:space-between;align-items:center;gap:12px}} .brand{{font-weight:850;font-size:20px;letter-spacing:-.5px}} .pill{{font-size:12px;font-weight:700;color:#176b4d;background:#e0f7ed;padding:8px 12px;border-radius:30px}}
+main{{max-width:1000px;margin:24px auto 64px;padding:0 20px}} .hero{{text-align:center;margin-bottom:28px}} .eyebrow{{color:var(--blue);font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase}} h1{{font-size:clamp(30px,5vw,48px);line-height:1.08;letter-spacing:-1.5px;margin:12px 0}} .hero p{{color:var(--muted);font-size:16px;line-height:1.6;max-width:650px;margin:0 auto}}
+.layout{{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:start}} .card{{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 18px 50px #1d3b7210}} .card h2{{font-size:20px;margin:0 0 6px}} .hint{{font-size:13px;color:var(--muted);margin:0 0 22px}} .fields{{display:grid;grid-template-columns:1fr 1fr;gap:17px}} .field.full{{grid-column:1/-1}} label{{display:block;font-size:13px;font-weight:750;margin-bottom:8px}} input,select{{width:100%;border:1px solid #d8dfeb;border-radius:11px;padding:13px 12px;font:inherit;background:#fff;color:var(--ink);outline:none}} input:focus,select:focus{{border-color:var(--blue);box-shadow:0 0 0 3px #2357d91a}} .btn{{width:100%;border:0;border-radius:12px;background:var(--blue);color:white;font-size:15px;font-weight:800;padding:15px;margin-top:22px;cursor:pointer;box-shadow:0 8px 20px #2357d930}} .btn:hover{{background:#1746bd}} .btn:disabled{{opacity:.5;cursor:not-allowed}} .side{{background:var(--ink);color:white;border-radius:22px;padding:25px}} .side h3{{margin:0 0 12px;font-size:19px}} .side p,.side li{{color:#d4dcec;font-size:14px;line-height:1.65}} .side ul{{padding-left:19px}} .note{{font-size:12px;color:#aebbd0;border-top:1px solid #ffffff22;padding-top:16px;margin-top:20px}} .alert{{padding:12px 14px;border-radius:12px;margin:0 0 18px;font-size:14px}} .error{{background:#fff0f0;color:#9e2424;border:1px solid #ffd0d0}} .result{{margin-top:20px;border:1px solid #b9e8d3;background:#f0fff7;border-radius:18px;padding:22px}} .result-label{{font-size:13px;font-weight:800;color:#21724f}} .price{{font-size:clamp(27px,4vw,38px);font-weight:900;letter-spacing:-1px;margin:8px 0;color:#145c3c}} .subprice{{font-weight:750;color:#287854}} .result p{{font-size:12px;color:#557466;line-height:1.5}} footer{{text-align:center;color:#7b879a;font-size:12px;padding:0 20px 26px}}
+@media(max-width:760px){{.layout{{grid-template-columns:1fr}}header{{padding:18px 20px}}main{{margin-top:12px}}.card{{padding:20px}}}} @media(max-width:440px){{.fields{{grid-template-columns:1fr}}.field.full{{grid-column:auto}}}}
+</style></head><body>
+<header><div class="brand">⌂ Property<span style="color:var(--blue)">Price</span></div><span class="pill">ML POWERED ESTIMATE</span></header>
+<main><section class="hero"><div class="eyebrow">Bangladesh property estimator</div><h1>Estimate your property's price.</h1><p>Enter the property details below to get an estimated listing price based on the available property dataset.</p></section>
+{error_html}
+<div class="layout"><section class="card"><h2>Property details</h2><p class="hint">Fields marked with * are required.</p>
+<form method="post" action="/predict"><div class="fields">
+<div class="field full"><label for="property_type">Property type *</label><select id="property_type" name="property_type" required>{type_options(prop_type)}</select></div>
+<div class="field full"><label for="location">Location *</label><select id="location" name="location" required><option value="">Select a location</option>{location_options(location)}</select></div>
+<div class="field full"><label for="area_sqft">Area (square feet) *</label><input id="area_sqft" name="area_sqft" type="number" min="100" max="1000000" step="1" value="{area}" required></div>
+<div class="field"><label for="bedrooms">Bedrooms</label><input id="bedrooms" name="bedrooms" type="number" min="0" max="30" step="1" value="{beds}"></div>
+<div class="field"><label for="bathrooms">Bathrooms</label><input id="bathrooms" name="bathrooms" type="number" min="0" max="30" step="1" value="{baths}"></div>
+</div><button class="btn" type="submit"{disabled}>Predict property price →</button></form>
+{result_html}</section>
+<aside class="side"><h3>How it works</h3><p>The model learns patterns from property listings, including location, property type, size and room counts.</p><ul><li>Choose a location from the dataset.</li><li>Enter the property area and room details.</li><li>Get an estimated price in Bangladeshi taka.</li></ul><div class="note">Estimates are informational only. Actual prices depend on building condition, floor, amenities, ownership documents and market conditions. The dataset contains asking/listing prices, not verified sale transactions.</div></aside></div></main><footer>Property Price Predictor · Estimates are not a valuation or financial advice.</footer>
+</body></html>"""
 
 @app.get("/", response_class=HTMLResponse)
 def home():
-    return HTML
+    return page()
 
+@app.get("/health")
+def health():
+    return {"status": "ok" if model_ready else "model_missing", "model_loaded": model_ready}
 
-@app.post("/predict", response_model=PredictionResponse)
-def predict_price(payload: PredictionRequest):
+@app.post("/predict", response_class=HTMLResponse)
+def predict(
+    property_type: str = Form(...),
+    location: str = Form(...),
+    area_sqft: float = Form(...),
+    bedrooms: Optional[float] = Form(None),
+    bathrooms: Optional[float] = Form(None),
+):
+    if not model_ready:
+        return HTMLResponse(page("The model has not been trained/deployed yet."), status_code=503)
+    if area_sqft <= 0 or area_sqft > 1_000_000:
+        return HTMLResponse(page("Please enter a valid area in square feet.", form={
+            "property_type": property_type, "location": location,
+            "area_sqft": area_sqft, "bedrooms": bedrooms or "", "bathrooms": bathrooms or ""
+        }), status_code=400)
 
-    selected = LOCATION_MAP.get(
-        payload.location.strip()
-    )
+    match = next((r for r in metadata.get("locations", []) if r.get("Location") == location), None)
+    if not match:
+        return HTMLResponse(page("Please select a location from the list."), status_code=400)
 
-    if not selected:
-        suggestions = find_location_matches(
-            payload.location.strip(),
-            limit=5
-        )
-
-        raise HTTPException(
-            status_code=422,
-            detail={
-                "message": (
-                    "That exact location is not in the supported dataset. "
-                    "Please choose one of the closest available matches."
-                ),
-                "suggestions": [
-                    item["location"]
-                    for item in suggestions
-                ]
-            }
-        )
-
-    row = pd.DataFrame([{
-        "Location": selected["location"],
-        "No. Beds": payload.bedrooms,
-        "No. Baths": payload.bathrooms,
-        "Area": payload.area_sqft,
-        "Latitude": MEDIAN_LATITUDE,
-        "Longitude": MEDIAN_LONGITUDE,
-        "Region": selected["region"],
-        "Sub-region": selected["sub_region"],
-    }])
-
+    row = {
+        "Type": property_type,
+        "Location": location,
+        "No. Beds": float(bedrooms) if bedrooms not in (None, "") else np.nan,
+        "No. Baths": float(bathrooms) if bathrooms not in (None, "") else np.nan,
+        "Area": float(area_sqft),
+        "Latitude": match.get("Latitude") if match.get("Latitude") is not None else np.nan,
+        "Longitude": match.get("Longitude") if match.get("Longitude") is not None else np.nan,
+        "Region": str(match.get("Region") or "Unknown"),
+        "Sub-region": str(match.get("Sub-region") or "Unknown"),
+    }
+    frame = pd.DataFrame([row], columns=FEATURES)
     try:
-        estimate = max(
-            0.0,
-            float(model.predict(row)[0])
-        )
-
-    except Exception as exc:
-        raise HTTPException(
-            status_code=422,
-            detail=(
-                "Could not predict from these inputs. "
-                "Please check the values."
-            )
-        ) from exc
-
-    return PredictionResponse(
-        estimated_price_bdt=round(estimate, 2),
-        estimated_price_lakh_bdt=round(
-            estimate / 100000,
-            2
-        ),
-        disclaimer=(
-            "This is an indicative estimate based on historical "
-            "property listing prices, not verified sale transactions. "
-            "Actual market prices may differ. "
-            "The model currently supports apartments in its "
-            "Dhaka-area dataset."
-        )
-    )
-
-
-HTML = r'''<!doctype html>
-<html lang="en">
-
-<head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="theme-color" content="#102a43">
-
-<meta name="description"
-content="Estimate apartment prices with BDProperties.">
-
-<title>BDProperties | Property Price Estimator</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
-rel="stylesheet">
-
-<style>
-
-:root {
-    --navy: #102a43;
-    --green: #087e68;
-    --green2: #056653;
-    --mint: #e8f5f1;
-    --ink: #172b3a;
-    --muted: #657889;
-    --line: #dce5eb;
-    --page: #f4f7f9;
-    --shadow: 0 22px 60px rgba(16,42,67,.09);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    background: var(--page);
-    color: var(--ink);
-    font-family: "DM Sans", sans-serif;
-    line-height: 1.55;
-}
-
-.topbar {
-    background: #fff;
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 5;
-}
-
-.nav {
-    max-width: 1160px;
-    margin: auto;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font: 800 21px Manrope, sans-serif;
-    color: var(--navy);
-    letter-spacing: -.7px;
-}
-
-.mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    background: var(--navy);
-    color: white;
-    display: grid;
-    place-items: center;
-    font-size: 21px;
-}
-
-.brand span:last-child {
-    color: var(--green);
-}
-
-.tag {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .08em;
-    color: var(--green2);
-    background: var(--mint);
-    padding: 8px 12px;
-    border-radius: 30px;
-}
-
-main {
-    max-width: 1160px;
-    margin: auto;
-    padding: 50px 24px 60px;
-}
-
-.hero {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 34px;
-}
-
-.eyebrow {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: var(--green);
-}
-
-h1 {
-    font: 800 clamp(34px,5vw,52px)/1.12 Manrope,sans-serif;
-    letter-spacing: -1.8px;
-    color: var(--navy);
-    margin: 13px 0;
-}
-
-.hero p {
-    color: var(--muted);
-    font-size: 15px;
-    margin: 0;
-}
-
-.layout {
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap: 23px;
-    align-items: start;
-}
-
-.card {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 21px;
-    box-shadow: var(--shadow);
-}
-
-.form-card {
-    padding: 29px;
-}
-
-.heading {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.heading-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: var(--mint);
-    color: var(--green2);
-    display: grid;
-    place-items: center;
-    font-size: 21px;
-}
-
-h2 {
-    font: 700 20px Manrope,sans-serif;
-    color: var(--navy);
-    margin: 0;
-}
-
-.heading p {
-    margin: 3px 0 0;
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.field {
-    margin-bottom: 18px;
-}
-
-label {
-    display: block;
-    font-size: 13px;
-    font-weight: 800;
-    color: #243b53;
-    margin-bottom: 7px;
-}
-
-.control {
-    width: 100%;
-    height: 48px;
-    border: 1px solid #cfdbe3;
-    border-radius: 10px;
-    padding: 0 13px;
-    background: #fff;
-    color: var(--ink);
-    font: inherit;
-    outline: none;
-}
-
-.control:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 4px #087e681c;
-}
-
-.control::placeholder {
-    color: #9aa8b3;
-}
-
-.location-tools,
-.grid2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 11px;
-}
-
-.hint {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 7px;
-}
-
-.readonly {
-    background: #f7f9fa;
-    color: #657889;
-}
-
-.status {
-    display: none;
-    margin-top: 9px;
-    padding: 10px 12px;
-    border-radius: 9px;
-    font-size: 12px;
-}
-
-.status.show {
-    display: block;
-}
-
-.status.warn {
-    background: #fff7e8;
-    color: #79551a;
-    border: 1px solid #f0dfb8;
-}
-
-.status.good {
-    background: #edf8f2;
-    color: #176344;
-    border: 1px solid #d1ebdc;
-}
-
-.suggestions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 8px;
-}
-
-.suggestion {
-    border: 1px solid #c9e4d9;
-    background: #f3fbf7;
-    color: #12624e;
-    padding: 7px 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.suggestion:hover {
-    background: #e3f4ec;
-}
-
-.primary {
-    width: 100%;
-    height: 52px;
-    border: 0;
-    border-radius: 11px;
-    background: var(--green);
-    color: #fff;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 8px 18px #087e6833;
-}
-
-.primary:hover {
-    background: var(--green2);
-}
-
-.primary:disabled {
-    opacity: .65;
-    cursor: wait;
-}
-
-.note {
-    text-align: center;
-    font-size: 11px;
-    color: var(--muted);
-    margin: 12px 0 0;
-}
-
-.side {
-    padding: 29px;
-    background: var(--navy);
-    color: white;
-    overflow: hidden;
-    position: relative;
-}
-
-.side:after {
-    content: "BD";
-    position: absolute;
-    right: -12px;
-    top: 0;
-    font: 800 145px Manrope,sans-serif;
-    color: #ffffff09;
-}
-
-.kicker {
-    font-size: 11px;
-    color: #9bd7c4;
-    letter-spacing: .14em;
-    font-weight: 800;
-    text-transform: uppercase;
-    position: relative;
-}
-
-.side h2 {
-    color: white;
-    font-size: 25px;
-    line-height: 1.25;
-    margin: 12px 0;
-    position: relative;
-}
-
-.side-intro {
-    font-size: 13px;
-    color: #c7d5df;
-    position: relative;
-}
-
-.benefit {
-    display: flex;
-    gap: 12px;
-    margin: 21px 0;
-    position: relative;
-}
-
-.benefit-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    background: #ffffff16;
-    display: grid;
-    place-items: center;
-    color: #a9e1cf;
-    flex: 0 0 34px;
-}
-
-.benefit strong {
-    font-size: 13px;
-    display: block;
-}
-
-.benefit span {
-    font-size: 11px;
-    color: #bdcbd5;
-    display: block;
-    margin-top: 3px;
-}
-
-.side-note {
-    margin-top: 26px;
-    padding: 13px;
-    border-radius: 10px;
-    background: #ffffff12;
-    color: #c7d5df;
-    font-size: 11px;
-    position: relative;
-}
-
-.result {
-    display: none;
-    margin-top: 19px;
-    padding: 21px;
-    border: 1px solid #cce8d9;
-    background: #f1fbf5;
-    border-radius: 14px;
-}
-
-.result.show {
-    display: block;
-}
-
-.result-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    color: var(--green2);
-    font-weight: 800;
-}
-
-.amount {
-    font: 800 clamp(28px,4vw,38px) Manrope,sans-serif;
-    color: var(--navy);
-    letter-spacing: -1px;
-    overflow-wrap: anywhere;
-    margin-top: 6px;
-}
-
-.lakh {
-    font-size: 13px;
-    color: #47715f;
-}
-
-.disclaimer {
-    font-size: 11px;
-    color: #697b72;
-    border-top: 1px solid #dcefe3;
-    padding-top: 12px;
-    margin: 14px 0 0;
-}
-
-.error {
-    display: none;
-    margin-top: 13px;
-    padding: 11px;
-    border-radius: 9px;
-    background: #fff1f0;
-    color: #a83232;
-    font-size: 12px;
-}
-
-.error.show {
-    display: block;
-}
-
-.footer {
-    text-align: center;
-    color: #84929d;
-    font-size: 11px;
-    padding: 0 20px 25px;
-}
-
-@media(max-width:820px) {
-    .layout {
-        grid-template-columns: 1fr;
-    }
-
-    .side {
-        order: 2;
-    }
-}
-
-@media(max-width:520px) {
-    .nav {
-        padding: 13px 15px;
-    }
-
-    .brand {
-        font-size: 18px;
-    }
-
-    .tag {
-        font-size: 9px;
-        padding: 7px 9px;
-    }
-
-    main {
-        padding: 32px 14px 42px;
-    }
-
-    .form-card,
-    .side {
-        padding: 20px;
-    }
-
-    .location-tools {
-        grid-template-columns: 1fr;
-    }
-
-    .grid2 {
-        gap: 9px;
-    }
-
-    .control {
-        height: 46px;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<header class="topbar">
-
-<nav class="nav">
-
-<div class="brand">
-    <span class="mark">⌂</span>
-    <span>BD<span>Properties</span></span>
-</div>
-
-<div class="tag">SMART PROPERTY ESTIMATOR</div>
-
-</nav>
-
-</header>
-
-
-<main>
-
-<section class="hero">
-
-<div class="eyebrow">
-    A smarter way to estimate
-</div>
-
-<h1>
-    Know your property's<br>
-    estimated value.
-</h1>
-
-<p>
-    Share a few apartment details and get an indicative
-    price estimate powered by our property data model.
-</p>
-
-</section>
-
-
-<div class="layout">
-
-<section class="card form-card">
-
-<div class="heading">
-
-<div class="heading-icon">⌂</div>
-
-<div>
-    <h2>Apartment details</h2>
-    <p>Enter the details below to calculate your estimate.</p>
-</div>
-
-</div>
-
-
-<form id="predictForm">
-
-<div class="field">
-
-<label for="locationSearch">
-    Property location *
-</label>
-
-<div class="location-tools">
-
-<input
-    class="control"
-    id="locationSearch"
-    type="search"
-    placeholder="Search an area, e.g. Dhanmondi"
-    autocomplete="off"
-    required
->
-
-<select
-    class="control"
-    id="location"
-    required
-    aria-label="Select location"
->
-    <option value="">Select from list…</option>
-</select>
-
-</div>
-
-<div class="hint">
-    Search by area name or select from the available locations.
-</div>
-
-<div
-    class="status"
-    id="locationStatus"
-    role="status"
-    aria-live="polite"
-></div>
-
-<div
-    class="suggestions"
-    id="suggestions"
-></div>
-
-</div>
-
-
-<div class="grid2">
-
-<div class="field">
-
-<label for="region">Region</label>
-
-<input
-    class="control readonly"
-    id="region"
-    readonly
-    placeholder="Auto-filled"
->
-
-</div>
-
-
-<div class="field">
-
-<label for="sub_region">Sub-region</label>
-
-<input
-    class="control readonly"
-    id="sub_region"
-    readonly
-    placeholder="Auto-filled"
->
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label for="area_sqft">
-    Apartment area (sq ft) *
-</label>
-
-<input
-    class="control"
-    id="area_sqft"
-    type="number"
-    min="100"
-    max="100000"
-    step="1"
-    placeholder="e.g. 1200"
-    required
->
-
-</div>
-
-
-<div class="grid2">
-
-<div class="field">
-
-<label for="bedrooms">Bedrooms *</label>
-
-<select
-    class="control"
-    id="bedrooms"
-    required
->
-
-<option value="">Select</option>
-<option>1</option>
-<option>2</option>
-<option selected>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label for="bathrooms">Bathrooms *</label>
-
-<select
-    class="control"
-    id="bathrooms"
-    required
->
-
-<option value="">Select</option>
-<option>1</option>
-<option>2</option>
-<option selected>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<button
-    class="primary"
-    id="submitBtn"
-    type="submit"
->
-    Calculate estimated price →
-</button>
-
-<p class="note">
-    Free estimate · No account required
-</p>
-
-</form>
-
-
-<div
-    class="error"
-    id="errorBox"
-    role="alert"
-></div>
-
-
-<section
-    class="result"
-    id="resultBox"
-    aria-live="polite"
->
-
-<div class="result-label">
-    Estimated apartment asking price
-</div>
-
-<div
-    class="amount"
-    id="priceBdt"
->
-    ৳—
-</div>
-
-<div
-    class="lakh"
-    id="priceLakh"
-></div>
-
-<p
-    class="disclaimer"
-    id="disclaimer"
-></p>
-
-</section>
-
-</section>
-
-
-<aside class="card side">
-
-<div class="kicker">
-    BDProperties price insight
-</div>
-
-<h2>
-    A confident first step in your property search.
-</h2>
-
-<p class="side-intro">
-    Understand an indicative apartment price before comparing your options.
-</p>
-
-
-<div class="benefit">
-
-<div class="benefit-icon">⌖</div>
-
-<div>
-    <strong>Location-aware estimate</strong>
-    <span>
-        Choose a location represented in the model dataset.
-    </span>
-</div>
-
-</div>
-
-
-<div class="benefit">
-
-<div class="benefit-icon">▦</div>
-
-<div>
-    <strong>Built around your apartment</strong>
-    <span>
-        Area, bedrooms and bathrooms shape the estimate.
-    </span>
-</div>
-
-</div>
-
-
-<div class="benefit">
-
-<div class="benefit-icon">৳</div>
-
-<div>
-    <strong>Prices in Bangladeshi Taka</strong>
-    <span>
-        See your estimate in BDT and lakh.
-    </span>
-</div>
-
-</div>
-
-
-<div class="side-note">
-    This tool provides an indicative estimate from historical
-    listing data. It is not a formal valuation or a guaranteed sale price.
-</div>
-
-</aside>
-
-</div>
-
-</main>
-
-
-<footer class="footer">
-    © <span id="year"></span> BDProperties.
-    All rights reserved. · Indicative estimates only.
-</footer>
-
-
-<script>
-
-const sel = document.getElementById('location');
-
-const search = document.getElementById('locationSearch');
-
-const region = document.getElementById('region');
-
-const sub = document.getElementById('sub_region');
-
-const form = document.getElementById('predictForm');
-
-const btn = document.getElementById('submitBtn');
-
-const err = document.getElementById('errorBox');
-
-const result = document.getElementById('resultBox');
-
-const statusBox = document.getElementById('locationStatus');
-
-const suggestions = document.getElementById('suggestions');
-
-
-let records = [];
-
-let chosen = null;
-
-let timer = null;
-
-
-document.getElementById('year').textContent =
-    new Date().getFullYear();
-
-
-const money = n => new Intl.NumberFormat(
-    'en-BD',
-    {
-        style: 'currency',
-        currency: 'BDT',
-        maximumFractionDigits: 0
-    }
-).format(n);
-
-
-function status(msg, type = 'warn') {
-
-    statusBox.textContent = msg;
-
-    statusBox.className = 'status show ' + type;
-
-}
-
-
-function clearStatus() {
-
-    statusBox.textContent = '';
-
-    statusBox.className = 'status';
-
-}
-
-
-function choose(item) {
-
-    if (!item) return;
-
-    chosen = item;
-
-    sel.value = item.location;
-
-    search.value = item.location;
-
-    region.value = item.region || '';
-
-    sub.value = item.sub_region || '';
-
-    suggestions.innerHTML = '';
-
-    status('Selected: ' + item.location, 'good');
-
-    err.classList.remove('show');
-
-    result.classList.remove('show');
-
-}
-
-
-function showMatches(items, exact = false) {
-
-    suggestions.innerHTML = '';
-
-    if (!items.length) {
-
-        status(
-            'No matching location was found in the supported dataset. Try another area name.'
-        );
-
-        return;
-
-    }
-
-    if (!exact) {
-
-        status(
-            'Exact location not found. Choose the closest name match below. Suggestions are based on name similarity, not geographic distance.'
-        );
-
-    }
-
-
-    items.slice(0, 6).forEach(item => {
-
-        let b = document.createElement('button');
-
-        b.type = 'button';
-
-        b.className = 'suggestion';
-
-        b.textContent = item.location;
-
-        b.addEventListener(
-            'click',
-            () => choose(item)
-        );
-
-        suggestions.appendChild(b);
-
-    });
-
-}
-
-
-// Load available locations
-
-fetch('/locations.json')
-
-.then(r => {
-
-    if (!r.ok) throw Error();
-
-    return r.json();
-
-})
-
-.then(data => {
-
-    records = data;
-
-    sel.innerHTML =
-        '<option value="">Select from list…</option>';
-
-    data.forEach(item => {
-
-        let o = document.createElement('option');
-
-        o.value = item.location;
-
-        o.textContent = item.location;
-
-        sel.appendChild(o);
-
-    });
-
-})
-
-.catch(() => {
-
-    status(
-        'Could not load locations. Please refresh the page.'
-    );
-
-});
-
-
-// Dropdown selection
-
-sel.addEventListener('change', () => {
-
-    let item = records.find(
-        x => x.location === sel.value
-    );
-
-    if (item) {
-
-        choose(item);
-
-    } else {
-
-        chosen = null;
-
-        region.value = '';
-
-        sub.value = '';
-
-    }
-
-});
-
-
-// Location search
-
-search.addEventListener('input', () => {
-
-    let q = search.value.trim();
-
-    chosen = null;
-
-    sel.value = '';
-
-    region.value = '';
-
-    sub.value = '';
-
-    suggestions.innerHTML = '';
-
-    err.classList.remove('show');
-
-    result.classList.remove('show');
-
-
-    if (!q) {
-
-        clearStatus();
-
-        return;
-
-    }
-
-
-    // Show direct matches immediately
-
-    let direct = records.filter(
-        x => x.location.toLowerCase().includes(
-            q.toLowerCase()
-        )
-    ).slice(0, 6);
-
-
-    if (direct.length) {
-
-        showMatches(direct, true);
-
-    }
-
-
-    clearTimeout(timer);
-
-
-    timer = setTimeout(async () => {
-
-        try {
-
-            let r = await fetch(
-                '/locations/search?q=' +
-                encodeURIComponent(q)
-            );
-
-            if (!r.ok) throw Error();
-
-            let data = await r.json();
-
-            if (search.value.trim() !== q) return;
-
-
-            if (data.exact) {
-
-                choose(data.exact);
-
-                return;
-
-            }
-
-
-            showMatches(
-                data.matches || [],
-                false
-            );
-
-        } catch (e) {
-
-            if (!direct.length) {
-
-                status(
-                    'Search is temporarily unavailable. You can still choose from the dropdown.'
-                );
-
-            }
-
+        predicted = float(np.expm1(model.predict(frame)[0]))
+        predicted = max(0.0, predicted)
+    except Exception:
+        return HTMLResponse(page("Prediction failed. Please check the selected details and try again."), status_code=500)
+    return HTMLResponse(page(result=predicted, form={
+        "property_type": property_type, "location": location,
+        "area_sqft": area_sqft, "bedrooms": bedrooms if bedrooms is not None else "",
+        "bathrooms": bathrooms if bathrooms is not None else "",
+    }))
+
+@app.post("/api/predict")
+def api_predict(payload: dict):
+    """Optional JSON endpoint for later integrations."""
+    if not model_ready:
+        return JSONResponse({"error": "Model not loaded"}, status_code=503)
+    try:
+        location = str(payload["location"])
+        match = next((r for r in metadata.get("locations", []) if r.get("Location") == location), None)
+        if not match:
+            return JSONResponse({"error": "Unknown location"}, status_code=400)
+        row = {
+            "Type": str(payload.get("type", "Apartment")),
+            "Location": location,
+            "No. Beds": float(payload["bedrooms"]) if payload.get("bedrooms") not in (None, "") else np.nan,
+            "No. Baths": float(payload["bathrooms"]) if payload.get("bathrooms") not in (None, "") else np.nan,
+            "Area": float(payload["area_sqft"]),
+            "Latitude": match.get("Latitude") if match.get("Latitude") is not None else np.nan,
+            "Longitude": match.get("Longitude") if match.get("Longitude") is not None else np.nan,
+            "Region": str(match.get("Region") or "Unknown"),
+            "Sub-region": str(match.get("Sub-region") or "Unknown"),
         }
-
-    }, 220);
-
-});
-
-
-// Predict price
-
-form.addEventListener('submit', async e => {
-
-    e.preventDefault();
-
-    err.classList.remove('show');
-
-    result.classList.remove('show');
-
-
-    if (!chosen || sel.value !== chosen.location) {
-
-        err.textContent =
-            'Please choose a location from the dropdown or suggested matches.';
-
-        err.classList.add('show');
-
-        return;
-
-    }
-
-
-    let payload = {
-
-        location: chosen.location,
-
-        region: chosen.region,
-
-        sub_region: chosen.sub_region,
-
-        area_sqft: Number(
-            document.getElementById('area_sqft').value
-        ),
-
-        bedrooms: Number(
-            document.getElementById('bedrooms').value
-        ),
-
-        bathrooms: Number(
-            document.getElementById('bathrooms').value
-        )
-
-    };
-
-
-    btn.disabled = true;
-
-    btn.textContent = 'Calculating estimate…';
-
-
-    try {
-
-        let r = await fetch('/predict', {
-
-            method: 'POST',
-
-            headers: {
-                'Content-Type': 'application/json'
-            },
-
-            body: JSON.stringify(payload)
-
-        });
-
-
-        let data = await r.json();
-
-
-        if (!r.ok) {
-
-            throw Error(
-                typeof data.detail === 'string'
-                    ? data.detail
-                    : (
-                        data.detail?.message ||
-                        'Prediction failed. Please try again.'
-                    )
-            );
-
-        }
-
-
-        document.getElementById('priceBdt').textContent =
-            money(data.estimated_price_bdt);
-
-
-        document.getElementById('priceLakh').textContent =
-            'Approximately ৳' +
-            Number(
-                data.estimated_price_lakh_bdt
-            ).toLocaleString('en-BD') +
-            ' lakh';
-
-
-        document.getElementById('disclaimer').textContent =
-            data.disclaimer;
-
-
-        result.classList.add('show');
-
-        result.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest'
-        });
-
-
-    } catch (ex) {
-
-        err.textContent =
-            ex.message ||
-            'Something went wrong. Please try again.';
-
-        err.classList.add('show');
-
-
-    } finally {
-
-        btn.disabled = false;
-
-        btn.textContent =
-            'Calculate estimated price →';
-
-    }
-
-});
-
-</script>
-
-</body>
-</html>'''
+        predicted = max(0.0, float(np.expm1(model.predict(pd.DataFrame([row], columns=FEATURES))[0])))
+        return {"estimated_price_bdt": round(predicted), "estimated_price_lakh": round(predicted / 100000, 2),
+                "note": "Estimated listing price, not a verified transaction price."}
+    except (KeyError, ValueError, TypeError) as exc:
+        return JSONResponse({"error": f"Invalid input: {exc}"}, status_code=400)

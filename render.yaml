@@ -1,8 +1,6 @@
 services:
   - type: web
-    name: banglaproperties-price-predictor
+    name: property-price-predictor
     runtime: python
-    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /health

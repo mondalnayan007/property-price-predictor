@@ -1,0 +1,3914 @@
+{
+  "features": [
+    "Type",
+    "Location",
+    "No. Beds",
+    "No. Baths",
+    "Area",
+    "Latitude",
+    "Longitude",
+    "Region",
+    "Sub-region"
+  ],
+  "categorical_features": [
+    "Type",
+    "Location",
+    "Region",
+    "Sub-region"
+  ],
+  "types": [
+    "Apartment",
+    "Building",
+    "Duplex",
+    "Plot"
+  ],
+  "locations": [
+    {
+      "Location": "1st Colony, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "1st Colony",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "2nd Colony, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "2nd Colony",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "3rd Colony, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "3rd Colony",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Aainusbag, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Aainusbag",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Abdul Aziz Lane, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Abdul Aziz Lane",
+      "Latitude": 23.72325,
+      "Longitude": 90.37758
+    },
+    {
+      "Location": "Abur Tek Road, Khilkhet, Dhaka",
+      "Region": "Khilkhet",
+      "Sub-region": "Abur Tek Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Adarsha Nagar, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Adarsha Nagar",
+      "Latitude": 23.81501,
+      "Longitude": 90.43623
+    },
+    {
+      "Location": "Advanced Police Town, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Advanced Police Town",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Unknown",
+      "Latitude": 23.81604,
+      "Longitude": 90.42729
+    },
+    {
+      "Location": "Aga Sadek Road, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Aga Sadek Road",
+      "Latitude": 23.71994,
+      "Longitude": 90.40274
+    },
+    {
+      "Location": "Agamasi Lane, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Agamasi Lane",
+      "Latitude": 23.7219,
+      "Longitude": 90.40378
+    },
+    {
+      "Location": "Agargaon, Dhaka",
+      "Region": "Agargaon",
+      "Sub-region": "Unknown",
+      "Latitude": 23.77323,
+      "Longitude": 90.37154
+    },
+    {
+      "Location": "Ahmed Nagar, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Ahmed Nagar",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Allabdirtec Road 1, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Allabdirtec Road 1",
+      "Latitude": 23.82479,
+      "Longitude": 90.36409
+    },
+    {
+      "Location": "Alu Bazar, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Alu Bazar",
+      "Latitude": 23.71753,
+      "Longitude": 90.40474
+    },
+    {
+      "Location": "Amligola, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Amligola",
+      "Latitude": 23.72163,
+      "Longitude": 90.38809
+    },
+    {
+      "Location": "Amtola Masjid Goli Road, North Shahjahanpur, Dhaka",
+      "Region": "NorthShahjahanpur",
+      "Sub-region": "Amtola Masjid Goli Road",
+      "Latitude": 23.74205,
+      "Longitude": 90.35645
+    },
+    {
+      "Location": "Arambagh, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Arambagh",
+      "Latitude": 23.72558,
+      "Longitude": 90.42179
+    },
+    {
+      "Location": "Asad Avenue, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Asad Avenue",
+      "Latitude": 23.76114,
+      "Longitude": 90.37217
+    },
+    {
+      "Location": "Ashi Dag Road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "Ashi Dag Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Ashkona, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Ashkona",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Ashulia, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Ashulia",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Ati Bazar, Keraniganj, Dhaka",
+      "Region": "Keraniganj",
+      "Sub-region": "Ati Bazar",
+      "Latitude": 23.73055,
+      "Longitude": 90.32904
+    },
+    {
+      "Location": "Atosh Khana Lane, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Atosh Khana Lane",
+      "Latitude": 23.73006,
+      "Longitude": 90.40953
+    },
+    {
+      "Location": "Aurangzeb Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Aurangzeb Road",
+      "Latitude": 23.76381,
+      "Longitude": 90.3696
+    },
+    {
+      "Location": "Azam Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Azam Road",
+      "Latitude": 23.76007,
+      "Longitude": 90.36538
+    },
+    {
+      "Location": "Azimpur Road, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Azimpur Road",
+      "Latitude": 23.73266,
+      "Longitude": 90.38482
+    },
+    {
+      "Location": "Azimpur, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Azimpur",
+      "Latitude": 23.73266,
+      "Longitude": 90.38482
+    },
+    {
+      "Location": "Babar Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Babar Road",
+      "Latitude": 23.77026,
+      "Longitude": 90.36731
+    },
+    {
+      "Location": "Badda, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Badda",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Bagan Bari Road, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Bagan Bari Road",
+      "Latitude": 23.74021,
+      "Longitude": 90.36428
+    },
+    {
+      "Location": "Bagicha Mashjid Road, North Shahjahanpur, Dhaka",
+      "Region": "NorthShahjahanpur",
+      "Sub-region": "Bagicha Mashjid Road",
+      "Latitude": 23.7971,
+      "Longitude": 90.37163
+    },
+    {
+      "Location": "Baitul Aman Housing Society, Adabor, Dhaka",
+      "Region": "Adabor",
+      "Sub-region": "Baitul Aman Housing Society",
+      "Latitude": 23.7766,
+      "Longitude": 90.36276
+    },
+    {
+      "Location": "Bakshi Bazar, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Bakshi Bazar",
+      "Latitude": 23.71351,
+      "Longitude": 90.39957
+    },
+    {
+      "Location": "Banasree Main Road, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Banasree Main Road",
+      "Latitude": 23.80709,
+      "Longitude": 90.36837
+    },
+    {
+      "Location": "Bangshal Road, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Bangshal Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Bank Colony, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Bank Colony",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Bank Town, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Bank Town",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Bash Bari Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Bash Bari Road",
+      "Latitude": 23.75711,
+      "Longitude": 90.36142
+    },
+    {
+      "Location": "Bashabo Madartek Road, Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "Bashabo Madartek Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "Unknown",
+      "Latitude": 23.74009,
+      "Longitude": 90.43418
+    },
+    {
+      "Location": "Bashir Uddin Road, Kalabagan, Dhaka",
+      "Region": "Kalabagan",
+      "Sub-region": "Bashir Uddin Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Bashundhara Road, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Bashundhara Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Bata Goli, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Bata Goli",
+      "Latitude": 23.74966,
+      "Longitude": 90.4036
+    },
+    {
+      "Location": "Bawnia, Turag, Dhaka",
+      "Region": "Turag",
+      "Sub-region": "Bawnia",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Becharam Dewri, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Becharam Dewri",
+      "Latitude": 23.71608,
+      "Longitude": 90.40024
+    },
+    {
+      "Location": "Bepari Goli, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Bepari Goli",
+      "Latitude": 23.75073,
+      "Longitude": 90.40741
+    },
+    {
+      "Location": "Bhagalpur, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Bhagalpur",
+      "Latitude": 23.73176,
+      "Longitude": 90.37078
+    },
+    {
+      "Location": "Bhatuliya, Turag, Dhaka",
+      "Region": "Turag",
+      "Sub-region": "Bhatuliya",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Bibir Bagicha, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Bibir Bagicha",
+      "Latitude": 23.71064,
+      "Longitude": 90.43577
+    },
+    {
+      "Location": "Block A, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block A",
+      "Latitude": 23.75669,
+      "Longitude": 90.37316
+    },
+    {
+      "Location": "Block A, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block A",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block A, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block A",
+      "Latitude": 23.75669,
+      "Longitude": 90.37316
+    },
+    {
+      "Location": "Block A, Lalmatia, Dhaka",
+      "Region": "Lalmatia",
+      "Sub-region": "Block A",
+      "Latitude": 23.75669,
+      "Longitude": 90.37316
+    },
+    {
+      "Location": "Block A, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Block A",
+      "Latitude": 23.77338,
+      "Longitude": 90.40971
+    },
+    {
+      "Location": "Block B, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block B",
+      "Latitude": 23.75729,
+      "Longitude": 90.36781
+    },
+    {
+      "Location": "Block B, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block B",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block B, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block B",
+      "Latitude": 23.75729,
+      "Longitude": 90.36781
+    },
+    {
+      "Location": "Block B, Lalmatia, Dhaka",
+      "Region": "Lalmatia",
+      "Sub-region": "Block B",
+      "Latitude": 23.75729,
+      "Longitude": 90.36781
+    },
+    {
+      "Location": "Block B, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Block B",
+      "Latitude": 23.77338,
+      "Longitude": 90.40971
+    },
+    {
+      "Location": "Block C Extension, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block C Extension",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block C, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block C",
+      "Latitude": 23.75596,
+      "Longitude": 90.37065
+    },
+    {
+      "Location": "Block C, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block C",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block C, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block C",
+      "Latitude": 23.75596,
+      "Longitude": 90.37065
+    },
+    {
+      "Location": "Block C, Khilgaon, Dhaka",
+      "Region": "Khilgaon",
+      "Sub-region": "Block C",
+      "Latitude": 23.75349,
+      "Longitude": 90.42469
+    },
+    {
+      "Location": "Block C, Lalmatia, Dhaka",
+      "Region": "Lalmatia",
+      "Sub-region": "Block C",
+      "Latitude": 23.75596,
+      "Longitude": 90.37065
+    },
+    {
+      "Location": "Block C, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Block C",
+      "Latitude": 23.75596,
+      "Longitude": 90.37065
+    },
+    {
+      "Location": "Block D, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block D",
+      "Latitude": 23.81709,
+      "Longitude": 90.43238
+    },
+    {
+      "Location": "Block D, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block D",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block D, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block D",
+      "Latitude": 23.81709,
+      "Longitude": 90.43238
+    },
+    {
+      "Location": "Block D, Lalmatia, Dhaka",
+      "Region": "Lalmatia",
+      "Sub-region": "Block D",
+      "Latitude": 23.81709,
+      "Longitude": 90.43238
+    },
+    {
+      "Location": "Block D, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Block D",
+      "Latitude": 23.77338,
+      "Longitude": 90.40971
+    },
+    {
+      "Location": "Block E, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block E",
+      "Latitude": 23.81604,
+      "Longitude": 90.42729
+    },
+    {
+      "Location": "Block E, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block E",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block E, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block E",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block E, Lalmatia, Dhaka",
+      "Region": "Lalmatia",
+      "Sub-region": "Block E",
+      "Latitude": 23.81881,
+      "Longitude": 90.37802
+    },
+    {
+      "Location": "Block E, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Block E",
+      "Latitude": 23.77338,
+      "Longitude": 90.40971
+    },
+    {
+      "Location": "Block F, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block F",
+      "Latitude": 23.75625,
+      "Longitude": 90.36915
+    },
+    {
+      "Location": "Block F, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block F",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block F, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block F",
+      "Latitude": 23.75625,
+      "Longitude": 90.36915
+    },
+    {
+      "Location": "Block F, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Block F",
+      "Latitude": 23.75625,
+      "Longitude": 90.36915
+    },
+    {
+      "Location": "Block G, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block G",
+      "Latitude": 23.78357,
+      "Longitude": 90.40878
+    },
+    {
+      "Location": "Block G, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block G",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block G, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block G",
+      "Latitude": 23.78357,
+      "Longitude": 90.40878
+    },
+    {
+      "Location": "Block H, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block H",
+      "Latitude": 23.81604,
+      "Longitude": 90.42729
+    },
+    {
+      "Location": "Block H, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block H",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block H, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block H",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block I, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block I",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block J, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Block J",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "Block J, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Block J",
+      "Latitude": 23.8025,
+      "Longitude": 90.42285
+    },
+    {
+      "Location": "Block J, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block J",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block K, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block K",
+      "Latitude": 23.81604,
+      "Longitude": 90.42729
+    },
+    {
+      "Location": "Block K, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Block K",
+      "Latitude": 23.8025,
+      "Longitude": 90.42285
+    },
+    {
+      "Location": "Block K, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block K",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block L, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block L",
+      "Latitude": 23.81604,
+      "Longitude": 90.42729
+    },
+    {
+      "Location": "Block L, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block L",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block M, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block M",
+      "Latitude": 23.81604,
+      "Longitude": 90.42729
+    },
+    {
+      "Location": "Block M, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block M",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block N, Aftab Nagar, Dhaka",
+      "Region": "AftabNagar",
+      "Sub-region": "Block N",
+      "Latitude": 23.81604,
+      "Longitude": 90.42729
+    },
+    {
+      "Location": "Block N, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block N",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block P, Bashundhara R-A, Dhaka",
+      "Region": "BashundharaR-A",
+      "Sub-region": "Block P",
+      "Latitude": 23.66803,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Block VIP 3, Dumni, Dhaka",
+      "Region": "Dumni",
+      "Sub-region": "Block VIP 3",
+      "Latitude": 23.7726,
+      "Longitude": 90.36302
+    },
+    {
+      "Location": "Bochila, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Bochila",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Boro Maghbazar, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Boro Maghbazar",
+      "Latitude": 23.7526,
+      "Longitude": 90.4026
+    },
+    {
+      "Location": "Bosila, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Bosila",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Bot Tola, Khilkhet, Dhaka",
+      "Region": "Khilkhet",
+      "Sub-region": "Bot Tola",
+      "Latitude": 23.82915,
+      "Longitude": 90.42
+    },
+    {
+      "Location": "Central Road, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Central Road",
+      "Latitude": 23.74191,
+      "Longitude": 90.38891
+    },
+    {
+      "Location": "Chad Uddan Housing, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Chad Uddan Housing",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Chairman Para, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Chairman Para",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Chamilibag, Shantinagar, Dhaka",
+      "Region": "Shantinagar",
+      "Sub-region": "Chamilibag",
+      "Latitude": 23.74073,
+      "Longitude": 90.413
+    },
+    {
+      "Location": "Chandrima Model Town, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Chandrima Model Town",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Chawk Bazar, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Chawk Bazar",
+      "Latitude": 23.72163,
+      "Longitude": 90.38809
+    },
+    {
+      "Location": "Chowdhuripara, Khilgaon, Dhaka",
+      "Region": "Khilgaon",
+      "Sub-region": "Chowdhuripara",
+      "Latitude": 23.75349,
+      "Longitude": 90.42469
+    },
+    {
+      "Location": "Circular Road, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Circular Road",
+      "Latitude": 23.7432,
+      "Longitude": 90.39053
+    },
+    {
+      "Location": "Comfort Housing, Adabor, Dhaka",
+      "Region": "Adabor",
+      "Sub-region": "Comfort Housing",
+      "Latitude": 23.77274,
+      "Longitude": 90.34858
+    },
+    {
+      "Location": "Comilla Para, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Comilla Para",
+      "Latitude": 23.78421,
+      "Longitude": 90.41106
+    },
+    {
+      "Location": "Crescent Road, Kathalbagan, Dhaka",
+      "Region": "Kathalbagan",
+      "Sub-region": "Crescent Road",
+      "Latitude": 23.74545,
+      "Longitude": 90.38776
+    },
+    {
+      "Location": "DIT Road, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "DIT Road",
+      "Latitude": 23.77531,
+      "Longitude": 90.42565
+    },
+    {
+      "Location": "Dagormora, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Dagormora",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Dakhshin Para, Mohakhali, Dhaka",
+      "Region": "Mohakhali",
+      "Sub-region": "Dakhshin Para",
+      "Latitude": 23.78074,
+      "Longitude": 90.40911
+    },
+    {
+      "Location": "Dakkhin Paikpara, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Dakkhin Paikpara",
+      "Latitude": 23.79193,
+      "Longitude": 90.35733
+    },
+    {
+      "Location": "Darussalam, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Darussalam",
+      "Latitude": 23.7792,
+      "Longitude": 90.35374
+    },
+    {
+      "Location": "Dhaka Housing Main Road, Shyamoli, Dhaka",
+      "Region": "Shyamoli",
+      "Sub-region": "Dhaka Housing Main Road",
+      "Latitude": 23.77395,
+      "Longitude": 90.35933
+    },
+    {
+      "Location": "Dhaka Uddan, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Dhaka Uddan",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Dhalpur, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Dhalpur",
+      "Latitude": 23.71667,
+      "Longitude": 90.42181
+    },
+    {
+      "Location": "Dholpur New Road, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Dholpur New Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Dhour Mouza, Turag, Dhaka",
+      "Region": "Turag",
+      "Sub-region": "Dhour Mouza",
+      "Latitude": 23.89338,
+      "Longitude": 90.36657
+    },
+    {
+      "Location": "Dilkhushabag, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Dilkhushabag",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Dobadia, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Dobadia",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Doctor Goli, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Doctor Goli",
+      "Latitude": 23.74804,
+      "Longitude": 90.41219
+    },
+    {
+      "Location": "Dolphin Goli Road, Kalabagan, Dhaka",
+      "Region": "Kalabagan",
+      "Sub-region": "Dolphin Goli Road",
+      "Latitude": 23.75093,
+      "Longitude": 90.37989
+    },
+    {
+      "Location": "Donia, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Donia",
+      "Latitude": 23.71667,
+      "Longitude": 90.42181
+    },
+    {
+      "Location": "Doniya, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Doniya",
+      "Latitude": 23.68094,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Dutabash Road, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Dutabash Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "East Azampur, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "East Azampur",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "East Badda, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "East Badda",
+      "Latitude": 23.81501,
+      "Longitude": 90.43623
+    },
+    {
+      "Location": "East Bashabo, Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "East Bashabo",
+      "Latitude": 23.7405,
+      "Longitude": 90.43472
+    },
+    {
+      "Location": "East Kazipara, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "East Kazipara",
+      "Latitude": 23.80091,
+      "Longitude": 90.37135
+    },
+    {
+      "Location": "East Maniknagar, Maniknagar, Dhaka",
+      "Region": "Maniknagar",
+      "Sub-region": "East Maniknagar",
+      "Latitude": 23.72263,
+      "Longitude": 90.42987
+    },
+    {
+      "Location": "East Monipur, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "East Monipur",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "East Nakhalpara, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "East Nakhalpara",
+      "Latitude": 23.7921,
+      "Longitude": 90.37846
+    },
+    {
+      "Location": "East Rampura Road, Rampura, Dhaka",
+      "Region": "Rampura",
+      "Sub-region": "East Rampura Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "East Rampura, Rampura, Dhaka",
+      "Region": "Rampura",
+      "Sub-region": "East Rampura",
+      "Latitude": 23.76036,
+      "Longitude": 90.41909
+    },
+    {
+      "Location": "East Shewrapara, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "East Shewrapara",
+      "Latitude": 23.79255,
+      "Longitude": 90.3749
+    },
+    {
+      "Location": "Elephant Road, New Market, Dhaka",
+      "Region": "NewMarket",
+      "Sub-region": "Elephant Road",
+      "Latitude": 23.737070000000003,
+      "Longitude": 90.38665
+    },
+    {
+      "Location": "Enayet Ganj, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Enayet Ganj",
+      "Latitude": 23.72554,
+      "Longitude": 90.37601
+    },
+    {
+      "Location": "Fakirapool, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Fakirapool",
+      "Latitude": 23.72558,
+      "Longitude": 90.42179
+    },
+    {
+      "Location": "Faridabad, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Faridabad",
+      "Latitude": 23.69621,
+      "Longitude": 90.42087
+    },
+    {
+      "Location": "Farmgate, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "Farmgate",
+      "Latitude": 23.7921,
+      "Longitude": 90.37846
+    },
+    {
+      "Location": "Faydabad, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Faydabad",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Free School Street, Kathalbagan, Dhaka",
+      "Region": "Kathalbagan",
+      "Sub-region": "Free School Street",
+      "Latitude": 23.74817,
+      "Longitude": 90.38665
+    },
+    {
+      "Location": "Gajanabi Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Gajanabi Road",
+      "Latitude": 23.76744,
+      "Longitude": 90.36699
+    },
+    {
+      "Location": "Ganaktuli Road, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Ganaktuli Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Gandaria, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Gandaria",
+      "Latitude": 23.70279,
+      "Longitude": 90.41988
+    },
+    {
+      "Location": "Gawair, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Gawair",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Girls School Road, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Girls School Road",
+      "Latitude": 23.749270000000003,
+      "Longitude": 90.38295
+    },
+    {
+      "Location": "Goaltek, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Goaltek",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Gobindapur, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Gobindapur",
+      "Latitude": 23.71667,
+      "Longitude": 90.42181
+    },
+    {
+      "Location": "Golapbag, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Golapbag",
+      "Latitude": 23.71856,
+      "Longitude": 90.42791
+    },
+    {
+      "Location": "Golden Street, Shyamoli, Dhaka",
+      "Region": "Shyamoli",
+      "Sub-region": "Golden Street",
+      "Latitude": 23.7744,
+      "Longitude": 90.36135
+    },
+    {
+      "Location": "Gopibag, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Gopibag",
+      "Latitude": 23.72558,
+      "Longitude": 90.42179
+    },
+    {
+      "Location": "Goran, Khilgaon, Dhaka",
+      "Region": "Khilgaon",
+      "Sub-region": "Goran",
+      "Latitude": 23.75349,
+      "Longitude": 90.42469
+    },
+    {
+      "Location": "Green City Housing, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Green City Housing",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Green Road, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Green Road",
+      "Latitude": 23.7544,
+      "Longitude": 90.38859
+    },
+    {
+      "Location": "Green Road, Kalabagan, Dhaka",
+      "Region": "Kalabagan",
+      "Sub-region": "Green Road",
+      "Latitude": 23.7544,
+      "Longitude": 90.38859
+    },
+    {
+      "Location": "Green Road, Kathalbagan, Dhaka",
+      "Region": "Kathalbagan",
+      "Sub-region": "Green Road",
+      "Latitude": 23.7544,
+      "Longitude": 90.38859
+    },
+    {
+      "Location": "Greenway Road, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Greenway Road",
+      "Latitude": 23.75156,
+      "Longitude": 90.40872
+    },
+    {
+      "Location": "Gulbag, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "Gulbag",
+      "Latitude": 23.74979,
+      "Longitude": 90.41256
+    },
+    {
+      "Location": "Gulshan 1, Gulshan, Dhaka",
+      "Region": "Gulshan",
+      "Sub-region": "Gulshan 1",
+      "Latitude": 23.79059,
+      "Longitude": 90.42566
+    },
+    {
+      "Location": "Gulshan 2, Gulshan, Dhaka",
+      "Region": "Gulshan",
+      "Sub-region": "Gulshan 2",
+      "Latitude": 23.79059,
+      "Longitude": 90.42566
+    },
+    {
+      "Location": "Haji Abdullah Sarkar Lane, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Haji Abdullah Sarkar Lane",
+      "Latitude": 23.88038,
+      "Longitude": 90.40519
+    },
+    {
+      "Location": "Haji Goli, Agargaon, Dhaka",
+      "Region": "Agargaon",
+      "Sub-region": "Haji Goli",
+      "Latitude": 23.77323,
+      "Longitude": 90.37154
+    },
+    {
+      "Location": "Haji Rahim Box Lane, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Haji Rahim Box Lane",
+      "Latitude": 23.79448,
+      "Longitude": 90.38573
+    },
+    {
+      "Location": "Hazi Abdur Rashid Lane, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Hazi Abdur Rashid Lane",
+      "Latitude": 23.71559,
+      "Longitude": 90.40556
+    },
+    {
+      "Location": "Hemayetpur, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Hemayetpur",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Hossain Saheb Goli, Zafrabad, Dhaka",
+      "Region": "Zafrabad",
+      "Sub-region": "Hossain Saheb Goli",
+      "Latitude": 23.71875,
+      "Longitude": 90.36767
+    },
+    {
+      "Location": "Humayun Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Humayun Road",
+      "Latitude": 23.76553,
+      "Longitude": 90.35966
+    },
+    {
+      "Location": "Ibrahimpur Bazar Road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "Ibrahimpur Bazar Road",
+      "Latitude": 23.82082,
+      "Longitude": 90.3806
+    },
+    {
+      "Location": "Idgaha road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "Idgaha road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Imandipur, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Imandipur",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Indira Road, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "Indira Road",
+      "Latitude": 23.75641,
+      "Longitude": 90.3887
+    },
+    {
+      "Location": "Islambag, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Islambag",
+      "Latitude": 23.72163,
+      "Longitude": 90.38809
+    },
+    {
+      "Location": "Islamnagar, Kamrangirchar, Dhaka",
+      "Region": "Kamrangirchar",
+      "Sub-region": "Islamnagar",
+      "Latitude": 23.71178,
+      "Longitude": 90.38433
+    },
+    {
+      "Location": "Ismail Lane, Eskaton, Dhaka",
+      "Region": "Eskaton",
+      "Sub-region": "Ismail Lane",
+      "Latitude": 23.74672,
+      "Longitude": 90.40125
+    },
+    {
+      "Location": "Jagannathpur, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Jagannathpur",
+      "Latitude": 23.77876,
+      "Longitude": 90.42571
+    },
+    {
+      "Location": "Jamoj Road, Joar Sahara, Dhaka",
+      "Region": "JoarSahara",
+      "Sub-region": "Jamoj Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Janata Housing Society, Adabor, Dhaka",
+      "Region": "Adabor",
+      "Sub-region": "Janata Housing Society",
+      "Latitude": 23.80014,
+      "Longitude": 90.35599
+    },
+    {
+      "Location": "Japan Garden City, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Japan Garden City",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Jhauchor, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Jhauchor",
+      "Latitude": 23.73244,
+      "Longitude": 90.35685
+    },
+    {
+      "Location": "Jhigatola Road, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Jhigatola Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Jigatola, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Jigatola",
+      "Latitude": 23.73926,
+      "Longitude": 90.37563
+    },
+    {
+      "Location": "Julon Bari, Kotwali, Dhaka",
+      "Region": "Kotwali",
+      "Sub-region": "Julon Bari",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Jurain, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Jurain",
+      "Latitude": 23.69636,
+      "Longitude": 90.43018
+    },
+    {
+      "Location": "Kachukhet, Dhaka",
+      "Region": "Kachukhet",
+      "Sub-region": "Unknown",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Kadamtala, Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "Kadamtala",
+      "Latitude": 23.7405,
+      "Longitude": 90.43472
+    },
+    {
+      "Location": "Kadamtali, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Kadamtali",
+      "Latitude": 23.68094,
+      "Longitude": 90.43935
+    },
+    {
+      "Location": "Kahektuli, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Kahektuli",
+      "Latitude": 23.71753,
+      "Longitude": 90.40474
+    },
+    {
+      "Location": "Kajla, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Kajla",
+      "Latitude": 23.71667,
+      "Longitude": 90.42181
+    },
+    {
+      "Location": "Kalabagan 1st Lane, Kalabagan, Dhaka",
+      "Region": "Kalabagan",
+      "Sub-region": "Kalabagan 1st Lane",
+      "Latitude": 23.74748,
+      "Longitude": 90.38231
+    },
+    {
+      "Location": "Kalabagan 2nd Lane, Kalabagan, Dhaka",
+      "Region": "Kalabagan",
+      "Sub-region": "Kalabagan 2nd Lane",
+      "Latitude": 23.74825,
+      "Longitude": 90.38235
+    },
+    {
+      "Location": "Kalachandpur Main Road, Kalachandpur, Dhaka",
+      "Region": "Kalachandpur",
+      "Sub-region": "Kalachandpur Main Road",
+      "Latitude": 23.80953,
+      "Longitude": 90.42127
+    },
+    {
+      "Location": "Kalachandpur School Road, Kalachandpur, Dhaka",
+      "Region": "Kalachandpur",
+      "Sub-region": "Kalachandpur School Road",
+      "Latitude": 23.83209,
+      "Longitude": 90.42215
+    },
+    {
+      "Location": "Kallyanpur, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Kallyanpur",
+      "Latitude": 23.81467,
+      "Longitude": 90.37306
+    },
+    {
+      "Location": "Kamal Khan Road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "Kamal Khan Road",
+      "Latitude": 23.79451,
+      "Longitude": 90.38112
+    },
+    {
+      "Location": "Kamal Soroni Road, Agargaon, Dhaka",
+      "Region": "Agargaon",
+      "Sub-region": "Kamal Soroni Road",
+      "Latitude": 23.77323,
+      "Longitude": 90.37154
+    },
+    {
+      "Location": "Kamarpara, Turag, Dhaka",
+      "Region": "Turag",
+      "Sub-region": "Kamarpara",
+      "Latitude": 23.89118,
+      "Longitude": 90.38861
+    },
+    {
+      "Location": "Kamlapur, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Kamlapur",
+      "Latitude": 23.72558,
+      "Longitude": 90.42179
+    },
+    {
+      "Location": "Kamrangirchar, Dhaka",
+      "Region": "Kamrangirchar",
+      "Sub-region": "Unknown",
+      "Latitude": 23.71178,
+      "Longitude": 90.38433
+    },
+    {
+      "Location": "Kanchkura, Uttar Khan, Dhaka",
+      "Region": "UttarKhan",
+      "Sub-region": "Kanchkura",
+      "Latitude": 23.76298,
+      "Longitude": 90.38919
+    },
+    {
+      "Location": "Karatitola, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Karatitola",
+      "Latitude": 23.70311,
+      "Longitude": 90.42015
+    },
+    {
+      "Location": "Karwan Bazar, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "Karwan Bazar",
+      "Latitude": 23.7921,
+      "Longitude": 90.37846
+    },
+    {
+      "Location": "Katashur, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Katashur",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Katherpul, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Katherpul",
+      "Latitude": 23.70311,
+      "Longitude": 90.42015
+    },
+    {
+      "Location": "Kawlar, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Kawlar",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Kazi Motahar Hossain Road, Shegunbagicha, Dhaka",
+      "Region": "Shegunbagicha",
+      "Sub-region": "Kazi Motahar Hossain Road",
+      "Latitude": 23.73593,
+      "Longitude": 90.40734
+    },
+    {
+      "Location": "Kazi Riaz Uddin Road, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Kazi Riaz Uddin Road",
+      "Latitude": 23.71753,
+      "Longitude": 90.38936
+    },
+    {
+      "Location": "Kazirgaon, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Kazirgaon",
+      "Latitude": 23.71667,
+      "Longitude": 90.42181
+    },
+    {
+      "Location": "Keraniganj, Dhaka",
+      "Region": "Keraniganj",
+      "Sub-region": "Unknown",
+      "Latitude": 23.64456,
+      "Longitude": 90.34818
+    },
+    {
+      "Location": "Khaje Dewan, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Khaje Dewan",
+      "Latitude": 23.72085,
+      "Longitude": 90.34539
+    },
+    {
+      "Location": "Khajedal Sing Lane, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Khajedal Sing Lane",
+      "Latitude": 23.72163,
+      "Longitude": 90.38809
+    },
+    {
+      "Location": "Khan Bari Road, Kalachandpur, Dhaka",
+      "Region": "Kalachandpur",
+      "Sub-region": "Khan Bari Road",
+      "Latitude": 23.72783,
+      "Longitude": 90.48041
+    },
+    {
+      "Location": "Khanka E Razviya Road/Zia Soroni, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Khanka E Razviya Road/Zia Soroni",
+      "Latitude": 23.7015842,
+      "Longitude": 90.4465847
+    },
+    {
+      "Location": "Khilbari Tek, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Khilbari Tek",
+      "Latitude": 23.81501,
+      "Longitude": 90.43623
+    },
+    {
+      "Location": "Khilji Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Khilji Road",
+      "Latitude": 23.77121,
+      "Longitude": 90.36675
+    },
+    {
+      "Location": "Khondokar Goli Road, Shiddheswari, Dhaka",
+      "Region": "Shiddheswari",
+      "Sub-region": "Khondokar Goli Road",
+      "Latitude": 23.74376,
+      "Longitude": 90.40962
+    },
+    {
+      "Location": "Kolta Bazar, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Kolta Bazar",
+      "Latitude": 23.70311,
+      "Longitude": 90.42015
+    },
+    {
+      "Location": "Konapara, Demra, Dhaka",
+      "Region": "Demra",
+      "Sub-region": "Konapara",
+      "Latitude": 23.71032,
+      "Longitude": 90.46983
+    },
+    {
+      "Location": "Konapara, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Konapara",
+      "Latitude": 23.71032,
+      "Longitude": 90.46983
+    },
+    {
+      "Location": "Kosai Bari, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Kosai Bari",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Kotwali, Dhaka",
+      "Region": "Kotwali",
+      "Sub-region": "Unknown",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Krishi Bank Road, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Krishi Bank Road",
+      "Latitude": 23.77263,
+      "Longitude": 90.43409
+    },
+    {
+      "Location": "Kutubkhali, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Kutubkhali",
+      "Latitude": 23.70595,
+      "Longitude": 90.43992
+    },
+    {
+      "Location": "Kutum Goli, Agargaon, Dhaka",
+      "Region": "Agargaon",
+      "Sub-region": "Kutum Goli",
+      "Latitude": 23.77323,
+      "Longitude": 90.37154
+    },
+    {
+      "Location": "Lake Circus Road, Kalabagan, Dhaka",
+      "Region": "Kalabagan",
+      "Sub-region": "Lake Circus Road",
+      "Latitude": 23.75261,
+      "Longitude": 90.38152
+    },
+    {
+      "Location": "Lake City Concord, Khilkhet, Dhaka",
+      "Region": "Khilkhet",
+      "Sub-region": "Lake City Concord",
+      "Latitude": 23.76428,
+      "Longitude": 90.37257
+    },
+    {
+      "Location": "Lalbagh Road, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Lalbagh Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Lane No 5, Mohakhali DOHS, Dhaka",
+      "Region": "MohakhaliDOHS",
+      "Sub-region": "Lane No 5",
+      "Latitude": 23.78074,
+      "Longitude": 90.40911
+    },
+    {
+      "Location": "Lichu Bagan Road, Joar Sahara, Dhaka",
+      "Region": "JoarSahara",
+      "Sub-region": "Lichu Bagan Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Luxmibazar, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Luxmibazar",
+      "Latitude": 23.70311,
+      "Longitude": 90.42015
+    },
+    {
+      "Location": "Madarbari, Uttar Khan, Dhaka",
+      "Region": "UttarKhan",
+      "Sub-region": "Madarbari",
+      "Latitude": 23.76298,
+      "Longitude": 90.38919
+    },
+    {
+      "Location": "Madartek, Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "Madartek",
+      "Latitude": 23.74009,
+      "Longitude": 90.43418
+    },
+    {
+      "Location": "Madhya Ajampur, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Madhya Ajampur",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Mahuthtuli, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Mahuthtuli",
+      "Latitude": 23.71753,
+      "Longitude": 90.40474
+    },
+    {
+      "Location": "Mainertek, Uttar Khan, Dhaka",
+      "Region": "UttarKhan",
+      "Sub-region": "Mainertek",
+      "Latitude": 23.76298,
+      "Longitude": 90.38919
+    },
+    {
+      "Location": "Majed Sardar Road, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Majed Sardar Road",
+      "Latitude": 23.72138,
+      "Longitude": 90.40091
+    },
+    {
+      "Location": "Majidpur, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Majidpur",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Malibag Bazar Rd, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "Malibag Bazar Rd",
+      "Latitude": 23.74979,
+      "Longitude": 90.41256
+    },
+    {
+      "Location": "Malibag College Road, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "Malibag College Road",
+      "Latitude": 23.85919,
+      "Longitude": 90.42506
+    },
+    {
+      "Location": "Malibagh Chowdhury Para, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "Malibagh Chowdhury Para",
+      "Latitude": 23.7538,
+      "Longitude": 90.41993
+    },
+    {
+      "Location": "Malibagh First Lane, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "Malibagh First Lane",
+      "Latitude": 23.74979,
+      "Longitude": 90.41256
+    },
+    {
+      "Location": "Manda Road, Mugdapara, Dhaka",
+      "Region": "Mugdapara",
+      "Sub-region": "Manda Road",
+      "Latitude": 23.72813,
+      "Longitude": 90.42969
+    },
+    {
+      "Location": "Manda, Mugdapara, Dhaka",
+      "Region": "Mugdapara",
+      "Sub-region": "Manda",
+      "Latitude": 23.72813,
+      "Longitude": 90.42969
+    },
+    {
+      "Location": "Manikdi Road, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Manikdi Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Manikdi, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Manikdi",
+      "Latitude": 23.73905,
+      "Longitude": 90.46181
+    },
+    {
+      "Location": "Mansurabad Housing Society, Adabor, Dhaka",
+      "Region": "Adabor",
+      "Sub-region": "Mansurabad Housing Society",
+      "Latitude": 23.7766,
+      "Longitude": 90.36276
+    },
+    {
+      "Location": "Mastertek, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Mastertek",
+      "Latitude": 23.8283,
+      "Longitude": 90.37955
+    },
+    {
+      "Location": "Matikata Road, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Matikata Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Matikata, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Matikata",
+      "Latitude": 23.81934,
+      "Longitude": 90.39418
+    },
+    {
+      "Location": "Matuail School Road, Demra, Dhaka",
+      "Region": "Demra",
+      "Sub-region": "Matuail School Road",
+      "Latitude": 23.83209,
+      "Longitude": 90.42215
+    },
+    {
+      "Location": "Matuail, Demra, Dhaka",
+      "Region": "Demra",
+      "Sub-region": "Matuail",
+      "Latitude": 23.7121,
+      "Longitude": 90.4598
+    },
+    {
+      "Location": "Meradia Main Road, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "Meradia Main Road",
+      "Latitude": 23.80709,
+      "Longitude": 90.36837
+    },
+    {
+      "Location": "Meradia, Khilgaon, Dhaka",
+      "Region": "Khilgaon",
+      "Sub-region": "Meradia",
+      "Latitude": 23.75349,
+      "Longitude": 90.42469
+    },
+    {
+      "Location": "Merul Badda, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Merul Badda",
+      "Latitude": 23.77153,
+      "Longitude": 90.4254
+    },
+    {
+      "Location": "Mia Para, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Mia Para",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Middle Badda, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Middle Badda",
+      "Latitude": 23.77753,
+      "Longitude": 90.4259
+    },
+    {
+      "Location": "Middle Bashabo, Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "Middle Bashabo",
+      "Latitude": 23.74009,
+      "Longitude": 90.43418
+    },
+    {
+      "Location": "Middle Monipur, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Middle Monipur",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Middle Paikpara, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Middle Paikpara",
+      "Latitude": 23.79193,
+      "Longitude": 90.35733
+    },
+    {
+      "Location": "Mirbag Notun Rasta, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Mirbag Notun Rasta",
+      "Latitude": 23.82284,
+      "Longitude": 90.37905
+    },
+    {
+      "Location": "Mirpur DOHS, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Mirpur DOHS",
+      "Latitude": 23.82896,
+      "Longitude": 90.37865
+    },
+    {
+      "Location": "Mirpur Road, Shyamoli, Dhaka",
+      "Region": "Shyamoli",
+      "Sub-region": "Mirpur Road",
+      "Latitude": 23.73818,
+      "Longitude": 90.38389
+    },
+    {
+      "Location": "Mitford Road, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Mitford Road",
+      "Latitude": 23.71104,
+      "Longitude": 90.40115
+    },
+    {
+      "Location": "Moghbazar Kazi Office Lane, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Moghbazar Kazi Office Lane",
+      "Latitude": 23.74639,
+      "Longitude": 90.40844
+    },
+    {
+      "Location": "Mohammadi Homes R/A, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Mohammadi Homes R/A",
+      "Latitude": 23.762609,
+      "Longitude": 90.351915
+    },
+    {
+      "Location": "Mohammadi Housing LTD., Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Mohammadi Housing LTD.",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Mohammadia Housing Society, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Mohammadia Housing Society",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Mohonpur Road, Shyamoli, Dhaka",
+      "Region": "Shyamoli",
+      "Sub-region": "Mohonpur Road",
+      "Latitude": 23.77659,
+      "Longitude": 90.36104
+    },
+    {
+      "Location": "Momin Road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "Momin Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Moneshwar, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Moneshwar",
+      "Latitude": 23.73931,
+      "Longitude": 90.36917
+    },
+    {
+      "Location": "Monipur, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Monipur",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Monipuri School Road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "Monipuri School Road",
+      "Latitude": 23.83209,
+      "Longitude": 90.42215
+    },
+    {
+      "Location": "Monipuripara, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "Monipuripara",
+      "Latitude": 23.7921,
+      "Longitude": 90.37846
+    },
+    {
+      "Location": "Motijheel Extension, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Motijheel Extension",
+      "Latitude": 23.72558,
+      "Longitude": 90.42179
+    },
+    {
+      "Location": "Moushair, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Moushair",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Mridha Bari, Kuril, Dhaka",
+      "Region": "Kuril",
+      "Sub-region": "Mridha Bari",
+      "Latitude": 23.71044,
+      "Longitude": 90.44309
+    },
+    {
+      "Location": "Muktijoddha Road, Kachukhet, Dhaka",
+      "Region": "Kachukhet",
+      "Sub-region": "Muktijoddha Road",
+      "Latitude": 23.74932,
+      "Longitude": 90.40222
+    },
+    {
+      "Location": "Muslim Modern College Road, Kachukhet, Dhaka",
+      "Region": "Kachukhet",
+      "Sub-region": "Muslim Modern College Road",
+      "Latitude": 23.85919,
+      "Longitude": 90.42506
+    },
+    {
+      "Location": "Mymensingh Road, Shahbagh, Dhaka",
+      "Region": "Shahbagh",
+      "Sub-region": "Mymensingh Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Nadda, Dhaka",
+      "Region": "Nadda",
+      "Sub-region": "Unknown",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Namapara, Khilkhet, Dhaka",
+      "Region": "Khilkhet",
+      "Sub-region": "Namapara",
+      "Latitude": 23.83303,
+      "Longitude": 90.435
+    },
+    {
+      "Location": "Narinda, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Narinda",
+      "Latitude": 23.70311,
+      "Longitude": 90.42015
+    },
+    {
+      "Location": "Nawabgonj, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Nawabgonj",
+      "Latitude": 23.72163,
+      "Longitude": 90.38809
+    },
+    {
+      "Location": "Nawabpur Road, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Nawabpur Road",
+      "Latitude": 23.7184763,
+      "Longitude": 90.4115257
+    },
+    {
+      "Location": "Naya Bazar, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Naya Bazar",
+      "Latitude": 23.71378,
+      "Longitude": 90.40432
+    },
+    {
+      "Location": "Naya Paltan, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Naya Paltan",
+      "Latitude": 23.72558,
+      "Longitude": 90.42179
+    },
+    {
+      "Location": "Nayatola, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Nayatola",
+      "Latitude": 23.75474,
+      "Longitude": 90.40769
+    },
+    {
+      "Location": "New Airport Road, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "New Airport Road",
+      "Latitude": 23.77936,
+      "Longitude": 90.3989
+    },
+    {
+      "Location": "New Baily Road, Shiddheswari, Dhaka",
+      "Region": "Shiddheswari",
+      "Sub-region": "New Baily Road",
+      "Latitude": 23.74229,
+      "Longitude": 90.4108
+    },
+    {
+      "Location": "New Elephant Road, Hatirpool, Dhaka",
+      "Region": "Hatirpool",
+      "Sub-region": "New Elephant Road",
+      "Latitude": 23.73917,
+      "Longitude": 90.38834
+    },
+    {
+      "Location": "New Eskaton Road, Eskaton, Dhaka",
+      "Region": "Eskaton",
+      "Sub-region": "New Eskaton Road",
+      "Latitude": 23.74751,
+      "Longitude": 90.40013
+    },
+    {
+      "Location": "New Eskaton, Eskaton, Dhaka",
+      "Region": "Eskaton",
+      "Sub-region": "New Eskaton",
+      "Latitude": 23.74751,
+      "Longitude": 90.40013
+    },
+    {
+      "Location": "New Market, Dhaka",
+      "Region": "NewMarket",
+      "Sub-region": "Unknown",
+      "Latitude": 23.73233,
+      "Longitude": 90.38503
+    },
+    {
+      "Location": "Niketan, Road No 14/3, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Road No 14/3",
+      "Latitude": 23.7724766,
+      "Longitude": 90.4055329
+    },
+    {
+      "Location": "Nikunja 2, Nikunja, Dhaka",
+      "Region": "Nikunja",
+      "Sub-region": "Nikunja 2",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Noa Nagar, Turag, Dhaka",
+      "Region": "Turag",
+      "Sub-region": "Noa Nagar",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Nobodoy Housing Society, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Nobodoy Housing Society",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "North Adabor, Adabor, Dhaka",
+      "Region": "Adabor",
+      "Sub-region": "North Adabor",
+      "Latitude": 23.74372,
+      "Longitude": 90.385
+    },
+    {
+      "Location": "North Azampur, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "North Azampur",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "North Bashabo, Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "North Bashabo",
+      "Latitude": 23.7405,
+      "Longitude": 90.43472
+    },
+    {
+      "Location": "North Dhanmondi Road, Kalabagan, Dhaka",
+      "Region": "Kalabagan",
+      "Sub-region": "North Dhanmondi Road",
+      "Latitude": 23.73887,
+      "Longitude": 90.37815
+    },
+    {
+      "Location": "North Goran, Khilgaon, Dhaka",
+      "Region": "Khilgaon",
+      "Sub-region": "North Goran",
+      "Latitude": 23.75349,
+      "Longitude": 90.42469
+    },
+    {
+      "Location": "North Ibrahimpur, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "North Ibrahimpur",
+      "Latitude": 23.79448,
+      "Longitude": 90.38573
+    },
+    {
+      "Location": "North Jatra Bari, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "North Jatra Bari",
+      "Latitude": 23.71667,
+      "Longitude": 90.42181
+    },
+    {
+      "Location": "North Kafrul Road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "North Kafrul Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "North Maniknagar, Maniknagar, Dhaka",
+      "Region": "Maniknagar",
+      "Sub-region": "North Maniknagar",
+      "Latitude": 23.72263,
+      "Longitude": 90.42987
+    },
+    {
+      "Location": "North Mugdapara, Mugdapara, Dhaka",
+      "Region": "Mugdapara",
+      "Sub-region": "North Mugdapara",
+      "Latitude": 23.72813,
+      "Longitude": 90.42969
+    },
+    {
+      "Location": "North Road, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "North Road",
+      "Latitude": 23.74443,
+      "Longitude": 90.38778
+    },
+    {
+      "Location": "North Shahjahanpur, Shahjahanpur, Dhaka",
+      "Region": "Shahjahanpur",
+      "Sub-region": "North Shahjahanpur",
+      "Latitude": 23.73723,
+      "Longitude": 90.4183
+    },
+    {
+      "Location": "Nurer Chala, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Nurer Chala",
+      "Latitude": 23.81501,
+      "Longitude": 90.43623
+    },
+    {
+      "Location": "Nurjahan Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Nurjahan Road",
+      "Latitude": 23.76037,
+      "Longitude": 90.36193
+    },
+    {
+      "Location": "Old Eskaton, Eskaton, Dhaka",
+      "Region": "Eskaton",
+      "Sub-region": "Old Eskaton",
+      "Latitude": 23.74687,
+      "Longitude": 90.40191
+    },
+    {
+      "Location": "Outer Circular Road, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Outer Circular Road",
+      "Latitude": 23.72682,
+      "Longitude": 90.42152
+    },
+    {
+      "Location": "Outer Circular Road, Shiddheswari, Dhaka",
+      "Region": "Shiddheswari",
+      "Sub-region": "Outer Circular Road",
+      "Latitude": 23.72682,
+      "Longitude": 90.42152
+    },
+    {
+      "Location": "PC Culture Housing, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "PC Culture Housing",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Paikpara, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Paikpara",
+      "Latitude": 23.79193,
+      "Longitude": 90.35733
+    },
+    {
+      "Location": "Pallabi, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Pallabi",
+      "Latitude": 23.82566,
+      "Longitude": 90.37001
+    },
+    {
+      "Location": "Panthapath, Kathalbagan, Dhaka",
+      "Region": "Kathalbagan",
+      "Sub-region": "Panthapath",
+      "Latitude": 23.74921,
+      "Longitude": 90.39124
+    },
+    {
+      "Location": "Park Road, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Park Road",
+      "Latitude": 23.80199,
+      "Longitude": 90.42174
+    },
+    {
+      "Location": "Pearabagh Road, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Pearabagh Road",
+      "Latitude": 23.75168,
+      "Longitude": 90.40784
+    },
+    {
+      "Location": "Pearl Street, Shyamoli, Dhaka",
+      "Region": "Shyamoli",
+      "Sub-region": "Pearl Street",
+      "Latitude": 23.7747,
+      "Longitude": 90.36196
+    },
+    {
+      "Location": "Peer Saheber Goli, Shantinagar, Dhaka",
+      "Region": "Shantinagar",
+      "Sub-region": "Peer Saheber Goli",
+      "Latitude": 23.74071,
+      "Longitude": 90.41285
+    },
+    {
+      "Location": "Pirerbag, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Pirerbag",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Police Fari road, Khilgaon, Dhaka",
+      "Region": "Khilgaon",
+      "Sub-region": "Police Fari road",
+      "Latitude": 23.73574,
+      "Longitude": 90.36397
+    },
+    {
+      "Location": "Poribagh Road Number 2, Paribagh, Dhaka",
+      "Region": "Paribagh",
+      "Sub-region": "Poribagh Road Number 2",
+      "Latitude": 23.775270000000003,
+      "Longitude": 90.35955
+    },
+    {
+      "Location": "Postagola, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Postagola",
+      "Latitude": 23.69245,
+      "Longitude": 90.4332
+    },
+    {
+      "Location": "Pragati Soroni, Kuril, Dhaka",
+      "Region": "Kuril",
+      "Sub-region": "Pragati Soroni",
+      "Latitude": 23.81704,
+      "Longitude": 90.42085
+    },
+    {
+      "Location": "Primary school Road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "Primary school Road",
+      "Latitude": 23.83209,
+      "Longitude": 90.42215
+    },
+    {
+      "Location": "Purana Paltan, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Purana Paltan",
+      "Latitude": 23.73053,
+      "Longitude": 90.41117
+    },
+    {
+      "Location": "Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Unknown",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Rajabazar, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "Rajabazar",
+      "Latitude": 23.7921,
+      "Longitude": 90.37846
+    },
+    {
+      "Location": "Rajarbag, Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "Rajarbag",
+      "Latitude": 23.74009,
+      "Longitude": 90.43418
+    },
+    {
+      "Location": "Rajarbagh, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Rajarbagh",
+      "Latitude": 23.72558,
+      "Longitude": 90.42179
+    },
+    {
+      "Location": "Rajashon, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Rajashon",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Rajia Sultana Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Rajia Sultana Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Ranavola Road, Turag, Dhaka",
+      "Region": "Turag",
+      "Sub-region": "Ranavola Road",
+      "Latitude": 23.888070000000003,
+      "Longitude": 90.38933
+    },
+    {
+      "Location": "Rayer Bazaar, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Rayer Bazaar",
+      "Latitude": 23.74769,
+      "Longitude": 90.36325
+    },
+    {
+      "Location": "Road No 1, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 1",
+      "Latitude": 23.7742,
+      "Longitude": 90.36502
+    },
+    {
+      "Location": "Road No 1, Baridhara DOHS, Dhaka",
+      "Region": "BaridharaDOHS",
+      "Sub-region": "Road No 1",
+      "Latitude": 23.7742,
+      "Longitude": 90.36502
+    },
+    {
+      "Location": "Road No 1, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Road No 1",
+      "Latitude": 23.7742,
+      "Longitude": 90.36502
+    },
+    {
+      "Location": "Road No 1, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 1",
+      "Latitude": 23.7742,
+      "Longitude": 90.36502
+    },
+    {
+      "Location": "Road No 1, Shyamoli, Dhaka",
+      "Region": "Shyamoli",
+      "Sub-region": "Road No 1",
+      "Latitude": 23.7742,
+      "Longitude": 90.36502
+    },
+    {
+      "Location": "Road No 10, Baridhara DOHS, Dhaka",
+      "Region": "BaridharaDOHS",
+      "Sub-region": "Road No 10",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 10, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 10",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 10A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 10A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 10B, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 10B",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 11, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Road No 11",
+      "Latitude": 23.78223,
+      "Longitude": 90.36018
+    },
+    {
+      "Location": "Road No 11A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 11A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 12, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Road No 12",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 12, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 12",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 12A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 12A",
+      "Latitude": 23.88776,
+      "Longitude": 90.38944
+    },
+    {
+      "Location": "Road No 13, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 13",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 13, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Road No 13",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 14, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 14",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 14A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 14A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 15, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 15",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 16, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 16",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 16, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 16",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 18, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 18",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 19, Mohakhali DOHS, Dhaka",
+      "Region": "MohakhaliDOHS",
+      "Sub-region": "Road No 19",
+      "Latitude": 23.78074,
+      "Longitude": 90.40911
+    },
+    {
+      "Location": "Road No 2, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 2",
+      "Latitude": 23.78197,
+      "Longitude": 90.39943
+    },
+    {
+      "Location": "Road No 2, Baridhara DOHS, Dhaka",
+      "Region": "BaridharaDOHS",
+      "Sub-region": "Road No 2",
+      "Latitude": 23.78197,
+      "Longitude": 90.39943
+    },
+    {
+      "Location": "Road No 2, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 2",
+      "Latitude": 23.78197,
+      "Longitude": 90.39943
+    },
+    {
+      "Location": "Road No 2, Shyamoli, Dhaka",
+      "Region": "Shyamoli",
+      "Sub-region": "Road No 2",
+      "Latitude": 23.78197,
+      "Longitude": 90.39943
+    },
+    {
+      "Location": "Road No 21, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 21",
+      "Latitude": 23.82273,
+      "Longitude": 90.37837
+    },
+    {
+      "Location": "Road No 23, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 23",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 23, Mohakhali DOHS, Dhaka",
+      "Region": "MohakhaliDOHS",
+      "Sub-region": "Road No 23",
+      "Latitude": 23.78081,
+      "Longitude": 90.40719
+    },
+    {
+      "Location": "Road No 28, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 28",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 2A, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Road No 2A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 2A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 2A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 3, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 3",
+      "Latitude": 23.77727,
+      "Longitude": 90.36475
+    },
+    {
+      "Location": "Road No 3, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Road No 3",
+      "Latitude": 23.77727,
+      "Longitude": 90.36475
+    },
+    {
+      "Location": "Road No 3, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 3",
+      "Latitude": 23.77727,
+      "Longitude": 90.36475
+    },
+    {
+      "Location": "Road No 3, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Road No 3",
+      "Latitude": 23.77338,
+      "Longitude": 90.40971
+    },
+    {
+      "Location": "Road No 3A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 3A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 4, Banani DOHS, Dhaka",
+      "Region": "BananiDOHS",
+      "Sub-region": "Road No 4",
+      "Latitude": 23.78855,
+      "Longitude": 90.40081
+    },
+    {
+      "Location": "Road No 4, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 4",
+      "Latitude": 23.78855,
+      "Longitude": 90.40081
+    },
+    {
+      "Location": "Road No 4, Baridhara DOHS, Dhaka",
+      "Region": "BaridharaDOHS",
+      "Sub-region": "Road No 4",
+      "Latitude": 23.78855,
+      "Longitude": 90.40081
+    },
+    {
+      "Location": "Road No 4, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 4",
+      "Latitude": 23.78855,
+      "Longitude": 90.40081
+    },
+    {
+      "Location": "Road No 4, Shyamoli, Dhaka",
+      "Region": "Shyamoli",
+      "Sub-region": "Road No 4",
+      "Latitude": 23.78855,
+      "Longitude": 90.40081
+    },
+    {
+      "Location": "Road No 4A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 4A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 5, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 5",
+      "Latitude": 23.75479,
+      "Longitude": 90.36056
+    },
+    {
+      "Location": "Road No 5, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Road No 5",
+      "Latitude": 23.75479,
+      "Longitude": 90.36056
+    },
+    {
+      "Location": "Road No 5, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 5",
+      "Latitude": 23.75479,
+      "Longitude": 90.36056
+    },
+    {
+      "Location": "Road No 6, Banani DOHS, Dhaka",
+      "Region": "BananiDOHS",
+      "Sub-region": "Road No 6",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 6, Baridhara DOHS, Dhaka",
+      "Region": "BaridharaDOHS",
+      "Sub-region": "Road No 6",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 6, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Road No 6",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 6, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Road No 6",
+      "Latitude": 23.77338,
+      "Longitude": 90.40971
+    },
+    {
+      "Location": "Road No 6A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 6A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 7, Banani, Dhaka",
+      "Region": "Banani",
+      "Sub-region": "Road No 7",
+      "Latitude": 23.75412,
+      "Longitude": 90.36958
+    },
+    {
+      "Location": "Road No 7, Baridhara DOHS, Dhaka",
+      "Region": "BaridharaDOHS",
+      "Sub-region": "Road No 7",
+      "Latitude": 23.75412,
+      "Longitude": 90.36958
+    },
+    {
+      "Location": "Road No 7, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 7",
+      "Latitude": 23.75412,
+      "Longitude": 90.36958
+    },
+    {
+      "Location": "Road No 7A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 7A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 8, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 8",
+      "Latitude": 23.75878,
+      "Longitude": 90.35595
+    },
+    {
+      "Location": "Road No 8A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 8A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 9, Adabor, Dhaka",
+      "Region": "Adabor",
+      "Sub-region": "Road No 9",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 9, Baridhara DOHS, Dhaka",
+      "Region": "BaridharaDOHS",
+      "Sub-region": "Road No 9",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Road No 9, Niketan, Dhaka",
+      "Region": "Niketan",
+      "Sub-region": "Road No 9",
+      "Latitude": 23.77338,
+      "Longitude": 90.40971
+    },
+    {
+      "Location": "Road No 9A, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Road No 9A",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Rupnagar R/A, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Rupnagar R/A",
+      "Latitude": 23.818958,
+      "Longitude": 90.356229
+    },
+    {
+      "Location": "Saat Rawza, Bangshal, Dhaka",
+      "Region": "Bangshal",
+      "Sub-region": "Saat Rawza",
+      "Latitude": 23.71753,
+      "Longitude": 90.40474
+    },
+    {
+      "Location": "Sadek Khan Road, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Sadek Khan Road",
+      "Latitude": 23.74529,
+      "Longitude": 90.3625
+    },
+    {
+      "Location": "Salimuddin Market Road, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Salimuddin Market Road",
+      "Latitude": 23.81467,
+      "Longitude": 90.37306
+    },
+    {
+      "Location": "Salimullah Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Salimullah Road",
+      "Latitude": 23.75913,
+      "Longitude": 90.36407
+    },
+    {
+      "Location": "Sarulia, Demra, Dhaka",
+      "Region": "Demra",
+      "Sub-region": "Sarulia",
+      "Latitude": 23.8429,
+      "Longitude": 90.3244
+    },
+    {
+      "Location": "Sat Masjid Housing, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Sat Masjid Housing",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "School Road, Mohakhali, Dhaka",
+      "Region": "Mohakhali",
+      "Sub-region": "School Road",
+      "Latitude": 23.83209,
+      "Longitude": 90.42215
+    },
+    {
+      "Location": "Science Museum To Water Tank Road, Agargaon, Dhaka",
+      "Region": "Agargaon",
+      "Sub-region": "Science Museum To Water Tank Road",
+      "Latitude": 23.77323,
+      "Longitude": 90.37154
+    },
+    {
+      "Location": "Section 1, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 1",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Section 10, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 10",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Section 11, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 11",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Section 12, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 12",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Section 13, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 13",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Section 15, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 15",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Section 2, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 2",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Section 6, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 6",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Section 7, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Section 7",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Sector 1, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 1",
+      "Latitude": 23.80021,
+      "Longitude": 90.35182
+    },
+    {
+      "Location": "Sector 10, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 10",
+      "Latitude": 23.86501,
+      "Longitude": 90.38619
+    },
+    {
+      "Location": "Sector 10, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 10",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 11, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 11",
+      "Latitude": 23.85879,
+      "Longitude": 90.39941
+    },
+    {
+      "Location": "Sector 11, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 11",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 12, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 12",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 13, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 13",
+      "Latitude": 23.85954,
+      "Longitude": 90.39853
+    },
+    {
+      "Location": "Sector 13, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 13",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 14, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 14",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 15, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 15",
+      "Latitude": 23.86033,
+      "Longitude": 90.39784
+    },
+    {
+      "Location": "Sector 15, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 15",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 16, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 16",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 16, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 16",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 17, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 17",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 17, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 17",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 18, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 18",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 18, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 18",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 2, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 2",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 20, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 20",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 21, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 21",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 22, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 22",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 23, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 23",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 25, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 25",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 26, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 26",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 27, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 27",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 29, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 29",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 3, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 3",
+      "Latitude": 23.85561,
+      "Longitude": 90.40267
+    },
+    {
+      "Location": "Sector 3, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 3",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 4, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 4",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 4, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 4",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 5, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 5",
+      "Latitude": 23.86409,
+      "Longitude": 90.39401
+    },
+    {
+      "Location": "Sector 5, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 5",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 6, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 6",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 7, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 7",
+      "Latitude": 23.85706,
+      "Longitude": 90.40138
+    },
+    {
+      "Location": "Sector 7, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 7",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Sector 8, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 8",
+      "Latitude": 23.8573,
+      "Longitude": 90.40043
+    },
+    {
+      "Location": "Sector 9, Purbachal, Dhaka",
+      "Region": "Purbachal",
+      "Sub-region": "Sector 9",
+      "Latitude": 23.82653,
+      "Longitude": 90.42906
+    },
+    {
+      "Location": "Sector 9, Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Sector 9",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Shagufta New Road, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Shagufta New Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Shah Ali Bag, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "Shah Ali Bag",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Shah Kabir Mazar Road, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Shah Kabir Mazar Road",
+      "Latitude": 23.86765,
+      "Longitude": 90.40599
+    },
+    {
+      "Location": "Shahbagh Road, Paribagh, Dhaka",
+      "Region": "Paribagh",
+      "Sub-region": "Shahbagh Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Shaheed Tajuddin Ahmed Ave, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Shaheed Tajuddin Ahmed Ave",
+      "Latitude": 23.75966,
+      "Longitude": 90.39957
+    },
+    {
+      "Location": "Shahid Latif Road, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Shahid Latif Road",
+      "Latitude": 23.85876,
+      "Longitude": 90.41333
+    },
+    {
+      "Location": "Shahid Nagar, Lalbagh, Dhaka",
+      "Region": "Lalbagh",
+      "Sub-region": "Shahid Nagar",
+      "Latitude": 23.6985,
+      "Longitude": 90.42796
+    },
+    {
+      "Location": "Shahid Syed Nazrul Islam Sharani, Motijheel, Dhaka",
+      "Region": "Motijheel",
+      "Sub-region": "Shahid Syed Nazrul Islam Sharani",
+      "Latitude": 23.72558,
+      "Longitude": 90.42179
+    },
+    {
+      "Location": "Shahjadpur, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Shahjadpur",
+      "Latitude": 23.77153,
+      "Longitude": 90.4254
+    },
+    {
+      "Location": "Shahjahan Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Shahjahan Road",
+      "Latitude": 23.76134,
+      "Longitude": 90.36687
+    },
+    {
+      "Location": "Shamibag, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Shamibag",
+      "Latitude": 23.70311,
+      "Longitude": 90.42015
+    },
+    {
+      "Location": "Shantibag - Shahidbag Road, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "Shantibag - Shahidbag Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Shantibag, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "Shantibag",
+      "Latitude": 23.74388,
+      "Longitude": 90.41603
+    },
+    {
+      "Location": "Shantinagar Bazar Rd, Shantinagar, Dhaka",
+      "Region": "Shantinagar",
+      "Sub-region": "Shantinagar Bazar Rd",
+      "Latitude": 23.74071,
+      "Longitude": 90.41285
+    },
+    {
+      "Location": "Shantinagar Road, Shantinagar, Dhaka",
+      "Region": "Shantinagar",
+      "Sub-region": "Shantinagar Road",
+      "Latitude": 23.74071,
+      "Longitude": 90.41285
+    },
+    {
+      "Location": "Shegunbagicha Road, Shegunbagicha, Dhaka",
+      "Region": "Shegunbagicha",
+      "Sub-region": "Shegunbagicha Road",
+      "Latitude": 23.73593,
+      "Longitude": 90.40734
+    },
+    {
+      "Location": "Sheikhdi, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "Sheikhdi",
+      "Latitude": 23.71667,
+      "Longitude": 90.42181
+    },
+    {
+      "Location": "Shekhertek, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Shekhertek",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "Sher Shah Suri Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Sher Shah Suri Road",
+      "Latitude": 23.76341,
+      "Longitude": 90.36579
+    },
+    {
+      "Location": "Sher-E-Bangla Road, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Sher-E-Bangla Road",
+      "Latitude": 23.73494,
+      "Longitude": 90.36859
+    },
+    {
+      "Location": "Sher-E-Bangla Road, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Sher-E-Bangla Road",
+      "Latitude": 23.73494,
+      "Longitude": 90.36859
+    },
+    {
+      "Location": "Sher-E-Bangla Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Sher-E-Bangla Road",
+      "Latitude": 23.73494,
+      "Longitude": 90.36859
+    },
+    {
+      "Location": "Shiddeswari Road, Shiddheswari, Dhaka",
+      "Region": "Shiddheswari",
+      "Sub-region": "Shiddeswari Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Shiddheswari Lane, Shiddheswari, Dhaka",
+      "Region": "Shiddheswari",
+      "Sub-region": "Shiddheswari Lane",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Shonir Akhra, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Shonir Akhra",
+      "Latitude": 23.702720000000003,
+      "Longitude": 90.45067
+    },
+    {
+      "Location": "Shukrabad, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "Shukrabad",
+      "Latitude": 23.7526,
+      "Longitude": 90.37758
+    },
+    {
+      "Location": "Shyamoli Housing (2nd Project), Adabor, Dhaka",
+      "Region": "Adabor",
+      "Sub-region": "Shyamoli Housing (2nd Project)",
+      "Latitude": 23.76747,
+      "Longitude": 90.35282
+    },
+    {
+      "Location": "Sir Sayed Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Sir Sayed Road",
+      "Latitude": 23.72899,
+      "Longitude": 90.39827
+    },
+    {
+      "Location": "Sobhanbag, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Sobhanbag",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "Sohrawardy Avenue, Baridhara, Dhaka",
+      "Region": "Baridhara",
+      "Sub-region": "Sohrawardy Avenue",
+      "Latitude": 23.80477,
+      "Longitude": 90.42185
+    },
+    {
+      "Location": "Sonatongor Masjid Road, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Sonatongor Masjid Road",
+      "Latitude": 23.78348,
+      "Longitude": 90.39614
+    },
+    {
+      "Location": "South Azampur, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "South Azampur",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "South Badda, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "South Badda",
+      "Latitude": 23.81501,
+      "Longitude": 90.43623
+    },
+    {
+      "Location": "South Banasree Project, Banasree, Dhaka",
+      "Region": "Banasree",
+      "Sub-region": "South Banasree Project",
+      "Latitude": 23.76354,
+      "Longitude": 90.4318
+    },
+    {
+      "Location": "South Baridhara Residential Area,D.I.T. Project, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "D.I.T. Project",
+      "Latitude": 23.82789,
+      "Longitude": 90.3615
+    },
+    {
+      "Location": "South Bashabo, Bashabo, Dhaka",
+      "Region": "Bashabo",
+      "Sub-region": "South Bashabo",
+      "Latitude": 23.7405,
+      "Longitude": 90.43472
+    },
+    {
+      "Location": "South Chalabon, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "South Chalabon",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "South Jatra Bari, Jatra Bari, Dhaka",
+      "Region": "JatraBari",
+      "Sub-region": "South Jatra Bari",
+      "Latitude": 23.70411,
+      "Longitude": 90.43434
+    },
+    {
+      "Location": "South Kafrul Road, Kafrul, Dhaka",
+      "Region": "Kafrul",
+      "Sub-region": "South Kafrul Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "South Keraniganj, Keraniganj, Dhaka",
+      "Region": "Keraniganj",
+      "Sub-region": "South Keraniganj",
+      "Latitude": 23.64456,
+      "Longitude": 90.34818
+    },
+    {
+      "Location": "South Mollartek, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "South Mollartek",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "South Monipur, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "South Monipur",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "South Mugdapara, Mugdapara, Dhaka",
+      "Region": "Mugdapara",
+      "Sub-region": "South Mugdapara",
+      "Latitude": 23.72813,
+      "Longitude": 90.42969
+    },
+    {
+      "Location": "South Town R/A, Keraniganj, Dhaka",
+      "Region": "Keraniganj",
+      "Sub-region": "South Town R/A",
+      "Latitude": 23.6616667,
+      "Longitude": 90.372009
+    },
+    {
+      "Location": "Srjani road, Ibrahimpur, Dhaka",
+      "Region": "Ibrahimpur",
+      "Sub-region": "Srjani road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Staff Quarter, Demra, Dhaka",
+      "Region": "Demra",
+      "Sub-region": "Staff Quarter",
+      "Latitude": 23.74408,
+      "Longitude": 90.36864
+    },
+    {
+      "Location": "Sultangong Road, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Sultangong Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Tajmahal Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Tajmahal Road",
+      "Latitude": 23.76226,
+      "Longitude": 90.35847
+    },
+    {
+      "Location": "Tali office Road, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Tali office Road",
+      "Latitude": 23.7448,
+      "Longitude": 90.36347
+    },
+    {
+      "Location": "Tallabag, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Tallabag",
+      "Latitude": 23.73176,
+      "Longitude": 90.37078
+    },
+    {
+      "Location": "Taltola goli, Maghbazar, Dhaka",
+      "Region": "Maghbazar",
+      "Sub-region": "Taltola goli",
+      "Latitude": 23.71875,
+      "Longitude": 90.36767
+    },
+    {
+      "Location": "Taltola, Agargaon, Dhaka",
+      "Region": "Agargaon",
+      "Sub-region": "Taltola",
+      "Latitude": 23.77323,
+      "Longitude": 90.37154
+    },
+    {
+      "Location": "Taltola, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "Taltola",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "Taltola, Khilgaon, Dhaka",
+      "Region": "Khilgaon",
+      "Sub-region": "Taltola",
+      "Latitude": 23.75349,
+      "Longitude": 90.42469
+    },
+    {
+      "Location": "Tejgaon Industrial Area, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "Tejgaon Industrial Area",
+      "Latitude": 23.76877,
+      "Longitude": 90.39979
+    },
+    {
+      "Location": "Tejkunipara, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "Tejkunipara",
+      "Latitude": 23.7921,
+      "Longitude": 90.37846
+    },
+    {
+      "Location": "Tikatuli, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Tikatuli",
+      "Latitude": 23.70311,
+      "Longitude": 90.42015
+    },
+    {
+      "Location": "Tikka Para Road, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "Tikka Para Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Tilpapara, Khilgaon, Dhaka",
+      "Region": "Khilgaon",
+      "Sub-region": "Tilpapara",
+      "Latitude": 23.75349,
+      "Longitude": 90.42469
+    },
+    {
+      "Location": "Titas Gas Road, Rampura, Dhaka",
+      "Region": "Rampura",
+      "Sub-region": "Titas Gas Road",
+      "Latitude": 23.69459,
+      "Longitude": 90.44644
+    },
+    {
+      "Location": "Titas Gas Road, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Titas Gas Road",
+      "Latitude": 23.69459,
+      "Longitude": 90.44644
+    },
+    {
+      "Location": "Topkhana Road, Shegunbagicha, Dhaka",
+      "Region": "Shegunbagicha",
+      "Sub-region": "Topkhana Road",
+      "Latitude": 23.73006,
+      "Longitude": 90.40953
+    },
+    {
+      "Location": "Turag, Dhaka",
+      "Region": "Turag",
+      "Sub-region": "Unknown",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Ullan, Rampura, Dhaka",
+      "Region": "Rampura",
+      "Sub-region": "Ullan",
+      "Latitude": 23.76768,
+      "Longitude": 90.42307
+    },
+    {
+      "Location": "Uttar Badda, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Uttar Badda",
+      "Latitude": 23.81501,
+      "Longitude": 90.43623
+    },
+    {
+      "Location": "Uttar Khan, Dhaka",
+      "Region": "UttarKhan",
+      "Sub-region": "Unknown",
+      "Latitude": 23.76298,
+      "Longitude": 90.38919
+    },
+    {
+      "Location": "Uttara, Dhaka",
+      "Region": "Uttara",
+      "Sub-region": "Unknown",
+      "Latitude": 23.86846,
+      "Longitude": 90.3928
+    },
+    {
+      "Location": "Vashantek, Cantonment, Dhaka",
+      "Region": "Cantonment",
+      "Sub-region": "Vashantek",
+      "Latitude": 23.73795,
+      "Longitude": 90.39749
+    },
+    {
+      "Location": "Vatara, Badda, Dhaka",
+      "Region": "Badda",
+      "Sub-region": "Vatara",
+      "Latitude": 23.81501,
+      "Longitude": 90.43623
+    },
+    {
+      "Location": "Ward 98, Rampura, Dhaka",
+      "Region": "Rampura",
+      "Sub-region": "Ward 98",
+      "Latitude": 23.76768,
+      "Longitude": 90.42307
+    },
+    {
+      "Location": "Wari, Sutrapur, Dhaka",
+      "Region": "Sutrapur",
+      "Sub-region": "Wari",
+      "Latitude": 23.70311,
+      "Longitude": 90.42015
+    },
+    {
+      "Location": "Wasa Road, Mugdapara, Dhaka",
+      "Region": "Mugdapara",
+      "Sub-region": "Wasa Road",
+      "Latitude": 23.72813,
+      "Longitude": 90.42969
+    },
+    {
+      "Location": "West Agargaon, Agargaon, Dhaka",
+      "Region": "Agargaon",
+      "Sub-region": "West Agargaon",
+      "Latitude": 23.77323,
+      "Longitude": 90.37154
+    },
+    {
+      "Location": "West Dhanmondi and Shangkar, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "West Dhanmondi and Shangkar",
+      "Latitude": 23.75047,
+      "Longitude": 90.36678
+    },
+    {
+      "Location": "West Dhanmondi, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "West Dhanmondi",
+      "Latitude": 23.75047,
+      "Longitude": 90.36678
+    },
+    {
+      "Location": "West Dolairpar, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "West Dolairpar",
+      "Latitude": 23.70283,
+      "Longitude": 90.43515
+    },
+    {
+      "Location": "West End Street, Hatirpool, Dhaka",
+      "Region": "Hatirpool",
+      "Sub-region": "West End Street",
+      "Latitude": 23.74172,
+      "Longitude": 90.39135
+    },
+    {
+      "Location": "West Kafrul, Taltola, Dhaka",
+      "Region": "Taltola",
+      "Sub-region": "West Kafrul",
+      "Latitude": 23.78412,
+      "Longitude": 90.37671
+    },
+    {
+      "Location": "West Kazipara, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "West Kazipara",
+      "Latitude": 23.80091,
+      "Longitude": 90.37135
+    },
+    {
+      "Location": "West Malibag, Malibagh, Dhaka",
+      "Region": "Malibagh",
+      "Sub-region": "West Malibag",
+      "Latitude": 23.74979,
+      "Longitude": 90.41256
+    },
+    {
+      "Location": "West Mollartek, Dakshin Khan, Dhaka",
+      "Region": "DakshinKhan",
+      "Sub-region": "West Mollartek",
+      "Latitude": 23.85159,
+      "Longitude": 90.4151
+    },
+    {
+      "Location": "West Monipur, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "West Monipur",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "West Nakhalpara, Tejgaon, Dhaka",
+      "Region": "Tejgaon",
+      "Sub-region": "West Nakhalpara",
+      "Latitude": 23.7921,
+      "Longitude": 90.37846
+    },
+    {
+      "Location": "West Rampura, Rampura, Dhaka",
+      "Region": "Rampura",
+      "Sub-region": "West Rampura",
+      "Latitude": 23.76748,
+      "Longitude": 90.42231
+    },
+    {
+      "Location": "West Shewrapara, Mirpur, Dhaka",
+      "Region": "Mirpur",
+      "Sub-region": "West Shewrapara",
+      "Latitude": 23.81223,
+      "Longitude": 90.35967
+    },
+    {
+      "Location": "Zafrabad, Hazaribag, Dhaka",
+      "Region": "Hazaribag",
+      "Sub-region": "Zafrabad",
+      "Latitude": 23.73176,
+      "Longitude": 90.37078
+    },
+    {
+      "Location": "Zia Sarani Road, Shyampur, Dhaka",
+      "Region": "Shyampur",
+      "Sub-region": "Zia Sarani Road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    },
+    {
+      "Location": "Zindabahar 2nd Lane, Kotwali, Dhaka",
+      "Region": "Kotwali",
+      "Sub-region": "Zindabahar 2nd Lane",
+      "Latitude": 23.71209,
+      "Longitude": 90.40581
+    },
+    {
+      "Location": "Zinzira, Savar, Dhaka",
+      "Region": "Savar",
+      "Sub-region": "Zinzira",
+      "Latitude": 23.841520000000003,
+      "Longitude": 90.24643
+    },
+    {
+      "Location": "aziz Moholla, Mohammadpur, Dhaka",
+      "Region": "Mohammadpur",
+      "Sub-region": "aziz Moholla",
+      "Latitude": 23.76427,
+      "Longitude": 90.36547
+    },
+    {
+      "Location": "rayer bazar-sanker road, Dhanmondi, Dhaka",
+      "Region": "Dhanmondi",
+      "Sub-region": "rayer bazar-sanker road",
+      "Latitude": 23.76629,
+      "Longitude": 90.41775
+    }
+  ],
+  "rows_used": 3085,
+  "target_note": "Estimated listing/asking price in BDT; not a verified transaction price."
+}

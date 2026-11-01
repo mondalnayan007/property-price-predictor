@@ -237,37 +237,30 @@ def predict_price(payload: PredictionRequest):
 
 HTML = r'''<!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <meta name="theme-color" content="#185F35">
 
-<meta name="description"
-content="Estimate apartment prices with BDProperties.">
-
-<title>BDProperties | Property Price Estimator</title>
+<title>BDProperties — Find Your Place</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 :root {
     --green: #185F35;
     --green-dark: #104725;
-    --green-light: #E8F4EB;
-    --navy: #123B27;
-    --ink: #172B3A;
-    --muted: #657889;
-    --line: #DCE5EB;
-    --page: #F4F7F5;
+    --green-light: #EAF3EC;
+    --cream: #F8F8F3;
     --white: #FFFFFF;
-    --shadow: 0 22px 60px rgba(24,95,53,.10);
+    --ink: #1C2922;
+    --muted: #737D76;
+    --border: #E5E9E3;
+    --gold: #C6A66B;
+    --shadow: 0 18px 50px rgba(24, 55, 35, .08);
 }
 
 * {
@@ -280,275 +273,485 @@ html {
 
 body {
     margin: 0;
-    background: var(--page);
-    color: var(--ink);
     font-family: "DM Sans", sans-serif;
-    line-height: 1.55;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
 }
 
-button,
-input,
-select {
+button, input, select {
     font: inherit;
 }
 
-.topbar {
-    background: #FFFFFF;
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+button {
+    -webkit-tap-highlight-color: transparent;
 }
 
-.nav {
-    max-width: 1160px;
-    margin: auto;
-    padding: 16px 24px;
+.container {
+    width: min(1160px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(24,95,53,.08);
+}
+
+.nav-inner {
+    min-height: 78px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: 20px;
 }
 
-.brand {
+.logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font: 800 21px "Manrope", sans-serif;
-    color: var(--navy);
-    letter-spacing: -.7px;
+    gap: 11px;
+    text-decoration: none;
+    color: var(--green);
 }
 
-.mark {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: var(--green);
-    color: white;
+.logo-icon {
+    height: 43px;
+    width: 43px;
+    border-radius: 13px;
     display: grid;
     place-items: center;
-    font-size: 25px;
-    animation: floatIcon 4s ease-in-out infinite;
+    color: white;
+    background: var(--green);
+    font-size: 27px;
+    font-weight: 700;
+    box-shadow: 0 6px 15px rgba(24,95,53,.19);
 }
 
-.brand-name {
+.logo-text {
+    font: 800 21px "Manrope", sans-serif;
+    letter-spacing: -.8px;
+}
+
+.logo-text span {
+    color: #252F29;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.nav-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.nav-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 30px;
+    background: var(--green-light);
     color: var(--green);
-}
-
-.tag {
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: .08em;
-    color: var(--green);
-    background: var(--green-light);
-    padding: 8px 12px;
-    border-radius: 30px;
+    letter-spacing: .05em;
 }
 
-main {
-    max-width: 1160px;
-    margin: auto;
-    padding: 48px 24px 60px;
+.live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #35A66B;
 }
+
+/* HERO */
 
 .hero {
-    text-align: center;
-    max-width: 850px;
-    margin: 0 auto 36px;
-    animation: fadeUp .7s ease both;
+    padding: 48px 0 32px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 46px;
 }
 
 .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--green);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--green);
 }
 
-h1 {
-    font: 800 clamp(34px, 5vw, 54px)/1.12
-        "Manrope", sans-serif;
-    letter-spacing: -1.8px;
-    color: var(--navy);
-    margin: 14px 0;
+.eyebrow::before {
+    content: "";
+    width: 27px;
+    height: 2px;
+    background: var(--gold);
+}
+
+.hero h1 {
+    font: 800 clamp(38px, 4.8vw, 61px)/1.12 "Manrope", sans-serif;
+    letter-spacing: -2.7px;
+    color: #1B3022;
+    margin: 19px 0;
+}
+
+.hero h1 em {
+    color: var(--green);
+    font-style: normal;
 }
 
 .hero-description {
+    max-width: 470px;
     color: var(--muted);
     font-size: 15px;
-    max-width: 650px;
-    margin: 0 auto;
+    line-height: 1.9;
+    margin: 0;
 }
 
-/* PROPERTY IMAGE */
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 27px;
+}
 
-.hero-photo {
+.button-primary {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    min-height: 51px;
+    padding: 0 23px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--green);
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 8px 20px rgba(24,95,53,.16);
+}
+
+.button-primary:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(24,95,53,.22);
+}
+
+.button-primary:disabled {
+    opacity: .65;
+    cursor: wait;
+    transform: none;
+}
+
+.hero-caption {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* HERO IMAGE */
+
+.hero-visual {
     position: relative;
-    margin: 28px auto 0;
-    width: 100%;
-    height: 250px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 18px 40px rgba(18,59,39,.17);
-    animation: fadeUp .9s ease both;
+    min-width: 0;
+    animation: enterRight .8s ease both;
 }
 
-.hero-photo img {
+.hero-image {
+    height: 385px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #E3E9E1;
+    box-shadow: 0 22px 55px rgba(24,55,35,.14);
+}
+
+.hero-image img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform .8s ease;
+    transition: transform .7s ease;
 }
 
-.hero-photo:hover img {
-    transform: scale(1.04);
+.hero-image:hover img {
+    transform: scale(1.045);
 }
 
-.photo-overlay {
+.image-shade {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-        90deg,
-        rgba(8,35,19,.55),
-        transparent 85%
+        180deg,
+        transparent 50%,
+        rgba(11,37,22,.55) 100%
     );
     pointer-events: none;
 }
 
-.photo-caption {
+.image-label {
     position: absolute;
-    left: 18px;
-    bottom: 18px;
-    background: rgba(13,43,27,.88);
+    left: 20px;
+    bottom: 20px;
     color: white;
-    border: 1px solid #FFFFFF38;
-    padding: 11px 15px;
+    z-index: 2;
+}
+
+.image-label small {
+    display: block;
+    color: #E0E8E0;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+.image-label strong {
+    display: block;
+    margin-top: 4px;
+    font: 700 21px "Manrope", sans-serif;
+}
+
+.floating-card {
+    position: absolute;
+    right: -17px;
+    top: 25px;
+    padding: 15px 17px;
+    background: white;
+    border: 1px solid rgba(24,95,53,.08);
     border-radius: 10px;
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 9px;
+    box-shadow: 0 12px 35px rgba(0,0,0,.09);
+    animation: float 4s ease-in-out infinite;
 }
 
-.photo-dot {
-    width: 9px;
-    height: 9px;
-    background: #8BD5A2;
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px #8BD5A226;
+.floating-card small {
+    display: block;
+    font-size: 10px;
+    color: var(--muted);
 }
 
-/* MAIN LAYOUT */
+.floating-card strong {
+    display: block;
+    font: 800 14px "Manrope", sans-serif;
+    color: var(--green);
+    margin-top: 3px;
+}
 
-.layout {
+/* TRUST STRIP */
+
+.trust-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: #FFFFFF;
+}
+
+.trust-inner {
+    min-height: 84px;
     display: grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap: 23px;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 20px;
+}
+
+.trust-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+}
+
+.trust-icon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 17px;
+}
+
+.trust-item strong {
+    display: block;
+    font-size: 12px;
+}
+
+.trust-item span {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* CALCULATOR SECTION */
+
+.calculator-section {
+    padding: 76px 0 85px;
+    scroll-margin-top: 100px;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 34px;
+}
+
+.section-heading .eyebrow {
+    justify-content: center;
+}
+
+.section-heading h2 {
+    font: 800 clamp(28px, 3.5vw, 40px)/1.25 "Manrope", sans-serif;
+    letter-spacing: -1.3px;
+    margin: 13px 0;
+    color: #1B3022;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+.calculator-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+    gap: 24px;
     align-items: start;
 }
 
-.card {
-    background: #FFFFFF;
-    border: 1px solid var(--line);
-    border-radius: 21px;
+.form-card,
+.info-card {
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: white;
     box-shadow: var(--shadow);
-    animation: fadeUp .75s ease both;
 }
 
 .form-card {
     padding: 29px;
 }
 
-.heading {
+.card-heading {
     display: flex;
-    gap: 12px;
+    gap: 13px;
     align-items: center;
-    margin-bottom: 24px;
+    padding-bottom: 22px;
+    margin-bottom: 23px;
+    border-bottom: 1px solid var(--border);
 }
 
-.heading-icon {
+.card-heading-icon {
     width: 44px;
     height: 44px;
-    border-radius: 12px;
-    background: var(--green-light);
-    color: var(--green);
     display: grid;
     place-items: center;
-    font-size: 23px;
+    border-radius: 11px;
+    color: var(--green);
+    background: var(--green-light);
+    font-size: 22px;
 }
 
-h2 {
-    font: 700 20px "Manrope", sans-serif;
-    color: var(--navy);
+.card-heading h3 {
+    font: 800 18px "Manrope", sans-serif;
     margin: 0;
 }
 
-.heading p {
-    margin: 3px 0 0;
+.card-heading p {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 11px;
+    margin: 3px 0 0;
 }
 
 .field {
-    margin-bottom: 18px;
+    margin-bottom: 19px;
 }
 
-label {
+.field label {
     display: block;
-    font-size: 13px;
+    color: #303C34;
+    font-size: 12px;
     font-weight: 800;
-    color: #243B53;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 }
 
-.control {
+.field label .required {
+    color: #BA6D39;
+}
+
+.input,
+.select {
+    display: block;
     width: 100%;
-    height: 48px;
-    border: 1px solid #CFDBE3;
-    border-radius: 10px;
-    padding: 0 13px;
+    min-height: 48px;
+    padding: 11px 13px;
+    border: 1px solid #DCE3DD;
+    border-radius: 7px;
+    outline: none;
     background: #FFFFFF;
     color: var(--ink);
-    outline: none;
-    transition: border-color .2s, box-shadow .2s;
+    font-size: 13px;
+    transition: border .2s, box-shadow .2s;
 }
 
-.control:focus {
+.input:focus,
+.select:focus {
     border-color: var(--green);
-    box-shadow: 0 0 0 4px #185F351C;
+    box-shadow: 0 0 0 3px rgba(24,95,53,.09);
 }
 
-.control::placeholder {
-    color: #9AA8B3;
+.input::placeholder {
+    color: #A1AAA3;
 }
 
-.location-tools,
-.grid2 {
+.input[readonly] {
+    background: #F7F9F7;
+    color: #637168;
+}
+
+.location-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 11px;
+    gap: 10px;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
 }
 
 .hint {
-    font-size: 11px;
-    color: var(--muted);
     margin-top: 7px;
-}
-
-.readonly {
-    background: #F7F9FA;
-    color: #657889;
+    color: var(--muted);
+    font-size: 10px;
 }
 
 .status {
     display: none;
     margin-top: 9px;
     padding: 10px 12px;
-    border-radius: 9px;
-    font-size: 12px;
+    border-radius: 7px;
+    font-size: 11px;
+    overflow-wrap: anywhere;
 }
 
 .status.show {
@@ -556,230 +759,253 @@ label {
 }
 
 .status.warn {
-    background: #FFF7E8;
-    color: #79551A;
-    border: 1px solid #F0DFB8;
+    color: #805A20;
+    background: #FFF7E9;
 }
 
 .status.good {
-    background: #EDF8F2;
-    color: #176344;
-    border: 1px solid #D1EBDC;
+    color: #17633C;
+    background: #EDF7EF;
 }
 
 .suggestions {
     display: flex;
     flex-wrap: wrap;
     gap: 7px;
-    margin-top: 8px;
+    margin-top: 9px;
 }
 
 .suggestion {
-    border: 1px solid #C9E4D9;
-    background: #F3FBF7;
-    color: var(--green);
+    border: 1px solid #D3E5D6;
+    border-radius: 6px;
     padding: 7px 10px;
-    border-radius: 8px;
-    font-size: 12px;
+    color: var(--green);
+    background: #F6FAF6;
+    font-size: 11px;
     font-weight: 700;
     cursor: pointer;
     transition: background .2s, transform .2s;
 }
 
 .suggestion:hover {
-    background: #E3F4EC;
-    transform: translateY(-2px);
+    background: #E6F2E8;
+    transform: translateY(-1px);
 }
 
-/* GREEN BUTTON */
-
-.primary {
+.submit-button {
     width: 100%;
-    min-height: 52px;
-    border: 0;
-    border-radius: 11px;
-    background: #185F35;
-    color: #FFFFFF;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 8px 18px #185F3533;
-    transition:
-        background .2s ease,
-        transform .2s ease,
-        box-shadow .2s ease;
+    margin-top: 3px;
+    min-height: 53px;
 }
 
-.primary:hover {
-    background: #104725;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px #185F3540;
-}
-
-.primary:active {
-    transform: translateY(0);
-}
-
-.primary:disabled {
-    opacity: .65;
-    cursor: wait;
-    transform: none;
-}
-
-.note {
+.form-note {
+    margin: 13px 0 0;
     text-align: center;
-    font-size: 11px;
     color: var(--muted);
-    margin: 12px 0 0;
+    font-size: 10px;
 }
 
-/* RIGHT INFORMATION PANEL */
+/* INFORMATION CARD */
 
-.side {
-    padding: 29px;
-    background: var(--navy);
-    color: white;
+.info-card {
     overflow: hidden;
-    position: relative;
-    animation-delay: .12s;
 }
 
-.side:after {
-    content: "BD";
+.info-top {
+    padding: 26px;
+    color: white;
+    background: var(--green);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-top::after {
+    content: "⌂";
     position: absolute;
-    right: -12px;
-    top: 0;
-    font: 800 145px "Manrope", sans-serif;
-    color: #FFFFFF09;
+    right: 8px;
+    top: -32px;
+    color: rgba(255,255,255,.07);
+    font-size: 145px;
+    line-height: 1;
     pointer-events: none;
 }
 
-.kicker {
-    font-size: 11px;
-    color: #9BD7C4;
+.info-top small {
+    position: relative;
+    z-index: 1;
+    color: #C7E2CD;
+    font-size: 10px;
     letter-spacing: .14em;
     font-weight: 800;
     text-transform: uppercase;
-    position: relative;
 }
 
-.side h2 {
-    color: white;
-    font-size: 25px;
-    line-height: 1.25;
+.info-top h3 {
+    position: relative;
+    z-index: 1;
     margin: 12px 0;
-    position: relative;
+    font: 800 24px/1.35 "Manrope", sans-serif;
+    letter-spacing: -.6px;
 }
 
-.side-intro {
-    font-size: 13px;
-    color: #C7D5DF;
+.info-top p {
     position: relative;
+    z-index: 1;
+    margin: 0;
+    color: #D9E9DC;
+    font-size: 12px;
+    line-height: 1.8;
 }
 
-.benefit {
+.info-list {
+    padding: 23px 25px 8px;
+}
+
+.info-row {
     display: flex;
+    align-items: flex-start;
     gap: 12px;
-    margin: 21px 0;
-    position: relative;
+    margin-bottom: 22px;
 }
 
-.benefit-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: #FFFFFF16;
+.info-check {
     display: grid;
     place-items: center;
-    color: #A9E1CF;
-    flex: 0 0 36px;
+    flex: 0 0 31px;
+    height: 31px;
+    border-radius: 8px;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 800;
 }
 
-.benefit strong {
-    font-size: 13px;
+.info-row strong {
     display: block;
+    color: #25342A;
+    font-size: 12px;
 }
 
-.benefit span {
+.info-row p {
+    margin: 4px 0 0;
+    color: var(--muted);
     font-size: 11px;
-    color: #BDCBD5;
-    display: block;
-    margin-top: 3px;
+    line-height: 1.7;
 }
 
-.side-note {
-    margin-top: 26px;
+.info-disclaimer {
+    margin: 0 23px 23px;
     padding: 13px;
-    border-radius: 10px;
-    background: #FFFFFF12;
-    color: #C7D5DF;
-    font-size: 11px;
-    position: relative;
+    background: #F7F8F4;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: #727B73;
+    font-size: 10px;
+    line-height: 1.8;
 }
 
-/* PRICE RESULT */
+/* RESULT */
 
 .result {
     display: none;
-    margin-top: 19px;
-    padding: 21px;
-    border: 1px solid #CCE8D9;
-    background: #F1FBF5;
-    border-radius: 14px;
+    margin-top: 22px;
+    border: 1px solid #CFE3D1;
+    border-radius: 11px;
+    background: #F6FBF6;
+    overflow: hidden;
 }
 
 .result.show {
     display: block;
-    animation: fadeUp .35s ease both;
+    animation: fadeUp .4s ease both;
+}
+
+.result-top {
+    padding: 21px 22px;
+    border-bottom: 1px solid #DDEADE;
 }
 
 .result-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .12em;
+    font-size: 10px;
     color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: .13em;
     font-weight: 800;
 }
 
-.amount {
-    font: 800 clamp(28px, 4vw, 38px) "Manrope", sans-serif;
-    color: var(--navy);
-    letter-spacing: -1px;
+.result-amount {
+    margin-top: 8px;
+    color: #183D26;
+    font: 800 clamp(28px, 4vw, 39px)/1.2 "Manrope", sans-serif;
+    letter-spacing: -1.3px;
     overflow-wrap: anywhere;
-    margin-top: 6px;
 }
 
-.lakh {
-    font-size: 13px;
-    color: #47715F;
+.result-lakh {
+    margin-top: 7px;
+    font-size: 12px;
+    color: #5B7560;
 }
 
-.disclaimer {
-    font-size: 11px;
-    color: #697B72;
-    border-top: 1px solid #DCEFE3;
-    padding-top: 12px;
-    margin: 14px 0 0;
+.result-disclaimer {
+    padding: 14px 22px;
+    margin: 0;
+    color: #69786C;
+    font-size: 10px;
+    line-height: 1.8;
 }
 
 .error {
     display: none;
-    margin-top: 13px;
-    padding: 11px;
-    border-radius: 9px;
-    background: #FFF1F0;
-    color: #A83232;
+    margin-top: 14px;
+    padding: 12px 14px;
+    color: #9D3131;
+    background: #FFF0EF;
+    border: 1px solid #F4D6D3;
+    border-radius: 7px;
     font-size: 12px;
+    overflow-wrap: anywhere;
 }
 
 .error.show {
     display: block;
 }
 
+/* FOOTER */
+
 .footer {
-    text-align: center;
-    color: #84929D;
+    background: #153D27;
+    color: white;
+    padding: 34px 0 23px;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid rgba(255,255,255,.13);
+}
+
+.footer-brand {
+    font: 800 19px "Manrope", sans-serif;
+}
+
+.footer-brand span {
+    color: #A9D2B2;
+}
+
+.footer-copy {
+    color: #C5D5C9;
     font-size: 11px;
-    padding: 0 20px 25px;
+}
+
+.footer-bottom {
+    padding-top: 18px;
+    color: #AFC3B4;
+    font-size: 10px;
+    line-height: 1.8;
 }
 
 /* ANIMATIONS */
@@ -787,7 +1013,7 @@ label {
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(16px);
     }
     to {
         opacity: 1;
@@ -795,509 +1021,735 @@ label {
     }
 }
 
-@keyframes floatIcon {
+@keyframes enterRight {
+    from {
+        opacity: 0;
+        transform: translateX(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
     0%, 100% {
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
     }
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE */
 
-@media (max-width: 820px) {
-    .layout {
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+
+    .hero-image {
+        height: 330px;
+    }
+
+    .calculator-layout {
         grid-template-columns: 1fr;
     }
 
-    .side {
-        order: 2;
+    .info-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .info-top {
+        grid-row: span 2;
+    }
+
+    .info-list {
+        padding-bottom: 0;
+    }
+
+    .info-disclaimer {
+        margin-top: 0;
+        align-self: start;
     }
 }
 
-@media (max-width: 520px) {
-    .nav {
-        padding: 13px 15px;
+@media (max-width: 650px) {
+    .container {
+        width: min(100% - 30px, 520px);
     }
 
-    .brand {
+    .nav-inner {
+        min-height: 68px;
+    }
+
+    .logo-text {
         font-size: 18px;
     }
 
-    .tag {
-        font-size: 9px;
-        padding: 7px 9px;
+    .logo-icon {
+        width: 38px;
+        height: 38px;
     }
 
-    main {
-        padding: 32px 14px 42px;
+    .nav-label {
+        display: none;
     }
 
-    .hero-photo {
-        height: 165px;
-        border-radius: 14px;
-    }
-
-    .photo-caption {
-        left: 9px;
-        bottom: 9px;
-        font-size: 10px;
+    .nav-badge {
         padding: 8px 10px;
+        font-size: 9px;
     }
 
-    .form-card,
-    .side {
-        padding: 20px;
+    .hero {
+        padding-top: 34px;
     }
 
-    .location-tools {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 29px;
+    }
+
+    .hero h1 {
+        font-size: clamp(37px, 10vw, 51px);
+        letter-spacing: -1.9px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .hero-image {
+        height: 280px;
+    }
+
+    .floating-card {
+        right: 10px;
+        top: 10px;
+    }
+
+    .trust-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 12px 0;
+    }
+
+    .trust-item {
+        justify-content: flex-start;
+        padding: 10px 0;
+    }
+
+    .calculator-section {
+        padding: 55px 0 60px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .section-heading p {
+        font-size: 12px;
+    }
+
+    .form-card {
+        padding: 20px 16px;
+    }
+
+    .location-grid {
         grid-template-columns: 1fr;
     }
 
-    .grid2 {
-        gap: 9px;
+    .two-columns {
+        gap: 10px;
     }
 
-    .control {
-        height: 46px;
+    .info-card {
+        display: block;
+    }
+
+    .info-top {
+        padding: 23px;
+    }
+
+    .info-top h3 {
+        font-size: 22px;
+    }
+
+    .info-list {
+        padding: 23px 21px 3px;
+    }
+
+    .info-disclaimer {
+        margin: 0 20px 20px;
+    }
+
+    .footer-main {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-<header class="topbar">
-    <nav class="nav">
-        <div class="brand">
-            <span class="mark">⌂</span>
-            <span>BD<span class="brand-name">Properties</span></span>
+<header class="navbar">
+    <div class="container nav-inner">
+
+        <a href="/" class="logo">
+            <span class="logo-icon">⌂</span>
+            <span class="logo-text">BD<span>Properties</span></span>
+        </a>
+
+        <div class="nav-right">
+            <span class="nav-label">PROPERTY PRICE ESTIMATOR</span>
+
+            <span class="nav-badge">
+                <span class="live-dot"></span>
+                SMART ESTIMATES
+            </span>
         </div>
 
-        <div class="tag">SMART PROPERTY ESTIMATOR</div>
-    </nav>
+    </div>
 </header>
 
 <main>
 
     <section class="hero">
+        <div class="container hero-grid">
 
-        <div class="eyebrow">A smarter way to estimate</div>
+            <div class="hero-content">
 
-        <h1>
-            Know your property's<br>
-            estimated value.
-        </h1>
+                <div class="eyebrow">
+                    Real estate, made simpler
+                </div>
 
-        <p class="hero-description">
-            Share a few apartment details and get an indicative
-            price estimate powered by our property data model.
-        </p>
+                <h1>
+                    Find the value.<br>
+                    <em>Know your place.</em>
+                </h1>
 
-        <div class="hero-photo">
-            <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85"
-                alt="Modern apartment interior"
-                loading="eager"
-            >
+                <p class="hero-description">
+                    Make your next property decision with greater
+                    confidence. Explore an indicative apartment
+                    price based on location and property details.
+                </p>
 
-            <div class="photo-overlay"></div>
+                <div class="hero-actions">
+                    <a href="#calculator" class="button-primary">
+                        Estimate property price
+                        <span>→</span>
+                    </a>
 
-            <div class="photo-caption">
-                <span class="photo-dot"></span>
-                Find your next place with confidence
+                    <span class="hero-caption">
+                        Simple. Clear. Data-informed.
+                    </span>
+                </div>
+
             </div>
+
+            <div class="hero-visual">
+
+                <div class="hero-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1300&q=85"
+                        alt="Contemporary residential property"
+                        fetchpriority="high"
+                    >
+
+                    <div class="image-shade"></div>
+
+                    <div class="image-label">
+                        <small>Find your next home</small>
+                        <strong>A better-informed move.</strong>
+                    </div>
+                </div>
+
+                <div class="floating-card">
+                    <small>Built for property decisions</small>
+                    <strong>BDProperties</strong>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="trust-strip">
+        <div class="container trust-inner">
+
+            <div class="trust-item">
+                <div class="trust-icon">⌖</div>
+                <div>
+                    <strong>Location-aware</strong>
+                    <span>Supported areas</span>
+                </div>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">▦</div>
+                <div>
+                    <strong>Property-specific</strong>
+                    <span>Size and room details</span>
+                </div>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">৳</div>
+                <div>
+                    <strong>Bangladeshi Taka</strong>
+                    <span>Clear price estimates</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="calculator-section" id="calculator">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    Property price calculator
+                </div>
+
+                <h2>
+                    Let's estimate your apartment.
+                </h2>
+
+                <p>
+                    Enter your property details below to receive
+                    an indicative price estimate.
+                </p>
+
+            </div>
+
+            <div class="calculator-layout">
+
+                <section class="form-card">
+
+                    <div class="card-heading">
+
+                        <div class="card-heading-icon">⌂</div>
+
+                        <div>
+                            <h3>Apartment information</h3>
+                            <p>
+                                Complete the fields to calculate
+                                your estimate.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <form id="predictForm">
+
+                        <div class="field">
+
+                            <label for="locationSearch">
+                                Property location
+                                <span class="required">*</span>
+                            </label>
+
+                            <div class="location-grid">
+
+                                <input
+                                    class="input"
+                                    id="locationSearch"
+                                    type="search"
+                                    placeholder="Search an area..."
+                                    autocomplete="off"
+                                    required
+                                >
+
+                                <select
+                                    class="select"
+                                    id="location"
+                                    required
+                                    aria-label="Choose supported location"
+                                >
+                                    <option value="">
+                                        Choose location
+                                    </option>
+                                </select>
+
+                            </div>
+
+                            <div class="hint">
+                                Search and choose a location from
+                                the supported dataset.
+                            </div>
+
+                            <div
+                                class="status"
+                                id="locationStatus"
+                                role="status"
+                                aria-live="polite"
+                            ></div>
+
+                            <div
+                                class="suggestions"
+                                id="suggestions"
+                            ></div>
+
+                        </div>
+
+                        <div class="two-columns">
+
+                            <div class="field">
+                                <label for="region">Region</label>
+
+                                <input
+                                    class="input"
+                                    id="region"
+                                    readonly
+                                    placeholder="Auto-filled"
+                                >
+                            </div>
+
+                            <div class="field">
+                                <label for="sub_region">Sub-region</label>
+
+                                <input
+                                    class="input"
+                                    id="sub_region"
+                                    readonly
+                                    placeholder="Auto-filled"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="field">
+
+                            <label for="area_sqft">
+                                Apartment area (sq ft)
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                class="input"
+                                id="area_sqft"
+                                type="number"
+                                min="100"
+                                max="100000"
+                                step="1"
+                                placeholder="e.g. 1200"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="two-columns">
+
+                            <div class="field">
+
+                                <label for="bedrooms">
+                                    Bedrooms
+                                    <span class="required">*</span>
+                                </label>
+
+                                <select
+                                    class="select"
+                                    id="bedrooms"
+                                    required
+                                >
+                                    <option value="">Choose</option>
+                                    <option value="1">1 bedroom</option>
+                                    <option value="2">2 bedrooms</option>
+                                    <option value="3" selected>3 bedrooms</option>
+                                    <option value="4">4 bedrooms</option>
+                                    <option value="5">5 bedrooms</option>
+                                    <option value="6">6 bedrooms</option>
+                                    <option value="7">7 bedrooms</option>
+                                    <option value="8">8 bedrooms</option>
+                                </select>
+
+                            </div>
+
+                            <div class="field">
+
+                                <label for="bathrooms">
+                                    Bathrooms
+                                    <span class="required">*</span>
+                                </label>
+
+                                <select
+                                    class="select"
+                                    id="bathrooms"
+                                    required
+                                >
+                                    <option value="">Choose</option>
+                                    <option value="1">1 bathroom</option>
+                                    <option value="2">2 bathrooms</option>
+                                    <option value="3" selected>3 bathrooms</option>
+                                    <option value="4">4 bathrooms</option>
+                                    <option value="5">5 bathrooms</option>
+                                    <option value="6">6 bathrooms</option>
+                                    <option value="7">7 bathrooms</option>
+                                    <option value="8">8 bathrooms</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="button-primary submit-button"
+                            id="submitBtn"
+                            type="submit"
+                        >
+                            Calculate estimated price
+                            <span>→</span>
+                        </button>
+
+                        <p class="form-note">
+                            No account required · Estimate in BDT
+                        </p>
+
+                    </form>
+
+                    <div
+                        class="error"
+                        id="errorBox"
+                        role="alert"
+                    ></div>
+
+                    <section
+                        class="result"
+                        id="resultBox"
+                        aria-live="polite"
+                    >
+
+                        <div class="result-top">
+
+                            <div class="result-label">
+                                Estimated apartment price
+                            </div>
+
+                            <div
+                                class="result-amount"
+                                id="priceBdt"
+                            >
+                                ৳—
+                            </div>
+
+                            <div
+                                class="result-lakh"
+                                id="priceLakh"
+                            ></div>
+
+                        </div>
+
+                        <p
+                            class="result-disclaimer"
+                            id="disclaimer"
+                        ></p>
+
+                    </section>
+
+                </section>
+
+                <aside class="info-card">
+
+                    <div class="info-top">
+
+                        <small>Designed for smarter decisions</small>
+
+                        <h3>
+                            Understand the estimate.
+                            Plan your next move.
+                        </h3>
+
+                        <p>
+                            A straightforward way to explore an
+                            indicative apartment price using
+                            the available property data.
+                        </p>
+
+                    </div>
+
+                    <div class="info-list">
+
+                        <div class="info-row">
+
+                            <div class="info-check">✓</div>
+
+                            <div>
+                                <strong>Choose your location</strong>
+
+                                <p>
+                                    Select an area available
+                                    in the current model dataset.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="info-row">
+
+                            <div class="info-check">✓</div>
+
+                            <div>
+                                <strong>Add apartment details</strong>
+
+                                <p>
+                                    Include the floor area,
+                                    bedroom count and bathroom count.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="info-row">
+
+                            <div class="info-check">✓</div>
+
+                            <div>
+                                <strong>Review your estimate</strong>
+
+                                <p>
+                                    See the predicted price in
+                                    Bangladeshi Taka and lakh.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="info-disclaimer">
+                        <strong>Important:</strong>
+                        The result is an indicative estimate based
+                        on historical listing data. It is not a
+                        formal valuation, verified transaction price
+                        or guarantee of the actual market price.
+                    </div>
+
+                </aside>
+
+            </div>
+
         </div>
 
     </section>
 
-    <div class="layout">
-
-        <!-- PREDICTION FORM -->
-
-        <section class="card form-card">
-
-            <div class="heading">
-
-                <div class="heading-icon">⌂</div>
-
-                <div>
-                    <h2>Apartment details</h2>
-                    <p>
-                        Enter the details below to calculate
-                        your estimate.
-                    </p>
-                </div>
-
-            </div>
-
-            <form id="predictForm">
-
-                <div class="field">
-
-                    <label for="locationSearch">
-                        Property location *
-                    </label>
-
-                    <div class="location-tools">
-
-                        <input
-                            class="control"
-                            id="locationSearch"
-                            type="search"
-                            placeholder="Search an area, e.g. Dhanmondi"
-                            autocomplete="off"
-                            required
-                        >
-
-                        <select
-                            class="control"
-                            id="location"
-                            required
-                            aria-label="Select location"
-                        >
-                            <option value="">
-                                Select from list…
-                            </option>
-                        </select>
-
-                    </div>
-
-                    <div class="hint">
-                        Search by area name or select from
-                        the available locations.
-                    </div>
-
-                    <div
-                        class="status"
-                        id="locationStatus"
-                        role="status"
-                        aria-live="polite"
-                    ></div>
-
-                    <div
-                        class="suggestions"
-                        id="suggestions"
-                    ></div>
-
-                </div>
-
-                <div class="grid2">
-
-                    <div class="field">
-                        <label for="region">Region</label>
-
-                        <input
-                            class="control readonly"
-                            id="region"
-                            readonly
-                            placeholder="Auto-filled"
-                        >
-                    </div>
-
-                    <div class="field">
-                        <label for="sub_region">Sub-region</label>
-
-                        <input
-                            class="control readonly"
-                            id="sub_region"
-                            readonly
-                            placeholder="Auto-filled"
-                        >
-                    </div>
-
-                </div>
-
-                <div class="field">
-
-                    <label for="area_sqft">
-                        Apartment area (sq ft) *
-                    </label>
-
-                    <input
-                        class="control"
-                        id="area_sqft"
-                        type="number"
-                        min="100"
-                        max="100000"
-                        step="1"
-                        placeholder="e.g. 1200"
-                        required
-                    >
-
-                </div>
-
-                <div class="grid2">
-
-                    <div class="field">
-
-                        <label for="bedrooms">
-                            Bedrooms *
-                        </label>
-
-                        <select
-                            class="control"
-                            id="bedrooms"
-                            required
-                        >
-                            <option value="">Select</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option selected>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                        </select>
-
-                    </div>
-
-                    <div class="field">
-
-                        <label for="bathrooms">
-                            Bathrooms *
-                        </label>
-
-                        <select
-                            class="control"
-                            id="bathrooms"
-                            required
-                        >
-                            <option value="">Select</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option selected>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                        </select>
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="primary"
-                    id="submitBtn"
-                    type="submit"
-                >
-                    Calculate estimated price →
-                </button>
-
-                <p class="note">
-                    Free estimate · No account required
-                </p>
-
-            </form>
-
-            <div
-                class="error"
-                id="errorBox"
-                role="alert"
-            ></div>
-
-            <section
-                class="result"
-                id="resultBox"
-                aria-live="polite"
-            >
-
-                <div class="result-label">
-                    Estimated apartment asking price
-                </div>
-
-                <div class="amount" id="priceBdt">
-                    ৳—
-                </div>
-
-                <div class="lakh" id="priceLakh"></div>
-
-                <p
-                    class="disclaimer"
-                    id="disclaimer"
-                ></p>
-
-            </section>
-
-        </section>
-
-        <!-- INFORMATION PANEL -->
-
-        <aside class="card side">
-
-            <div class="kicker">
-                BDProperties price insight
-            </div>
-
-            <h2>
-                A confident first step in your property search.
-            </h2>
-
-            <p class="side-intro">
-                Understand an indicative apartment price
-                before comparing your options.
-            </p>
-
-            <div class="benefit">
-
-                <div class="benefit-icon">⌖</div>
-
-                <div>
-                    <strong>Location-aware estimate</strong>
-                    <span>
-                        Choose a location represented
-                        in the model dataset.
-                    </span>
-                </div>
-
-            </div>
-
-            <div class="benefit">
-
-                <div class="benefit-icon">▦</div>
-
-                <div>
-                    <strong>Built around your apartment</strong>
-                    <span>
-                        Area, bedrooms and bathrooms
-                        shape the estimate.
-                    </span>
-                </div>
-
-            </div>
-
-            <div class="benefit">
-
-                <div class="benefit-icon">৳</div>
-
-                <div>
-                    <strong>Prices in Bangladeshi Taka</strong>
-                    <span>
-                        See your estimate in BDT and lakh.
-                    </span>
-                </div>
-
-            </div>
-
-            <div class="side-note">
-                This tool provides an indicative estimate
-                from historical listing data. It is not a
-                formal valuation or a guaranteed sale price.
-            </div>
-
-        </aside>
-
-    </div>
-
 </main>
 
 <footer class="footer">
-    © <span id="year"></span> BDProperties.
-    All rights reserved. · Indicative estimates only.
+    <div class="container">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                BD<span>Properties</span>
+            </div>
+
+            <div class="footer-copy">
+                A clearer starting point for property decisions.
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © <span id="year"></span> BDProperties.
+            All rights reserved. Estimates are indicative only
+            and may differ from actual market prices.
+        </div>
+
+    </div>
 </footer>
 
 <script>
-
-const sel = document.getElementById("location");
-const search = document.getElementById("locationSearch");
-const region = document.getElementById("region");
-const sub = document.getElementById("sub_region");
+const locationSelect = document.getElementById("location");
+const locationSearch = document.getElementById("locationSearch");
+const regionInput = document.getElementById("region");
+const subRegionInput = document.getElementById("sub_region");
 
 const form = document.getElementById("predictForm");
-const btn = document.getElementById("submitBtn");
-const err = document.getElementById("errorBox");
-const result = document.getElementById("resultBox");
+const submitBtn = document.getElementById("submitBtn");
+const errorBox = document.getElementById("errorBox");
+const resultBox = document.getElementById("resultBox");
 
-const statusBox = document.getElementById("locationStatus");
+const locationStatus = document.getElementById("locationStatus");
 const suggestions = document.getElementById("suggestions");
 
-let records = [];
-let chosen = null;
-let timer = null;
+let locations = [];
+let selectedLocation = null;
+let searchTimer = null;
 
 document.getElementById("year").textContent =
     new Date().getFullYear();
 
 
-const money = n =>
-    new Intl.NumberFormat("en-BD", {
-        style: "currency",
-        currency: "BDT",
-        maximumFractionDigits: 0
-    }).format(n);
-
-
-function status(msg, type = "warn") {
-    statusBox.textContent = msg;
-    statusBox.className = "status show " + type;
+function showStatus(message, type = "warn") {
+    locationStatus.textContent = message;
+    locationStatus.className = "status show " + type;
 }
 
 
 function clearStatus() {
-    statusBox.textContent = "";
-    statusBox.className = "status";
+    locationStatus.textContent = "";
+    locationStatus.className = "status";
 }
 
 
-function choose(item) {
-
+function chooseLocation(item) {
     if (!item) return;
 
-    chosen = item;
+    selectedLocation = item;
 
-    sel.value = item.location;
-    search.value = item.location;
+    locationSelect.value = item.location;
+    locationSearch.value = item.location;
 
-    region.value = item.region || "";
-    sub.value = item.sub_region || "";
+    regionInput.value = item.region || "";
+    subRegionInput.value = item.sub_region || "";
 
-    suggestions.innerHTML = "";
+    suggestions.replaceChildren();
 
-    status(
-        "Selected: " + item.location,
+    showStatus(
+        "Selected location: " + item.location,
         "good"
     );
 
-    err.classList.remove("show");
-    result.classList.remove("show");
+    errorBox.classList.remove("show");
+    resultBox.classList.remove("show");
 }
 
 
-function showMatches(items, exact = false) {
+function showSuggestions(items, exact = false) {
+    suggestions.replaceChildren();
 
-    suggestions.innerHTML = "";
-
-    if (!items.length) {
-        status(
-            "No matching location was found in the supported dataset. Try another area name."
+    if (!items || items.length === 0) {
+        showStatus(
+            "No matching supported location found. Try another area."
         );
         return;
     }
 
     if (!exact) {
-        status(
-            "Exact location not found. Choose the closest name match below. Suggestions are based on name similarity, not geographic distance."
+        showStatus(
+            "Choose the closest matching location. Name similarity does not indicate geographic distance."
         );
+    } else {
+        clearStatus();
     }
 
     items.slice(0, 6).forEach(item => {
-
         const button = document.createElement("button");
 
         button.type = "button";
@@ -1305,169 +1757,142 @@ function showMatches(items, exact = false) {
         button.textContent = item.location;
 
         button.addEventListener("click", () => {
-            choose(item);
+            chooseLocation(item);
         });
 
         suggestions.appendChild(button);
-
     });
 }
 
 
-/* LOAD AVAILABLE LOCATIONS */
+/* Load supported locations */
 
 fetch("/locations.json")
-
     .then(response => {
-
         if (!response.ok) {
-            throw new Error("Could not load locations");
+            throw new Error("Unable to load locations");
         }
 
         return response.json();
-
     })
-
     .then(data => {
+        locations = data;
 
-        records = data;
+        locationSelect.innerHTML =
+            '<option value="">Choose location</option>';
 
-        sel.innerHTML =
-            '<option value="">Select from list…</option>';
-
-        data.forEach(item => {
-
+        locations.forEach(item => {
             const option = document.createElement("option");
 
             option.value = item.location;
             option.textContent = item.location;
 
-            sel.appendChild(option);
-
+            locationSelect.appendChild(option);
         });
-
     })
-
     .catch(() => {
-
-        status(
-            "Could not load locations. Please refresh the page."
+        showStatus(
+            "Unable to load locations. Please refresh the page."
         );
-
     });
 
 
-/* DROPDOWN LOCATION SELECTION */
+/* Dropdown selection */
 
-sel.addEventListener("change", () => {
-
-    const item = records.find(
-        x => x.location === sel.value
+locationSelect.addEventListener("change", () => {
+    const item = locations.find(
+        entry => entry.location === locationSelect.value
     );
 
     if (item) {
-        choose(item);
+        chooseLocation(item);
     } else {
-        chosen = null;
-        region.value = "";
-        sub.value = "";
+        selectedLocation = null;
+        regionInput.value = "";
+        subRegionInput.value = "";
     }
-
 });
 
 
-/* SEARCH LOCATIONS */
+/* Search supported locations */
 
-search.addEventListener("input", () => {
+locationSearch.addEventListener("input", () => {
+    const query = locationSearch.value.trim();
 
-    const q = search.value.trim();
+    selectedLocation = null;
+    locationSelect.value = "";
+    regionInput.value = "";
+    subRegionInput.value = "";
 
-    chosen = null;
+    suggestions.replaceChildren();
+    errorBox.classList.remove("show");
+    resultBox.classList.remove("show");
 
-    sel.value = "";
-    region.value = "";
-    sub.value = "";
+    clearTimeout(searchTimer);
 
-    suggestions.innerHTML = "";
-
-    err.classList.remove("show");
-    result.classList.remove("show");
-
-    if (!q) {
+    if (!query) {
         clearStatus();
         return;
     }
 
-    const direct = records
-        .filter(item =>
-            item.location.toLowerCase()
-                .includes(q.toLowerCase())
-        )
-        .slice(0, 6);
+    const directMatches = locations.filter(item =>
+        item.location.toLowerCase().includes(query.toLowerCase())
+    ).slice(0, 6);
 
-    if (direct.length) {
-        showMatches(direct, true);
+    if (directMatches.length) {
+        showSuggestions(directMatches, true);
     }
 
-    clearTimeout(timer);
-
-    timer = setTimeout(async () => {
-
+    searchTimer = setTimeout(async () => {
         try {
-
             const response = await fetch(
-                "/locations/search?q=" +
-                encodeURIComponent(q)
+                "/locations/search?q=" + encodeURIComponent(query)
             );
 
             if (!response.ok) {
-                throw new Error("Search failed");
+                throw new Error("Search request failed");
             }
 
             const data = await response.json();
 
-            if (search.value.trim() !== q) {
+            if (locationSearch.value.trim() !== query) {
                 return;
             }
 
             if (data.exact) {
-                choose(data.exact);
+                chooseLocation(data.exact);
                 return;
             }
 
-            showMatches(data.matches || [], false);
+            showSuggestions(data.matches || [], false);
 
         } catch (error) {
-
-            if (!direct.length) {
-                status(
-                    "Search is temporarily unavailable. You can still choose from the dropdown."
+            if (!directMatches.length) {
+                showStatus(
+                    "Location search is unavailable. You can use the dropdown instead."
                 );
             }
-
         }
-
-    }, 220);
-
+    }, 250);
 });
 
 
-/* PRICE PREDICTION FORM */
+/* Price prediction */
 
 form.addEventListener("submit", async event => {
-
     event.preventDefault();
 
-    err.classList.remove("show");
-    result.classList.remove("show");
+    errorBox.classList.remove("show");
+    resultBox.classList.remove("show");
 
-    if (!chosen || sel.value !== chosen.location) {
+    if (
+        !selectedLocation ||
+        locationSelect.value !== selectedLocation.location
+    ) {
+        errorBox.textContent =
+            "Please choose a location from the available suggestions or dropdown.";
 
-        err.textContent =
-            "Please choose a location from the dropdown or suggested matches.";
-
-        err.classList.add("show");
-
+        errorBox.classList.add("show");
         return;
     }
 
@@ -1483,98 +1908,86 @@ form.addEventListener("submit", async event => {
         document.getElementById("bathrooms").value
     );
 
-    if (
-        !Number.isFinite(area) ||
-        area < 100 ||
-        area > 100000
-    ) {
+    if (!Number.isFinite(area) || area < 100 || area > 100000) {
+        errorBox.textContent =
+            "Enter an apartment area between 100 and 100000 square feet.";
 
-        err.textContent =
-            "Please enter an apartment area between 100 and 100000 square feet.";
-
-        err.classList.add("show");
-
+        errorBox.classList.add("show");
         return;
     }
 
     const payload = {
-        location: chosen.location,
-        region: chosen.region,
-        sub_region: chosen.sub_region,
+        location: selectedLocation.location,
+        region: selectedLocation.region,
+        sub_region: selectedLocation.sub_region,
         area_sqft: area,
         bedrooms: bedrooms,
         bathrooms: bathrooms
     };
 
-    btn.disabled = true;
-    btn.textContent = "Calculating estimate…";
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Calculating estimate...";
 
     try {
-
         const response = await fetch("/predict", {
             method: "POST",
-
             headers: {
                 "Content-Type": "application/json"
             },
-
             body: JSON.stringify(payload)
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-
-            throw new Error(
+            const message =
                 typeof data.detail === "string"
                     ? data.detail
-                    : (
-                        data.detail?.message ||
-                        "Prediction failed. Please try again."
-                    )
-            );
+                    : "Prediction failed. Please check the details.";
 
+            throw new Error(message);
         }
 
+        const price = Number(data.estimated_price_bdt);
+        const lakh = Number(data.estimated_price_lakh_bdt);
+
         document.getElementById("priceBdt").textContent =
-            money(data.estimated_price_bdt);
+            new Intl.NumberFormat("en-BD", {
+                style: "currency",
+                currency: "BDT",
+                maximumFractionDigits: 0
+            }).format(price);
 
         document.getElementById("priceLakh").textContent =
-            "Approximately ৳" +
-            Number(
-                data.estimated_price_lakh_bdt
-            ).toLocaleString("en-BD") +
-            " lakh";
+            "Approximately " +
+            lakh.toLocaleString("en-BD", {
+                maximumFractionDigits: 2
+            }) +
+            " lakh taka";
 
         document.getElementById("disclaimer").textContent =
-            data.disclaimer;
+            data.disclaimer ||
+            "This is an indicative estimate, not a guaranteed market price.";
 
-        result.classList.add("show");
+        resultBox.classList.add("show");
 
-        result.scrollIntoView({
+        resultBox.scrollIntoView({
             behavior: "smooth",
             block: "nearest"
         });
 
     } catch (error) {
+        errorBox.textContent =
+            error.message || "Something went wrong. Please try again.";
 
-        err.textContent =
-            error.message ||
-            "Something went wrong. Please try again.";
-
-        err.classList.add("show");
+        errorBox.classList.add("show");
 
     } finally {
-
-        btn.disabled = false;
-
-        btn.textContent =
-            "Calculate estimated price →";
-
+        submitBtn.disabled = false;
+        submitBtn.innerHTML =
+            'Calculate estimated price <span>→</span>';
     }
-
 });
-
 </script>
 
 </body>

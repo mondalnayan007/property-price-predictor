@@ -1,88 +1,3 @@
-from __future__ import annotations
-
-import html
-import json
-from pathlib import Path
-from typing import Optional
-
-import numpy as np
-import pandas as pd
-from catboost import CatBoostRegressor
-from fastapi import FastAPI, Form
-from fastapi.responses import HTMLResponse, JSONResponse
-
-BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "property_price_model.cbm"
-METADATA_PATH = BASE_DIR / "model_metadata.json"
-
-app = FastAPI(
-    title="Property Price Predictor",
-    version="3.0"
-)
-
-model = CatBoostRegressor()
-metadata = {}
-model_ready = False
-
-if MODEL_PATH.exists() and METADATA_PATH.exists():
-    model.load_model(str(MODEL_PATH))
-    metadata = json.loads(
-        METADATA_PATH.read_text(encoding="utf-8")
-    )
-    model_ready = True
-
-FEATURES = [
-    "Type",
-    "Location",
-    "No. Beds",
-    "No. Baths",
-    "Area",
-    "Latitude",
-    "Longitude",
-    "Region",
-    "Sub-region",
-]
-
-
-def money_bdt(value: float) -> str:
-    return "৳" + f"{round(value):,}"
-
-
-def location_options() -> str:
-    locations = metadata.get("locations", [])
-    output = []
-
-    for row in locations:
-        name = str(row.get("Location") or "").strip()
-
-        if name:
-            safe_name = html.escape(name, quote=True)
-            output.append(
-                f'<option value="{safe_name}"></option>'
-            )
-
-    return "\n".join(output)
-
-
-def type_options(selected: str = "Apartment") -> str:
-    types = metadata.get("types", ["Apartment"])
-    output = []
-
-    for value in types:
-        value = str(value)
-        safe_value = html.escape(value, quote=True)
-        selected_attr = (
-            " selected" if value == selected else ""
-        )
-
-        output.append(
-            f'<option value="{safe_value}"{selected_attr}>'
-            f'{safe_value}</option>'
-        )
-
-    return "\n".join(output)
-
-
 def page(
     error: str = "",
     result: Optional[float] = None,
@@ -92,9 +7,7 @@ def page(
     form = form or {}
 
     location = str(form.get("location", ""))
-    prop_type = str(
-        form.get("property_type", "Apartment")
-    )
+    prop_type = str(form.get("property_type", "Apartment"))
     beds = form.get("bedrooms", "3")
     baths = form.get("bathrooms", "2")
     area = form.get("area_sqft", "1200")
@@ -103,8 +16,8 @@ def page(
 
     if not model_ready:
         error = (
-            "Model files are missing. "
-            "Please ensure the model files are deployed."
+            "The prediction model is not available. "
+            "Please check the deployed model files."
         )
 
     error_html = ""
@@ -112,17 +25,20 @@ def page(
     if error:
         error_html = f"""
         <div class="alert error">
-            {html.escape(error)}
+            <span class="alert-icon">!</span>
+            <span>{html.escape(error)}</span>
         </div>
         """
 
+    # Prediction result card
     if result is not None:
         result_html = f"""
-        <div class="result-content">
-            <div class="result-icon">✓</div>
+        <div class="result-success">
 
-            <div class="result-label">
-                ESTIMATED PROPERTY PRICE
+            <div class="success-icon">✓</div>
+
+            <div class="result-overline">
+                YOUR ESTIMATED PROPERTY VALUE
             </div>
 
             <div class="price">
@@ -130,55 +46,112 @@ def page(
             </div>
 
             <div class="price-lakh">
-                Approximately ৳{result / 100000:.2f} lakh
+                ৳{result / 100000:.2f} Lakh
             </div>
 
-            <div class="result-divider"></div>
+            <div class="result-line"></div>
 
-            <p class="result-description">
-                This is the estimated listing price based
-                on the property details you entered.
-            </p>
-
-            <div class="result-badge">
-                AI-Powered Estimate
+            <div class="result-message">
+                Your estimated listing price is ready.
+                This estimate is based on the details
+                you entered and the available dataset.
             </div>
 
-            <p class="disclaimer">
-                This estimate is not a confirmed market
-                price or a verified transaction value.
-            </p>
+            <div class="estimate-tag">
+                <span class="tag-dot"></span>
+                ML-powered estimate
+            </div>
+
+            <div class="result-disclaimer">
+                This is an estimated listing price,
+                not a guaranteed sale price.
+            </div>
+
         </div>
         """
     else:
         result_html = """
-        <div class="empty-result">
-            <div class="empty-icon">৳</div>
+        <div class="result-empty">
 
-            <h3>Your estimated price will appear here</h3>
+            <div class="illustration">
 
-            <p>
-                Enter the property details and click
-                the prediction button to see the
-                estimated property price.
+                <div class="sun"></div>
+
+                <div class="building building-back">
+                    <div class="window-grid">
+                        <i></i><i></i><i></i>
+                        <i></i><i></i><i></i>
+                    </div>
+                </div>
+
+                <div class="building building-main">
+                    <div class="roof"></div>
+                    <div class="window-grid">
+                        <i></i><i></i>
+                        <i></i><i></i>
+                        <i></i><i></i>
+                        <i></i><i></i>
+                    </div>
+                    <div class="building-door"></div>
+                </div>
+
+                <div class="building building-front">
+                    <div class="window-grid">
+                        <i></i><i></i>
+                        <i></i><i></i>
+                        <i></i><i></i>
+                    </div>
+                </div>
+
+                <div class="floating-price">
+                    <span>৳</span>
+                    <div>
+                        <small>PROPERTY VALUE</small>
+                        <b>Estimate</b>
+                    </div>
+                </div>
+
+                <div class="floating-check">✓</div>
+
+                <div class="ground"></div>
+
+            </div>
+
+            <h3>Your property value starts here.</h3>
+
+            <p class="empty-description">
+                Add your property details to discover
+                an estimated listing price.
             </p>
 
-            <div class="empty-steps">
-                <div>
-                    <span>01</span>
-                    <p>Select a location</p>
+            <div class="steps">
+
+                <div class="step">
+                    <span class="step-number">01</span>
+                    <div>
+                        <b>Choose a location</b>
+                        <small>Select your property area.</small>
+                    </div>
                 </div>
 
-                <div>
-                    <span>02</span>
-                    <p>Enter property details</p>
+                <div class="step">
+                    <span class="step-number">02</span>
+                    <div>
+                        <b>Enter property details</b>
+                        <small>Add size and room information.</small>
+                    </div>
                 </div>
 
-                <div>
-                    <span>03</span>
-                    <p>Get your estimate</p>
+                <div class="step">
+                    <span class="step-number">03</span>
+                    <div>
+                        <b>Get your estimate</b>
+                        <small>View the predicted price here.</small>
+                    </div>
                 </div>
+
             </div>
+
         </div>
         """
 
@@ -186,25 +159,47 @@ def page(
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Property Price Predictor | Bangladesh</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+>
+
+<meta
+    name="theme-color"
+    content="#185F35"
+>
 
 <meta
     name="description"
-    content="Estimate property listing prices in Bangladesh using property details and machine learning."
+    content="BDProperties helps estimate property listing prices in Bangladesh using machine learning."
 >
 
+<title>BDProperties | Property Price Estimator</title>
+
 <style>
+
+/* =========================================
+   BDPROPERTIES — DESIGN SYSTEM
+========================================= */
+
 :root {{
-    --primary: #2457d6;
-    --primary-dark: #1945b4;
-    --ink: #17233c;
-    --muted: #718096;
-    --border: #e5eaf2;
-    --background: #f5f7fc;
-    --green: #13845b;
+    --primary: #185F35;
+    --primary-dark: #104526;
+    --primary-light: #287b49;
+    --primary-soft: #eaf4ed;
+
+    --ink: #172b20;
+    --muted: #738176;
+    --border: #e3ebe4;
+
+    --surface: #ffffff;
+    --background: #f5f8f5;
+
+    --success: #16834a;
+    --shadow: 0 18px 55px rgba(24, 95, 53, 0.08);
 }}
 
 * {{
@@ -218,174 +213,516 @@ html {{
 body {{
     margin: 0;
     min-height: 100vh;
-    font-family: Inter, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Arial, sans-serif;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     color: var(--ink);
+
     background:
         radial-gradient(
-            circle at top left,
-            #e8efff 0,
-            transparent 35%
+            circle at 8% 15%,
+            rgba(24, 95, 53, 0.07),
+            transparent 27%
         ),
-        linear-gradient(
-            135deg,
-            #f6f8fd,
-            #ffffff 55%,
-            #f0faf6
-        );
+        radial-gradient(
+            circle at 90% 38%,
+            rgba(100, 164, 111, 0.08),
+            transparent 28%
+        ),
+        var(--background);
+
+    overflow-x: hidden;
 }}
 
-header {{
+button,
+input,
+select {{
+    font: inherit;
+}}
+
+button,
+a,
+input,
+select {{
+    -webkit-tap-highlight-color: transparent;
+}}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.topbar {{
+    position: relative;
+    z-index: 10;
+
     width: 100%;
-    padding: 20px 6%;
+
+    padding: 19px 6%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    border-bottom: 1px solid #e9edf5;
-    background: rgba(255, 255, 255, 0.85);
+
+    gap: 18px;
+
+    background: rgba(255, 255, 255, 0.91);
+
+    border-bottom: 1px solid rgba(24, 95, 53, 0.09);
+
+    backdrop-filter: blur(16px);
 }}
 
 .brand {{
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 21px;
-    font-weight: 850;
-    letter-spacing: -0.7px;
+    gap: 11px;
+
+    text-decoration: none;
+    color: var(--ink);
 }}
 
-.brand-icon {{
-    width: 39px;
-    height: 39px;
+.brand-mark {{
+    position: relative;
+
+    width: 43px;
+    height: 43px;
+
     display: grid;
     place-items: center;
+
+    border-radius: 13px;
+
     color: white;
+
     background: var(--primary);
-    border-radius: 12px;
-    font-size: 23px;
+
+    box-shadow:
+        0 7px 18px rgba(24, 95, 53, 0.22);
+
+    overflow: hidden;
 }}
 
-.brand-price {{
+.brand-mark svg {{
+    width: 25px;
+    height: 25px;
+}}
+
+.brand-name {{
+    font-size: 22px;
+    font-weight: 850;
+    letter-spacing: -0.8px;
+}}
+
+.brand-name span {{
     color: var(--primary);
 }}
 
-.header-badge {{
-    padding: 9px 14px;
-    border-radius: 30px;
-    background: #e8f8f0;
-    color: #11754f;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.8px;
+.header-right {{
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }}
 
+.header-status {{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    background: var(--primary-soft);
+
+    border: 1px solid #d7e9db;
+
+    border-radius: 40px;
+
+    color: var(--primary);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+}}
+
+.status-dot {{
+    width: 8px;
+    height: 8px;
+
+    background: #26a269;
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 4px rgba(38, 162, 105, 0.12);
+}}
+
+/* =========================================
+   PAGE BACKGROUND DECORATION
+========================================= */
+
+.page-shell {{
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}}
+
+.background-decoration {{
+    position: absolute;
+    inset: 0;
+
+    z-index: -1;
+
+    overflow: hidden;
+    pointer-events: none;
+}}
+
+.decor-circle {{
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(24, 95, 53, 0.08);
+}}
+
+.decor-circle.one {{
+    width: 360px;
+    height: 360px;
+
+    top: 70px;
+    left: -180px;
+
+    animation: rotateSlow 35s linear infinite;
+}}
+
+.decor-circle.two {{
+    width: 480px;
+    height: 480px;
+
+    top: 160px;
+    right: -280px;
+
+    animation: rotateSlow 45s linear infinite reverse;
+}}
+
+.decor-circle.three {{
+    width: 240px;
+    height: 240px;
+
+    top: 400px;
+    left: 40%;
+
+    border-style: dashed;
+
+    animation: rotateSlow 60s linear infinite;
+}}
+
+.bg-building {{
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    border: 1px solid rgba(24, 95, 53, 0.06);
+
+    background: rgba(24, 95, 53, 0.025);
+
+    opacity: 0.7;
+}}
+
+.bg-building::before {{
+    content: "";
+
+    position: absolute;
+    top: 12px;
+    left: 15%;
+    right: 15%;
+
+    height: 3px;
+
+    border-radius: 5px;
+
+    background: rgba(24, 95, 53, 0.10);
+}}
+
+.bg-building i {{
+    display: block;
+
+    width: 9px;
+    height: 12px;
+
+    border: 1px solid rgba(24, 95, 53, 0.10);
+
+    border-radius: 2px;
+}}
+
+.bg-building .window-row {{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+}}
+
+.bg-building.a {{
+    left: 1%;
+    width: 80px;
+    height: 180px;
+}}
+
+.bg-building.b {{
+    left: 8%;
+    width: 105px;
+    height: 250px;
+}}
+
+.bg-building.c {{
+    right: 3%;
+    width: 100px;
+    height: 220px;
+}}
+
+.bg-building.d {{
+    right: 11%;
+    width: 75px;
+    height: 155px;
+}}
+
+.floating-particle {{
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #70a981;
+
+    opacity: 0.5;
+
+    animation: floatParticle 8s ease-in-out infinite;
+}}
+
+.particle-one {{
+    top: 160px;
+    left: 12%;
+}}
+
+.particle-two {{
+    top: 320px;
+    right: 12%;
+    animation-delay: -2s;
+}}
+
+.particle-three {{
+    top: 500px;
+    left: 23%;
+    animation-delay: -4s;
+}}
+
+.particle-four {{
+    top: 220px;
+    right: 25%;
+    animation-delay: -1s;
+}}
+
+@keyframes rotateSlow {{
+    from {{ transform: rotate(0deg); }}
+    to {{ transform: rotate(360deg); }}
+}}
+
+@keyframes floatParticle {{
+    0%, 100% {{
+        transform: translateY(0);
+        opacity: 0.3;
+    }}
+
+    50% {{
+        transform: translateY(-22px);
+        opacity: 0.8;
+    }}
+}}
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
 main {{
-    max-width: 1160px;
+    position: relative;
+
+    max-width: 1210px;
+
     margin: 0 auto;
-    padding: 42px 24px 65px;
+
+    padding: 43px 25px 70px;
 }}
 
 .hero {{
+    max-width: 790px;
+
+    margin: 0 auto 39px;
+
     text-align: center;
-    max-width: 760px;
-    margin: 0 auto 35px;
+
+    animation: fadeUp 0.65s ease both;
 }}
 
-.eyebrow {{
-    display: inline-block;
-    padding: 8px 13px;
-    background: #eaf0ff;
+.hero-label {{
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 9px 14px;
+
+    border: 1px solid #d6e7d9;
+    border-radius: 40px;
+
+    background: rgba(255, 255, 255, 0.82);
+
     color: var(--primary);
-    border-radius: 30px;
+
     font-size: 11px;
     font-weight: 850;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.4px;
     text-transform: uppercase;
 }}
 
-h1 {{
-    margin: 17px 0 13px;
-    font-size: clamp(32px, 5vw, 49px);
-    line-height: 1.1;
-    letter-spacing: -1.8px;
-    font-weight: 850;
+.hero-label svg {{
+    width: 15px;
+    height: 15px;
 }}
 
-.hero p {{
-    max-width: 650px;
+.hero h1 {{
+    margin: 20px 0 16px;
+
+    font-size: clamp(35px, 5vw, 57px);
+
+    line-height: 1.08;
+
+    letter-spacing: -2.3px;
+
+    font-weight: 900;
+}}
+
+.hero h1 .highlight {{
+    color: var(--primary);
+}}
+
+.hero-description {{
+    max-width: 640px;
+
     margin: 0 auto;
+
     color: var(--muted);
+
     font-size: 15px;
-    line-height: 1.8;
+    line-height: 1.9;
 }}
 
-.alert {{
-    padding: 14px 16px;
-    margin: 0 0 20px;
-    border-radius: 12px;
-    font-size: 14px;
-}}
-
-.error {{
-    color: #a12626;
-    background: #fff0f0;
-    border: 1px solid #ffd2d2;
-}}
+/* =========================================
+   MAIN TWO-COLUMN LAYOUT
+========================================= */
 
 .layout {{
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr)
-                           minmax(0, 0.92fr);
-    align-items: start;
+
+    grid-template-columns:
+        minmax(0, 1.04fr)
+        minmax(0, 0.96fr);
+
     gap: 25px;
+
+    align-items: start;
 }}
 
-.card {{
+.panel {{
     min-width: 0;
-    padding: 28px;
-    background: #ffffff;
-    border: 1px solid var(--border);
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid rgba(24, 95, 53, 0.10);
+
     border-radius: 23px;
-    box-shadow: 0 15px 45px rgba(30, 55, 100, 0.07);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+
+    animation: fadeUp 0.7s ease both;
 }}
 
-.card-heading {{
+.form-panel {{
+    animation-delay: 0.08s;
+}}
+
+.result-panel {{
+    animation-delay: 0.16s;
+}}
+
+.panel-header {{
     display: flex;
-    align-items: flex-start;
-    gap: 13px;
-    margin-bottom: 25px;
+    align-items: center;
+    gap: 14px;
+
+    padding: 25px 27px 21px;
+
+    border-bottom: 1px solid #edf1ed;
 }}
 
-.heading-icon {{
+.panel-icon {{
     flex-shrink: 0;
-    width: 45px;
-    height: 45px;
+
+    width: 46px;
+    height: 46px;
+
     display: grid;
     place-items: center;
-    background: #edf2ff;
+
+    border-radius: 14px;
+
+    background: var(--primary-soft);
+
     color: var(--primary);
-    border-radius: 13px;
-    font-size: 22px;
 }}
 
-.card h2 {{
-    margin: 1px 0 6px;
-    font-size: 21px;
+.panel-icon svg {{
+    width: 24px;
+    height: 24px;
+}}
+
+.panel-title {{
+    margin: 0 0 5px;
+
+    font-size: 19px;
+    font-weight: 850;
     letter-spacing: -0.5px;
 }}
 
-.hint {{
+.panel-subtitle {{
     margin: 0;
+
     color: var(--muted);
+
     font-size: 12px;
-    line-height: 1.6;
+    line-height: 1.7;
 }}
+
+.panel-body {{
+    padding: 26px 27px 28px;
+}}
+
+/* =========================================
+   FORM FIELDS
+========================================= */
 
 .fields {{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px 16px;
+    gap: 21px 17px;
 }}
 
 .field {{
@@ -398,920 +735,1699 @@ h1 {{
 
 label {{
     display: block;
+
     margin-bottom: 9px;
-    font-size: 13px;
-    font-weight: 750;
-    color: #344054;
+
+    color: #344c3a;
+
+    font-size: 12px;
+    font-weight: 800;
 }}
 
 .required {{
-    color: #e04444;
+    color: #d94848;
 }}
 
-.input-wrap {{
+.input-container {{
     position: relative;
 }}
 
-.input-icon {{
+.input-symbol {{
     position: absolute;
+
+    left: 14px;
     top: 50%;
-    left: 13px;
+
     transform: translateY(-50%);
-    color: #7c8ba5;
-    font-size: 16px;
+
+    display: grid;
+    place-items: center;
+
+    color: #7a9380;
+
     pointer-events: none;
+}}
+
+.input-symbol svg {{
+    width: 18px;
+    height: 18px;
 }}
 
 input,
 select {{
     display: block;
+
     width: 100%;
     min-width: 0;
-    min-height: 49px;
-    padding: 12px 13px;
-    border: 1px solid #dce3ef;
+    min-height: 50px;
+
+    padding: 13px 14px;
+
+    border: 1px solid #dce6dd;
     border-radius: 11px;
-    background: #ffffff;
-    color: var(--ink);
-    font: inherit;
-    font-size: 14px;
+
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+
+    color: var(--ink);
+    background: #ffffff;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}}
+
+input.with-icon {{
+    padding-left: 43px;
+}}
+
+input::placeholder {{
+    color: #a1ada3;
+}}
+
+input:hover,
+select:hover {{
+    border-color: #a8c9b0;
 }}
 
 input:focus,
 select:focus {{
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(36, 87, 214, 0.10);
-}}
 
-.input-with-icon {{
-    padding-left: 40px;
-}}
+    box-shadow: 0 0 0 4px rgba(24, 95, 53, 0.09);
 
-input::placeholder {{
-    color: #9aa6b8;
+    background: #ffffff;
 }}
 
 .field-help {{
     margin: 7px 0 0;
-    color: #8490a3;
-    font-size: 11px;
-    line-height: 1.5;
+
+    color: #8a978c;
+
+    font-size: 10px;
+    line-height: 1.7;
 }}
 
-.btn {{
+/* =========================================
+   LOCATION SEARCH
+========================================= */
+
+.location-container {{
+    position: relative;
+}}
+
+.location-container input {{
+    padding-right: 42px;
+}}
+
+.search-mark {{
+    position: absolute;
+
+    top: 50%;
+    right: 15px;
+
+    transform: translateY(-50%);
+
+    color: var(--primary);
+
+    font-size: 20px;
+
+    pointer-events: none;
+}}
+
+.location-tip {{
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+
+    margin-top: 9px;
+
+    color: #7d8d80;
+
+    font-size: 10px;
+    line-height: 1.7;
+}}
+
+.location-tip span {{
+    color: var(--primary);
+    font-weight: 900;
+}}
+
+/* =========================================
+   PRIMARY BUTTON
+========================================= */
+
+.predict-button {{
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 11px;
+
     width: 100%;
-    min-height: 53px;
-    margin-top: 25px;
-    padding: 14px 18px;
+    min-height: 54px;
+
+    margin-top: 26px;
+    padding: 15px 20px;
+
     border: 0;
     border-radius: 12px;
-    background: linear-gradient(
-        135deg,
-        var(--primary),
-        #376de8
-    );
+
     color: #ffffff;
-    font-size: 14px;
-    font-weight: 800;
+
+    background:
+        linear-gradient(
+            135deg,
+            #185F35,
+            #287b49
+        );
+
+    box-shadow:
+        0 8px 19px rgba(24, 95, 53, 0.19);
+
+    font-size: 13px;
+    font-weight: 850;
+
     cursor: pointer;
-    box-shadow: 0 9px 22px rgba(36, 87, 214, 0.22);
-    transition: transform 0.2s, background 0.2s;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }}
 
-.btn:hover {{
-    background: var(--primary-dark);
-    transform: translateY(-1px);
+.predict-button::before {{
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 65%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.20),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.65s ease;
 }}
 
-.btn:disabled {{
-    opacity: 0.5;
+.predict-button:hover::before {{
+    left: 140%;
+}}
+
+.predict-button:hover {{
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 26px rgba(24, 95, 53, 0.25);
+}}
+
+.predict-button:active {{
+    transform: translateY(0);
+}}
+
+.predict-button:disabled {{
+    opacity: 0.55;
     cursor: not-allowed;
+    box-shadow: none;
     transform: none;
 }}
 
-.form-footer {{
-    margin-top: 15px;
-    text-align: center;
-    color: #8994a7;
-    font-size: 11px;
-    line-height: 1.6;
+.predict-button svg {{
+    width: 17px;
+    height: 17px;
 }}
 
-.right-column {{
+.form-footnote {{
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    min-width: 0;
-}}
-
-.result-card {{
-    min-width: 0;
-    padding: 27px;
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 23px;
-    box-shadow: 0 15px 45px rgba(30, 55, 100, 0.07);
-}}
-
-.result-heading {{
-    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
-    padding-bottom: 20px;
-    margin-bottom: 22px;
-    border-bottom: 1px solid var(--border);
-}}
+    gap: 7px;
 
-.result-heading-icon {{
-    width: 43px;
-    height: 43px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    color: var(--green);
-    background: #e8f8f0;
-    border-radius: 12px;
-    font-size: 22px;
-}}
+    margin-top: 15px;
 
-.result-heading h2 {{
-    margin: 0 0 5px;
-    font-size: 19px;
-}}
+    color: #849186;
 
-.result-heading p {{
-    margin: 0;
-    color: var(--muted);
-    font-size: 12px;
-}}
+    font-size: 10px;
+    line-height: 1.7;
 
-.result-content {{
-    padding: 22px 19px;
     text-align: center;
-    border: 1px solid #ccebdc;
-    border-radius: 18px;
-    background: linear-gradient(
-        150deg,
-        #f0fff7,
-        #ffffff
-    );
 }}
 
-.result-icon {{
+.form-footnote svg {{
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    color: var(--primary);
+}}
+
+/* =========================================
+   RESULT PANEL
+========================================= */
+
+.result-panel .panel-body {{
+    padding: 24px;
+}}
+
+.result-success {{
+    position: relative;
+
+    padding: 27px 19px 23px;
+
+    text-align: center;
+
+    border: 1px solid #cce5d2;
+    border-radius: 17px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(67, 151, 87, 0.09),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #f0faf2,
+            #ffffff
+        );
+
+    animation: resultAppear 0.55s ease both;
+}}
+
+.success-icon {{
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
-    margin: 0 auto 16px;
+
+    width: 46px;
+    height: 46px;
+
+    margin: 0 auto 17px;
+
     border-radius: 50%;
-    background: #d9f7e8;
-    color: #087b50;
-    font-size: 23px;
+
+    background: #d9f1df;
+    color: var(--primary);
+
+    font-size: 22px;
     font-weight: 900;
 }}
 
-.result-label {{
-    color: #247453;
-    font-size: 11px;
-    font-weight: 850;
-    letter-spacing: 1.2px;
+.result-overline {{
+    color: #4a7656;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
 }}
 
 .price {{
-    margin: 13px 0 7px;
-    color: #116b47;
-    font-size: clamp(27px, 3.3vw, 38px);
+    margin: 15px 0 7px;
+
+    color: var(--primary);
+
+    font-size: clamp(27px, 3.1vw, 39px);
     font-weight: 900;
-    letter-spacing: -1.2px;
+
+    letter-spacing: -1.5px;
+
     overflow-wrap: anywhere;
 }}
 
 .price-lakh {{
-    color: #287b58;
+    color: #507c5b;
+
     font-size: 14px;
     font-weight: 750;
 }}
 
-.result-divider {{
+.result-line {{
     height: 1px;
-    margin: 23px 0 17px;
-    background: #d8eee2;
+
+    margin: 23px 0 18px;
+
+    background: #dceade;
 }}
 
-.result-description {{
-    margin: 0;
-    color: #64766c;
+.result-message {{
+    max-width: 330px;
+
+    margin: 0 auto;
+
+    color: #718275;
+
     font-size: 12px;
-    line-height: 1.7;
+    line-height: 1.9;
 }}
 
-.result-badge {{
-    display: inline-block;
-    margin-top: 17px;
-    padding: 8px 12px;
+.estimate-tag {{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 19px;
+    padding: 9px 13px;
+
     border-radius: 30px;
-    background: #ddf7e9;
-    color: #176e49;
-    font-size: 11px;
-    font-weight: 800;
-}}
 
-.disclaimer {{
-    margin: 18px 0 0;
-    color: #7a8b82;
+    background: #e0f2e4;
+    color: var(--primary);
+
     font-size: 10px;
-    line-height: 1.6;
+    font-weight: 850;
 }}
 
-.empty-result {{
-    padding: 10px 4px 2px;
+.tag-dot {{
+    width: 7px;
+    height: 7px;
+
+    background: #279254;
+    border-radius: 50%;
+}}
+
+.result-disclaimer {{
+    margin-top: 18px;
+
+    color: #8a978c;
+
+    font-size: 10px;
+    line-height: 1.8;
+}}
+
+/* =========================================
+   EMPTY RESULT / BUILDING ILLUSTRATION
+========================================= */
+
+.result-empty {{
     text-align: center;
 }}
 
-.empty-icon {{
-    width: 66px;
-    height: 66px;
+.illustration {{
+    position: relative;
+
+    width: 100%;
+    max-width: 370px;
+
+    height: 235px;
+
+    margin: 0 auto 23px;
+
+    border-radius: 17px;
+
+    background:
+        radial-gradient(
+            circle at 52% 35%,
+            #e1f1e4 0,
+            #f0f7f1 43%,
+            #f8fbf8 78%
+        );
+
+    overflow: hidden;
+}}
+
+.sun {{
+    position: absolute;
+
+    top: 31px;
+    right: 65px;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    background: #d7ebd9;
+
+    animation: sunPulse 5s ease-in-out infinite;
+}}
+
+.building {{
+    position: absolute;
+    bottom: 35px;
+
+    border: 1px solid rgba(24, 95, 53, 0.12);
+
+    border-radius: 5px 5px 0 0;
+
+    box-shadow: 0 7px 17px rgba(24, 95, 53, 0.05);
+}}
+
+.building-back {{
+    left: 37px;
+
+    width: 83px;
+    height: 106px;
+
+    background: #c9e1cd;
+
+    animation: buildingFloat 5s ease-in-out infinite;
+}}
+
+.building-main {{
+    z-index: 2;
+
+    left: 50%;
+    bottom: 35px;
+
+    width: 102px;
+    height: 151px;
+
+    transform: translateX(-50%);
+
+    background: #ffffff;
+
+    border-color: #a6c8ac;
+
+    animation: buildingFloat 5s ease-in-out infinite;
+    animation-delay: -1.5s;
+}}
+
+.roof {{
+    position: absolute;
+
+    top: -7px;
+    left: -5px;
+    right: -5px;
+
+    height: 8px;
+
+    border-radius: 3px;
+
+    background: var(--primary);
+}}
+
+.building-front {{
+    right: 31px;
+
+    width: 75px;
+    height: 91px;
+
+    background: #dcecdf;
+
+    animation: buildingFloat 5s ease-in-out infinite;
+    animation-delay: -2.4s;
+}}
+
+.window-grid {{
+    position: absolute;
+
+    top: 19px;
+    left: 12px;
+    right: 12px;
+
     display: grid;
-    place-items: center;
-    margin: 0 auto 18px;
-    border: 1px dashed #b8c8e9;
-    border-radius: 20px;
-    background: #f2f6ff;
-    color: var(--primary);
-    font-size: 31px;
-    font-weight: 850;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 9px;
 }}
 
-.empty-result h3 {{
-    margin: 0 0 10px;
-    font-size: 18px;
-    line-height: 1.5;
+.window-grid i {{
+    height: 14px;
+
+    border: 1px solid #b2d2b7;
+
+    border-radius: 3px;
+
+    background: #e0f1e3;
 }}
 
-.empty-result > p {{
-    max-width: 320px;
-    margin: 0 auto;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.8;
+.building-back .window-grid,
+.building-front .window-grid {{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
 }}
 
-.empty-steps {{
-    margin-top: 25px;
-    padding-top: 19px;
-    border-top: 1px solid var(--border);
-    text-align: left;
+.building-back .window-grid i,
+.building-front .window-grid i {{
+    height: 12px;
 }}
 
-.empty-steps > div {{
+.building-door {{
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
+    width: 23px;
+    height: 34px;
+
+    transform: translateX(-50%);
+
+    border-radius: 5px 5px 0 0;
+
+    background: var(--primary);
+}}
+
+.ground {{
+    position: absolute;
+
+    bottom: 26px;
+    left: 7%;
+    right: 7%;
+
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #c2dec7;
+}}
+
+.floating-price {{
+    position: absolute;
+    z-index: 3;
+
+    top: 35px;
+    left: 17px;
+
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin: 12px 0;
+    gap: 10px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #e2ebe3;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    box-shadow: 0 8px 22px rgba(24, 95, 53, 0.10);
+
+    text-align: left;
+
+    animation: floatingCard 4s ease-in-out infinite;
 }}
 
-.empty-steps span {{
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
+.floating-price > span {{
     display: grid;
     place-items: center;
-    border-radius: 10px;
-    background: #edf2ff;
+
+    width: 31px;
+    height: 31px;
+
+    border-radius: 9px;
+
+    background: var(--primary-soft);
+
     color: var(--primary);
-    font-size: 11px;
-    font-weight: 850;
-}}
 
-.empty-steps p {{
-    margin: 0;
-    color: #536177;
-    font-size: 12px;
-    font-weight: 650;
-}}
-
-.info-card {{
-    padding: 23px;
-    border-radius: 20px;
-    background: #172641;
-    color: #ffffff;
-}}
-
-.info-card h3 {{
-    margin: 0 0 12px;
-    font-size: 17px;
-}}
-
-.info-card > p {{
-    margin: 0;
-    color: #d0daea;
-    font-size: 12px;
-    line-height: 1.8;
-}}
-
-.info-list {{
-    padding: 0;
-    margin: 19px 0 0;
-    list-style: none;
-}}
-
-.info-list li {{
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin: 12px 0;
-    color: #e1e8f3;
-    font-size: 12px;
-    line-height: 1.7;
-}}
-
-.info-list li span {{
-    color: #82dfb3;
+    font-size: 18px;
     font-weight: 900;
 }}
 
-.info-note {{
-    margin-top: 19px;
-    padding-top: 16px;
-    border-top: 1px solid #ffffff20;
-    color: #b9c6d9;
+.floating-price small {{
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #8b9a8d;
+
+    font-size: 7px;
+    font-weight: 850;
+    letter-spacing: 0.6px;
+}}
+
+.floating-price b {{
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 12px;
+}}
+
+.floating-check {{
+    position: absolute;
+    z-index: 4;
+
+    right: 25px;
+    bottom: 75px;
+
+    display: grid;
+    place-items: center;
+
+    width: 33px;
+    height: 33px;
+
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+
+    background: #278b4b;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    box-shadow: 0 5px 12px rgba(24, 95, 53, 0.14);
+
+    animation: checkPulse 3s ease-in-out infinite;
+}}
+
+.result-empty h3 {{
+    margin: 0 0 10px;
+
+    color: var(--ink);
+
+    font-size: 19px;
+    font-weight: 850;
+
+    letter-spacing: -0.5px;
+}}
+
+.empty-description {{
+    max-width: 350px;
+
+    margin: 0 auto;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.9;
+}}
+
+/* =========================================
+   STEPS
+========================================= */
+
+.steps {{
+    margin-top: 25px;
+    padding-top: 21px;
+
+    border-top: 1px solid #edf1ed;
+
+    text-align: left;
+}}
+
+.step {{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 17px;
+}}
+
+.step:last-child {{
+    margin-bottom: 0;
+}}
+
+.step-number {{
+    flex-shrink: 0;
+
+    width: 37px;
+    height: 37px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #dceade;
+    border-radius: 11px;
+
+    background: #f0f7f1;
+
+    color: var(--primary);
+
     font-size: 10px;
-    line-height: 1.8;
+    font-weight: 900;
 }}
 
-footer {{
-    padding: 0 20px 27px;
-    text-align: center;
-    color: #8a96a8;
+.step b {{
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #314637;
+
+    font-size: 12px;
+    font-weight: 800;
+}}
+
+.step small {{
+    display: block;
+
+    color: #8b978d;
+
+    font-size: 10px;
+    line-height: 1.7;
+}}
+
+/* =========================================
+   INFO STRIP
+========================================= */
+
+.bottom-info {{
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 17px;
+
+    margin-top: 25px;
+}}
+
+.info-item {{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 18px;
+
+    border: 1px solid #e2ebe3;
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.78);
+}}
+
+.info-icon {{
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+
+    background: var(--primary-soft);
+
+    color: var(--primary);
+
+    font-size: 17px;
+    font-weight: 900;
+}}
+
+.info-item b {{
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #314637;
+
     font-size: 11px;
-    line-height: 1.8;
+    font-weight: 850;
 }}
 
-@media (max-width: 800px) {{
+.info-item small {{
+    display: block;
+
+    color: #879387;
+
+    font-size: 9px;
+    line-height: 1.7;
+}}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {{
+    padding: 25px 20px 30px;
+
+    border-top: 1px solid rgba(24, 95, 53, 0.08);
+
+    background: rgba(255, 255, 255, 0.72);
+
+    text-align: center;
+}}
+
+.footer-brand {{
+    margin-bottom: 9px;
+
+    color: var(--primary);
+
+    font-size: 16px;
+    font-weight: 900;
+}}
+
+.footer p {{
+    margin: 0;
+
+    color: #839084;
+
+    font-size: 10px;
+    line-height: 1.9;
+}}
+
+/* =========================================
+   ALERTS
+========================================= */
+
+.alert {{
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 22px;
+    padding: 15px 17px;
+
+    border-radius: 12px;
+
+    font-size: 12px;
+    line-height: 1.7;
+}}
+
+.alert-icon {{
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    font-weight: 900;
+}}
+
+.error {{
+    border: 1px solid #f3cccc;
+
+    background: #fff5f5;
+
+    color: #9d3131;
+}}
+
+.error .alert-icon {{
+    background: #fce1e1;
+    color: #a52c2c;
+}}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeUp {{
+    from {{
+        opacity: 0;
+        transform: translateY(17px);
+    }}
+
+    to {{
+        opacity: 1;
+        transform: translateY(0);
+    }}
+}}
+
+@keyframes resultAppear {{
+    from {{
+        opacity: 0;
+        transform: translateY(10px) scale(0.99);
+    }}
+
+    to {{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }}
+}}
+
+@keyframes floatingCard {{
+    0%, 100% {{
+        transform: translateY(0);
+    }}
+
+    50% {{
+        transform: translateY(-8px);
+    }}
+}}
+
+@keyframes buildingFloat {{
+    0%, 100% {{
+        filter: brightness(1);
+    }}
+
+    50% {{
+        filter: brightness(1.035);
+    }}
+}}
+
+@keyframes sunPulse {{
+    0%, 100% {{
+        transform: scale(1);
+        opacity: 0.8;
+    }}
+
+    50% {{
+        transform: scale(1.09);
+        opacity: 1;
+    }}
+}}
+
+@keyframes checkPulse {{
+    0%, 100% {{
+        transform: scale(1);
+    }}
+
+    50% {{
+        transform: scale(1.08);
+    }}
+}}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {{
+
     main {{
-        padding: 30px 18px 45px;
+        padding: 35px 20px 50px;
     }}
 
     .layout {{
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 0.95fr);
+
+        gap: 17px;
     }}
 
-    .right-column {{
-        order: 2;
+    .panel-header {{
+        padding: 21px 20px 18px;
     }}
 
-    .card,
-    .result-card {{
-        padding: 23px;
+    .panel-body {{
+        padding: 22px 20px;
     }}
 
-    .price {{
-        font-size: clamp(28px, 7vw, 38px);
+    .result-panel .panel-body {{
+        padding: 20px;
+    }}
+
+    .illustration {{
+        height: 220px;
+    }}
+
+    .bottom-info {{
+        gap: 10px;
+    }}
+
+    .info-item {{
+        padding: 13px;
+        gap: 9px;
     }}
 }}
 
-@media (max-width: 460px) {{
-    header {{
-        padding: 15px;
+@media (max-width: 700px) {{
+
+    .topbar {{
+        padding: 15px 18px;
     }}
 
-    .brand {{
-        font-size: 17px;
-    }}
-
-    .brand-icon {{
-        width: 35px;
-        height: 35px;
-    }}
-
-    .header-badge {{
-        font-size: 9px;
-        padding: 8px;
+    .brand-name {{
+        font-size: 20px;
     }}
 
     main {{
-        padding: 27px 13px 38px;
+        padding: 30px 16px 40px;
     }}
 
     .hero {{
-        margin-bottom: 25px;
+        margin-bottom: 28px;
     }}
 
-    h1 {{
-        font-size: 33px;
+    .hero h1 {{
+        font-size: clamp(34px, 8vw, 45px);
+        letter-spacing: -1.6px;
     }}
 
-    .hero p {{
+    .hero-description {{
         font-size: 13px;
     }}
 
-    .card,
-    .result-card {{
-        padding: 19px;
+    .layout {{
+        grid-template-columns: minmax(0, 1fr);
+        gap: 19px;
+    }}
+
+    .result-panel {{
+        order: 2;
+    }}
+
+    .form-panel {{
+        order: 1;
+    }}
+
+    .bottom-info {{
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }}
+
+    .info-item {{
+        padding: 15px;
+    }}
+
+    .bg-building.a {{
+        left: -35px;
+    }}
+
+    .bg-building.c {{
+        right: -40px;
+    }}
+
+    .decor-circle.one {{
+        left: -260px;
+    }}
+
+    .decor-circle.two {{
+        right: -350px;
+    }}
+}}
+
+@media (max-width: 430px) {{
+
+    .topbar {{
+        padding: 13px;
+    }}
+
+    .brand {{
+        gap: 8px;
+    }}
+
+    .brand-mark {{
+        width: 36px;
+        height: 36px;
+    }}
+
+    .brand-name {{
+        font-size: 18px;
+    }}
+
+    .header-status {{
+        gap: 6px;
+        padding: 8px;
+        font-size: 8px;
+        letter-spacing: 0;
+    }}
+
+    .status-dot {{
+        width: 6px;
+        height: 6px;
+    }}
+
+    main {{
+        padding: 25px 12px 35px;
+    }}
+
+    .hero h1 {{
+        font-size: 34px;
+    }}
+
+    .hero-label {{
+        font-size: 9px;
+        letter-spacing: 0.8px;
+    }}
+
+    .panel {{
         border-radius: 18px;
     }}
 
+    .panel-header {{
+        padding: 18px 16px;
+    }}
+
+    .panel-body {{
+        padding: 20px 16px;
+    }}
+
+    .result-panel .panel-body {{
+        padding: 17px;
+    }}
+
+    .panel-title {{
+        font-size: 17px;
+    }}
+
     .fields {{
-        grid-template-columns: 1fr;
-        gap: 17px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
     }}
 
     .field.full {{
         grid-column: auto;
     }}
+
+    .illustration {{
+        height: 218px;
+    }}
+
+    .building-back {{
+        left: 22px;
+    }}
+
+    .building-front {{
+        right: 20px;
+    }}
+
+    .floating-price {{
+        left: 9px;
+        top: 28px;
+    }}
+
+    .price {{
+        font-size: 29px;
+    }}
 }}
+
+/* Respect accessibility preferences */
+
+@media (prefers-reduced-motion: reduce) {{
+    *,
+    *::before,
+    *::after {{
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }}
+}}
+
 </style>
+
 </head>
 
 <body>
 
-<header>
-    <div class="brand">
-        <div class="brand-icon">⌂</div>
-        <div>
-            Property<span class="brand-price">Price</span>
+<header class="topbar">
+
+    <a class="brand" href="/" aria-label="BDProperties Home">
+
+        <div class="brand-mark">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+            >
+                <path d="M3 10.5L12 3l9 7.5"></path>
+                <path d="M5.5 9.5V21h13V9.5"></path>
+                <path d="M9 21v-6h6v6"></path>
+                <path d="M9 11h.01M15 11h.01"></path>
+            </svg>
+
         </div>
+
+        <div class="brand-name">
+            BD<span>Properties</span>
+        </div>
+
+    </a>
+
+    <div class="header-right">
+
+        <div class="header-status">
+            <span class="status-dot"></span>
+            PROPERTY ESTIMATOR
+        </div>
+
     </div>
 
-    <div class="header-badge">
-        AI-POWERED ESTIMATE
-    </div>
 </header>
 
-<main>
 
-    <section class="hero">
-        <div class="eyebrow">
-            Bangladesh Property Estimator
+<div class="page-shell">
+
+    <div class="background-decoration" aria-hidden="true">
+
+        <div class="decor-circle one"></div>
+        <div class="decor-circle two"></div>
+        <div class="decor-circle three"></div>
+
+        <div class="bg-building a">
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
         </div>
 
-        <h1>
-            Find Your Property's<br>
-            Estimated Price
-        </h1>
+        <div class="bg-building b">
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+        </div>
 
-        <p>
-            Discover an estimated property listing price
-            using location, property type, size and room
-            details.
-        </p>
-    </section>
+        <div class="bg-building c">
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+        </div>
 
-    {error_html}
+        <div class="bg-building d">
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+            <div class="window-row"><i></i><i></i></div>
+        </div>
 
-    <div class="layout">
+        <div class="floating-particle particle-one"></div>
+        <div class="floating-particle particle-two"></div>
+        <div class="floating-particle particle-three"></div>
+        <div class="floating-particle particle-four"></div>
 
-        <!-- LEFT SIDE: PROPERTY FORM -->
+    </div>
 
-        <section class="card">
 
-            <div class="card-heading">
-                <div class="heading-icon">⌂</div>
+    <main>
 
-                <div>
-                    <h2>Property Details</h2>
+        <section class="hero">
 
-                    <p class="hint">
-                        Enter the details to estimate the price.
-                    </p>
-                </div>
+            <div class="hero-label">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                >
+                    <path d="M3 10l9-7 9 7"></path>
+                    <path d="M5 9v12h14V9"></path>
+                    <path d="M9 21v-7h6v7"></path>
+                </svg>
+
+                BANGLADESH REAL ESTATE
+
             </div>
 
-            <form method="post" action="/predict">
+            <h1>
+                Your Property.<br>
+                <span class="highlight">Your Price Estimate.</span>
+            </h1>
 
-                <div class="fields">
-
-                    <div class="field full">
-                        <label for="property_type">
-                            Property Type
-                            <span class="required">*</span>
-                        </label>
-
-                        <select
-                            id="property_type"
-                            name="property_type"
-                            required
-                        >
-                            {type_options(prop_type)}
-                        </select>
-                    </div>
-
-                    <div class="field full">
-                        <label for="location">
-                            Location
-                            <span class="required">*</span>
-                        </label>
-
-                        <div class="input-wrap">
-                            <span class="input-icon">⌕</span>
-
-                            <input
-                                id="location"
-                                name="location"
-                                type="text"
-                                class="input-with-icon"
-                                list="location-options"
-                                placeholder="Search or select a location"
-                                value="{html.escape(location, quote=True)}"
-                                autocomplete="off"
-                                required
-                            >
-
-                            <datalist id="location-options">
-                                {location_options()}
-                            </datalist>
-                        </div>
-
-                        <p class="field-help">
-                            Type to search, then select a location
-                            from the suggestions.
-                        </p>
-                    </div>
-
-                    <div class="field full">
-                        <label for="area_sqft">
-                            Property Area (sq ft)
-                            <span class="required">*</span>
-                        </label>
-
-                        <input
-                            id="area_sqft"
-                            name="area_sqft"
-                            type="number"
-                            min="100"
-                            max="1000000"
-                            step="1"
-                            placeholder="Example: 1200"
-                            value="{html.escape(str(area), quote=True)}"
-                            required
-                        >
-
-                        <p class="field-help">
-                            Enter the property's area in square feet.
-                        </p>
-                    </div>
-
-                    <div class="field">
-                        <label for="bedrooms">
-                            Bedrooms
-                        </label>
-
-                        <input
-                            id="bedrooms"
-                            name="bedrooms"
-                            type="number"
-                            min="0"
-                            max="30"
-                            step="1"
-                            placeholder="e.g. 3"
-                            value="{html.escape(str(beds), quote=True)}"
-                        >
-                    </div>
-
-                    <div class="field">
-                        <label for="bathrooms">
-                            Bathrooms
-                        </label>
-
-                        <input
-                            id="bathrooms"
-                            name="bathrooms"
-                            type="number"
-                            min="0"
-                            max="30"
-                            step="1"
-                            placeholder="e.g. 2"
-                            value="{html.escape(str(baths), quote=True)}"
-                        >
-                    </div>
-
-                </div>
-
-                <button
-                    class="btn"
-                    type="submit"
-                    {disabled}
-                >
-                    Predict Property Price
-                    <span>→</span>
-                </button>
-
-                <div class="form-footer">
-                    Estimates are generated using the deployed
-                    machine-learning model.
-                </div>
-
-            </form>
+            <p class="hero-description">
+                Discover an estimated listing price for your
+                property with BDProperties. Enter your
+                property details and get a machine-learning
+                based estimate in Bangladeshi Taka.
+            </p>
 
         </section>
 
-        <!-- RIGHT SIDE: PREDICTION OUTPUT -->
 
-        <div class="right-column">
+        {error_html}
 
-            <section class="result-card">
 
-                <div class="result-heading">
-                    <div class="result-heading-icon">৳</div>
+        <div class="layout">
+
+
+            <!-- LEFT: PROPERTY DETAILS FORM -->
+
+            <section class="panel form-panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <path d="M4 21V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v16"></path>
+                            <path d="M2 21h20"></path>
+                            <path d="M8 7h2M8 11h2M8 15h2"></path>
+                            <path d="M14 7h.01M14 11h.01"></path>
+                            <path d="M10 21v-3h4v3"></path>
+                        </svg>
+
+                    </div>
 
                     <div>
-                        <h2>Price Estimate</h2>
 
-                        <p>
-                            Your estimated property value
+                        <h2 class="panel-title">
+                            Property Details
+                        </h2>
+
+                        <p class="panel-subtitle">
+                            Tell us about the property you want
+                            to estimate.
                         </p>
+
                     </div>
+
                 </div>
 
-                {result_html}
+
+                <div class="panel-body">
+
+                    <form method="post" action="/predict">
+
+                        <div class="fields">
+
+
+                            <div class="field full">
+
+                                <label for="property_type">
+                                    Property Type
+                                    <span class="required">*</span>
+                                </label>
+
+                                <div class="input-container">
+
+                                    <select
+                                        id="property_type"
+                                        name="property_type"
+                                        required
+                                    >
+                                        {type_options(prop_type)}
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="field full">
+
+                                <label for="location">
+                                    Property Location
+                                    <span class="required">*</span>
+                                </label>
+
+                                <div class="location-container">
+
+                                    <input
+                                        id="location"
+                                        name="location"
+                                        class="with-icon"
+                                        type="text"
+                                        list="location-options"
+                                        value="{html.escape(location, quote=True)}"
+                                        placeholder="Search your property location"
+                                        autocomplete="off"
+                                        required
+                                    >
+
+                                    <div class="input-symbol">
+
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.8"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            aria-hidden="true"
+                                        >
+                                            <circle cx="11" cy="11" r="7"></circle>
+                                            <path d="m16 16 4 4"></path>
+                                        </svg>
+
+                                    </div>
+
+                                    <span class="search-mark">⌄</span>
+
+                                    <datalist id="location-options">
+                                        {location_options()}
+                                    </datalist>
+
+                                </div>
+
+                                <div class="location-tip">
+                                    <span>i</span>
+                                    Search and select a location
+                                    from the available suggestions.
+                                </div>
+
+                            </div>
+
+
+                            <div class="field full">
+
+                                <label for="area_sqft">
+                                    Property Area
+                                    <span class="required">*</span>
+                                </label>
+
+                                <div class="input-container">
+
+                                    <input
+                                        id="area_sqft"
+                                        name="area_sqft"
+                                        type="number"
+                                        min="100"
+                                        max="1000000"
+                                        step="1"
+                                        value="{html.escape(str(area), quote=True)}"
+                                        placeholder="Enter area in square feet"
+                                        required
+                                    >
+
+                                </div>
+
+                                <p class="field-help">
+                                    Example: 1200 square feet.
+                                </p>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="bedrooms">
+                                    Number of Bedrooms
+                                </label>
+
+                                <input
+                                    id="bedrooms"
+                                    name="bedrooms"
+                                    type="number"
+                                    min="0"
+                                    max="30"
+                                    step="1"
+                                    value="{html.escape(str(beds), quote=True)}"
+                                    placeholder="e.g. 3"
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="bathrooms">
+                                    Number of Bathrooms
+                                </label>
+
+                                <input
+                                    id="bathrooms"
+                                    name="bathrooms"
+                                    type="number"
+                                    min="0"
+                                    max="30"
+                                    step="1"
+                                    value="{html.escape(str(baths), quote=True)}"
+                                    placeholder="e.g. 2"
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+                        <button
+                            class="predict-button"
+                            type="submit"
+                            {disabled}
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M12 3v3"></path>
+                                <path d="M12 18v3"></path>
+                                <path d="M3 12h3"></path>
+                                <path d="M18 12h3"></path>
+                                <path d="m5.6 5.6 2.1 2.1"></path>
+                                <path d="m16.3 16.3 2.1 2.1"></path>
+                                <path d="m18.4 5.6-2.1 2.1"></path>
+                                <path d="m7.7 16.3-2.1 2.1"></path>
+                                <circle cx="12" cy="12" r="4"></circle>
+                            </svg>
+
+                            Estimate Property Price
+
+                            <span>→</span>
+
+                        </button>
+
+
+                        <div class="form-footnote">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+
+                            Your estimate is generated from the
+                            available property dataset.
+
+                        </div>
+
+
+                    </form>
+
+                </div>
 
             </section>
 
-            <aside class="info-card">
 
-                <h3>How It Works</h3>
+            <!-- RIGHT: PRICE ESTIMATE -->
 
-                <p>
-                    The prediction model learns patterns from
-                    property listings and uses your inputs
-                    to estimate a listing price.
-                </p>
+            <section class="panel result-panel">
 
-                <ul class="info-list">
-                    <li>
-                        <span>✓</span>
-                        Choose a property type and location.
-                    </li>
+                <div class="panel-header">
 
-                    <li>
-                        <span>✓</span>
-                        Enter the area and room details.
-                    </li>
+                    <div class="panel-icon">
 
-                    <li>
-                        <span>✓</span>
-                        View your estimated price on the right.
-                    </li>
-                </ul>
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                            <path d="M16 12h.01"></path>
+                            <path d="M7 9h5"></path>
+                            <path d="M7 15h3"></path>
+                        </svg>
 
-                <div class="info-note">
-                    Estimates are informational only.
-                    Actual prices may depend on building condition,
-                    floor, amenities, ownership documents and
-                    market conditions. The dataset contains
-                    asking/listing prices, not verified sale
-                    transactions.
+                    </div>
+
+                    <div>
+
+                        <h2 class="panel-title">
+                            Property Valuation
+                        </h2>
+
+                        <p class="panel-subtitle">
+                            Your estimated listing price appears here.
+                        </p>
+
+                    </div>
+
                 </div>
 
-            </aside>
+
+                <div class="panel-body">
+
+                    {result_html}
+
+                </div>
+
+            </section>
+
 
         </div>
 
+
+        <!-- TRUST AND INFORMATION STRIP -->
+
+        <section class="bottom-info">
+
+            <div class="info-item">
+
+                <div class="info-icon">⌕</div>
+
+                <div>
+                    <b>Location-Based</b>
+                    <small>
+                        Uses the selected dataset location.
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">↗</div>
+
+                <div>
+                    <b>Machine Learning</b>
+                    <small>
+                        Uses your property details for estimation.
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">৳</div>
+
+                <div>
+                    <b>Bangladeshi Taka</b>
+                    <small>
+                        View estimates in BDT and lakh.
+                    </small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<footer class="footer">
+
+    <div class="footer-brand">
+        BDProperties
     </div>
 
-</main>
+    <p>
+        Property price estimation for Bangladesh.<br>
+        Estimates are informational and are not
+        guaranteed market or transaction prices.
+    </p>
 
-<footer>
-    Property Price Predictor · Bangladesh<br>
-    Estimates are not a confirmed valuation or financial advice.
 </footer>
+
 
 </body>
 </html>
 """
-
-
-@app.get("/", response_class=HTMLResponse)
-def home():
-    return page()
-
-
-@app.get("/health")
-def health():
-    return {
-        "status": "ok" if model_ready else "model_missing",
-        "model_loaded": model_ready,
-    }
-
-
-@app.post("/predict", response_class=HTMLResponse)
-def predict(
-    property_type: str = Form(...),
-    location: str = Form(...),
-    area_sqft: float = Form(...),
-    bedrooms: Optional[float] = Form(None),
-    bathrooms: Optional[float] = Form(None),
-):
-    form_data = {
-        "property_type": property_type,
-        "location": location,
-        "area_sqft": area_sqft,
-        "bedrooms": bedrooms if bedrooms is not None else "",
-        "bathrooms": bathrooms if bathrooms is not None else "",
-    }
-
-    if not model_ready:
-        return HTMLResponse(
-            page(
-                "The model has not been trained or deployed.",
-                form=form_data,
-            ),
-            status_code=503,
-        )
-
-    if not np.isfinite(area_sqft) or area_sqft <= 0 or area_sqft > 1_000_000:
-        return HTMLResponse(
-            page(
-                "Please enter a valid property area in square feet.",
-                form=form_data,
-            ),
-            status_code=400,
-        )
-
-    if bedrooms is not None and (
-        not np.isfinite(bedrooms) or bedrooms < 0 or bedrooms > 30
-    ):
-        return HTMLResponse(
-            page("Please enter a valid number of bedrooms.", form=form_data),
-            status_code=400,
-        )
-
-    if bathrooms is not None and (
-        not np.isfinite(bathrooms) or bathrooms < 0 or bathrooms > 30
-    ):
-        return HTMLResponse(
-            page("Please enter a valid number of bathrooms.", form=form_data),
-            status_code=400,
-        )
-
-    # Match the exact location in the model metadata.
-    match = next(
-        (
-            row
-            for row in metadata.get("locations", [])
-            if str(row.get("Location") or "").strip() == location.strip()
-        ),
-        None,
-    )
-
-    if not match:
-        return HTMLResponse(
-            page(
-                "Please select a valid location from the suggestions.",
-                form=form_data,
-            ),
-            status_code=400,
-        )
-
-    row = {
-        "Type": property_type,
-        "Location": str(match.get("Location") or location),
-        "No. Beds": (
-            float(bedrooms)
-            if bedrooms not in (None, "")
-            else np.nan
-        ),
-        "No. Baths": (
-            float(bathrooms)
-            if bathrooms not in (None, "")
-            else np.nan
-        ),
-        "Area": float(area_sqft),
-        "Latitude": (
-            match.get("Latitude")
-            if match.get("Latitude") is not None
-            else np.nan
-        ),
-        "Longitude": (
-            match.get("Longitude")
-            if match.get("Longitude") is not None
-            else np.nan
-        ),
-        "Region": str(match.get("Region") or "Unknown"),
-        "Sub-region": str(match.get("Sub-region") or "Unknown"),
-    }
-
-    frame = pd.DataFrame([row], columns=FEATURES)
-
-    try:
-        predicted = float(
-            np.expm1(model.predict(frame)[0])
-        )
-
-        predicted = max(0.0, predicted)
-
-    except Exception:
-        return HTMLResponse(
-            page(
-                "Prediction failed. Please check the property details and try again.",
-                form=form_data,
-            ),
-            status_code=500,
-        )
-
-    return HTMLResponse(
-        page(
-            result=predicted,
-            form=form_data,
-        )
-    )
-
-
-@app.post("/api/predict")
-def api_predict(payload: dict):
-    """JSON prediction endpoint for future integrations."""
-
-    if not model_ready:
-        return JSONResponse(
-            {"error": "Model not loaded"},
-            status_code=503,
-        )
-
-    try:
-        location = str(payload["location"]).strip()
-
-        match = next(
-            (
-                row
-                for row in metadata.get("locations", [])
-                if str(row.get("Location") or "").strip() == location
-            ),
-            None,
-        )
-
-        if not match:
-            return JSONResponse(
-                {"error": "Unknown location"},
-                status_code=400,
-            )
-
-        area = float(payload["area_sqft"])
-
-        if not np.isfinite(area) or area <= 0 or area > 1_000_000:
-            return JSONResponse(
-                {"error": "Invalid property area"},
-                status_code=400,
-            )
-
-        bedrooms_value = payload.get("bedrooms")
-        bathrooms_value = payload.get("bathrooms")
-
-        bedrooms_value = (
-            float(bedrooms_value)
-            if bedrooms_value not in (None, "")
-            else np.nan
-        )
-
-        bathrooms_value = (
-            float(bathrooms_value)
-            if bathrooms_value not in (None, "")
-            else np.nan
-        )
-
-        row = {
-            "Type": str(payload.get("type", "Apartment")),
-            "Location": str(match.get("Location") or location),
-            "No. Beds": bedrooms_value,
-            "No. Baths": bathrooms_value,
-            "Area": area,
-            "Latitude": (
-                match.get("Latitude")
-                if match.get("Latitude") is not None
-                else np.nan
-            ),
-            "Longitude": (
-                match.get("Longitude")
-                if match.get("Longitude") is not None
-                else np.nan
-            ),
-            "Region": str(match.get("Region") or "Unknown"),
-            "Sub-region": str(match.get("Sub-region") or "Unknown"),
-        }
-
-        frame = pd.DataFrame([row], columns=FEATURES)
-
-        predicted = max(
-            0.0,
-            float(np.expm1(model.predict(frame)[0])),
-        )
-
-        return {
-            "estimated_price_bdt": round(predicted),
-            "estimated_price_lakh": round(predicted / 100000, 2),
-            "note": (
-                "Estimated listing price, not a verified "
-                "transaction price."
-            ),
-        }
-
-    except (KeyError, ValueError, TypeError) as exc:
-        return JSONResponse(
-            {"error": f"Invalid input: {exc}"},
-            status_code=400,
-        )
